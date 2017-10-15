@@ -7,11 +7,31 @@
 #include <QMouseEvent>
 #include <QColor>
 #include <switchbutton.h>
+#include <QWidget>
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QWidget(parent)
 {
     this->setGeometry(QApplication::desktop()->screenGeometry());
+
+
+
+
+    QHBoxLayout *hbox = new QHBoxLayout(this);
+    QPushButton *pButton1 = new QPushButton("One");
+    QPushButton *pButton2 = new QPushButton("Two");
+    QPushButton *pButton3 = new QPushButton("Three");
+    QPushButton *pButton4 = new QPushButton("Four");
+    QPushButton *pButton5 = new QPushButton("Five");
+
+    hbox->addWidget(pButton1);
+    hbox->addWidget(pButton2);
+    hbox->addWidget(pButton3);
+    hbox->addWidget(pButton4);
+    hbox->addWidget(pButton5);
+
+
 
     QPushButton *q = new QPushButton(this);
     q->setStyleSheet("background-color:rgb(255,255,0);");
@@ -25,22 +45,6 @@ MainWindow::MainWindow(QWidget *parent) :
     sb->setGeometry(400,100,100,20);
 
 
-
-
-    QHBoxLayout *hbox = new QHBoxLayout();
-    QPushButton *pButton1 = new QPushButton("One");
-    QPushButton *pButton2 = new QPushButton("Two");
-    QPushButton *pButton3 = new QPushButton("Three");
-    QPushButton *pButton4 = new QPushButton("Four");
-    QPushButton *pButton5 = new QPushButton("Five");
-
-    hbox->addWidget(pButton1);
-    hbox->addWidget(pButton2);
-    hbox->addWidget(pButton3);
-    hbox->addWidget(pButton4);
-    hbox->addWidget(pButton5);
-
-    this->setLayout(hbox);
 }
 
 MainWindow::~MainWindow()

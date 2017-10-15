@@ -85,7 +85,7 @@ void SwitchButton::resizeEvent(QResizeEvent *)
         startX = 0;
     }
 
-    update();
+    update(rect());
 }
 
 void SwitchButton::paintEvent(QPaintEvent *)
@@ -232,7 +232,7 @@ void SwitchButton::updateValue()
         }
     }
 
-    update();
+    update(rect());
 }
 
 void SwitchButton::setChecked(bool checked)
@@ -240,59 +240,59 @@ void SwitchButton::setChecked(bool checked)
     if (this->checked != checked) {
         this->checked = checked;
         emit checkedChanged(checked);
-        update();
+        update(rect());
     }
 }
 
 void SwitchButton::setButtonStyle(SwitchButton::ButtonStyle buttonStyle)
 {
     this->buttonStyle = buttonStyle;
-    update();
+    update(rect());
 }
 
 void SwitchButton::setBgColor(QColor bgColorOff, QColor bgColorOn)
 {
     this->bgColorOff = bgColorOff;
     this->bgColorOn = bgColorOn;
-    update();
+    update(rect());
 }
 
 void SwitchButton::setSliderColor(QColor sliderColorOff, QColor sliderColorOn)
 {
     this->sliderColorOff = sliderColorOff;
     this->sliderColorOn = sliderColorOn;
-    update();
+    update(rect());
 }
 
 void SwitchButton::setTextColor(QColor textColorOff, QColor textColorOn)
 {
     this->textColorOff = textColorOff;
     this->textColorOn = textColorOn;
-    update();
+    update(rect());
 }
 
 void SwitchButton::setText(QString textOff, QString textOn)
 {
     this->textOff = textOff;
     this->textOn = textOn;
-    update();
+    update(rect());
 }
 
 void SwitchButton::setImage(QString imageOff, QString imageOn)
 {
     this->imageOff = imageOff;
     this->imageOn = imageOn;
-    update();
+    update(rect());
 }
 
 void SwitchButton::setSpace(int space)
 {
     this->space = space;
-    update();
+    update(rect());
 }
 
 void SwitchButton::setRectRadius(int rectRadius)
 {
     this->rectRadius = rectRadius;
-    update();
+    update(rect());
 }
