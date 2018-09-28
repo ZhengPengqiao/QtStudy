@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="cube.js">qml/cube.js</file>
+        <file alias="main.qml">qml/main.qml</file>
+        <file alias="three.js">../3rdparty/three.js</file>
+    </qresource>
+</RCC>
