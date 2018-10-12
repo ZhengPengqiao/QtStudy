@@ -18,12 +18,8 @@ MainWindow::MainWindow()
     setCentralWidget(scrollArea);
 
     resize(600, 480);
-
-    QImageReader reader(":/image/background.png");
-    reader.setAutoTransform(true);
-    const QImage newImage = reader.read();
-
-    setImage(newImage);
+    imageLabel->setPixmap(QPixmap(":/image/background.png"));
+    imageLabel->adjustSize();
 
 }
 
