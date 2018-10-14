@@ -32,7 +32,7 @@ public slots:
     void onSpinBoxYChange(int value);
     void onSpinBoxHeightChange(int value);
     void onSpinBoxWidthChange(int value);
-    void onRectItemChange(QList<QRect*> rectList, QList<QString> strList);
+    void onRectItemChange(QList<QRect*> rectList, QList<QString> strList, QList<QRectF*> rectGlList);
 };
 
 #endif // MAINWINDOW_H

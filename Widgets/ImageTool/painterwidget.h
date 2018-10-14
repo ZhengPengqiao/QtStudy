@@ -23,6 +23,7 @@ public:
     void delRectItem(int i);
 
     QList<QRect*> rectList;
+    QList<QRectF*> rectGlList;
     QList<QString> strList;
 
     QRect rectTmp;
@@ -32,7 +33,7 @@ private:
 
 signals:
     void onPointChange(QRect &rectTmp);
-    void onRectItemChange(QList<QRect*> rectList, QList<QString> strList);
+    void onRectItemChange(QList<QRect*> rectList, QList<QString> strList, QList<QRectF*> rectGlList);
 
 public slots:
 };

@@ -67,6 +67,7 @@ void PainterWidget::mouseMoveEvent(QMouseEvent *event)
 
 void PainterWidget::addRectItem(QString itemName)
 {
+    QRectF * rectF = new QRectF();
     if( itemName.isEmpty() )
     {
         QMessageBox::warning(NULL, "warning", "当天不具备添加条件: 名称为空", QMessageBox::Yes, QMessageBox::Yes);
@@ -84,10 +85,16 @@ void PainterWidget::addRectItem(QString itemName)
     }
 
     QRect *item = new QRect(rectTmp);
+    rectF->setX( (float)rectTmp.x() / pixmap()->width() * 2 - 1 );
+    rectF->setY( 1 - (float)rectTmp.y() / pixmap()->height() * 2 );
+    rectF->setWidth( (float)rectTmp.width() / pixmap()->width() * 2 );
+    rectF->setHeight( (float)rectTmp.height() / pixmap()->height() * 2 );
+
     rectList.push_back(item);
     strList.push_back(itemName);
+    rectGlList.push_back(rectF);
 
-    emit onRectItemChange(rectList, strList);
+    emit onRectItemChange(rectList, strList, rectGlList);
 }
 
 
@@ -95,4 +102,5 @@ void PainterWidget::delRectItem(int i)
 {
     strList.removeAt(i);
     rectList.removeAt(i);
+    rectGlList.removeAt(i);
 }

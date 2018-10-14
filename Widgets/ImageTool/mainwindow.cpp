@@ -24,6 +24,7 @@ MainWindow::MainWindow(QWidget *parent) :
     item_model->setHorizontalHeaderItem(3, new QStandardItem(QObject::tr("image_W")));
     item_model->setHorizontalHeaderItem(4, new QStandardItem(QObject::tr("image_H")));
     item_model->setHorizontalHeaderItem(5, new QStandardItem(QObject::tr("OpenGL_x,y,w,h")));
+
     //利用setModel()方法将数据模型与QTableView绑定
     ui->tableView->setModel(item_model);
     ui->statusBar->showMessage("open : /image/background2.png");
@@ -87,7 +88,7 @@ void MainWindow::onPointChange(QRect &rectTmp)
  * @param rectList ： painterWidget中的选项的点
  * @param strList ： painterWidget中的选项的名字
  */
-void MainWindow::onRectItemChange(QList<QRect*> rectList, QList<QString> strList)
+void MainWindow::onRectItemChange(QList<QRect*> rectList, QList<QString> strList, QList<QRectF*> rectGlList)
 {
     ui->statusBar->showMessage( "onRectItemChange" + QString::number(rectList.length()) );
     for(int i = 0; i < rectList.length(); i++)
@@ -97,6 +98,10 @@ void MainWindow::onRectItemChange(QList<QRect*> rectList, QList<QString> strList
         item_model->setItem(i, 2, new QStandardItem( QString::number( rectList[i]->y(), 10) ));
         item_model->setItem(i, 3, new QStandardItem( QString::number( rectList[i]->width(), 10) ));
         item_model->setItem(i, 4, new QStandardItem( QString::number( rectList[i]->height(), 10) ));
+        item_model->setItem(i, 5, new QStandardItem( "(" + QString::number(rectGlList[i]->x(), 'f', 4) + ","
+                                                     + QString::number(rectGlList[i]->y(), 'f', 4) + ","
+                                                     + QString::number(rectGlList[i]->width(), 'f', 4) + ","
+                                                     + QString::number(rectGlList[i]->height(), 'f', 4) + ")" ));
     }
     ui->tableView->setModel(item_model);
 }
