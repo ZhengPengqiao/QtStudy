@@ -179,6 +179,13 @@
            </layout>
           </item>
           <item>
+           <widget class="QPushButton" name="openFileButton">
+            <property name="text">
+             <string>打开图片文件</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <spacer name="verticalSpacer">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
@@ -335,6 +342,22 @@
     <hint type="destinationlabel">
      <x>584</x>
      <y>407</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>openFileButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>openFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>683</x>
+     <y>312</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>695</x>
+     <y>396</y>
     </hint>
    </hints>
   </connection>

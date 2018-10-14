@@ -3,6 +3,9 @@
 #include <QImageReader>
 #include <QPixmap>
 #include <QBrush>
+#include <QFileDialog>
+#include <QStandardPaths>
+#include <QImageWriter>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -56,9 +59,45 @@ void MainWindow::delItem()
     ui->statusBar->showMessage("删除一条项目 " + QString::number(currRow));
 }
 
+
+
+static void initializeImageFileDialog(QFileDialog &dialog, QFileDialog::AcceptMode acceptMode)
+{
+    static bool firstDialog = true;
+
+    if (firstDialog)
+    {
+        firstDialog = false;
+        const QStringList picturesLocations = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
+        dialog.setDirectory(picturesLocations.isEmpty() ? QDir::currentPath() : picturesLocations.last());
+    }
+
+    QStringList mimeTypeFilters;
+    const QByteArrayList supportedMimeTypes = acceptMode == QFileDialog::AcceptOpen
+        ? QImageReader::supportedMimeTypes() : QImageWriter::supportedMimeTypes();
+    foreach (const QByteArray &mimeTypeName, supportedMimeTypes)
+        mimeTypeFilters.append(mimeTypeName);
+    mimeTypeFilters.sort();
+    dialog.setMimeTypeFilters(mimeTypeFilters);
+    dialog.selectMimeTypeFilter("image/png");
+    if (acceptMode == QFileDialog::AcceptSave)
+        dialog.setDefaultSuffix("jpg");
+}
+
+
 void MainWindow::openFile()
 {
-    ui->statusBar->showMessage("openFile");
+    QFileDialog dialog(this, tr("Open File"));
+    initializeImageFileDialog(dialog, QFileDialog::AcceptOpen);
+
+    while (dialog.exec() == QDialog::Accepted )
+    {
+        painterwidget->setPixmap( QPixmap(dialog.selectedFiles().first()) ) ;
+        break;
+    }
+
+    ui->statusBar->showMessage("openFile: " + dialog.selectedFiles().first());
+
 }
 
 
@@ -133,5 +172,3 @@ void MainWindow::onSpinBoxHeightChange(int value)
     painterwidget->rectTmp.setHeight(value);
     painterwidget->update();
 }
-
-
