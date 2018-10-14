@@ -5,6 +5,7 @@
 
 PainterWidget::PainterWidget(QLabel *parent) : QLabel(parent)
 {
+    isCanAddFlag = false;
 }
 
 
@@ -13,25 +14,18 @@ void PainterWidget::paintEvent(QPaintEvent *event)
 {
     (void)event;
     QPainter painter(this);
-    ViewItem *item;
+    QRect *rectItem;
 
     painter.drawPixmap(0, 0, *this->pixmap());
-    qDebug() << " length:  "<<  itemList.length();
-    for(int i = 0; i < itemList.length(); i++)
+    for(int i = 0; i < rectList.length(); i++)
     {
-        item = itemList.at(i);
-        if( item->isEnable )
-        {
-            painter.setBrush(QBrush(item->itemColor));
-            painter.drawRect(item->itemRect);
-        }
+        rectItem = rectList.at(i);
+        painter.setBrush(QBrush(Qt::blue));
+        painter.drawRect(*rectItem);
     }
 
-    if( tempItem.isEnable )
-    {
-        painter.setBrush(QBrush(tempItem.itemColor));
-        painter.drawRect(tempItem.itemRect);
-    }
+    painter.setBrush(QBrush(Qt::blue));
+    painter.drawRect(rectTmp);
 
 }
 
@@ -40,11 +34,12 @@ void PainterWidget::mousePressEvent(QMouseEvent *event)
 {
     if(event->button()== Qt::LeftButton)
     {
-        pointLT.setX(event->x());
-        pointLT.setY(event->y());
-        tempItem.itemRect.setTopLeft(pointLT);
-
-        qDebug()<< "Press X:" << pointLT.x() << "  " << "Y:" << pointLT.y();
+        rectTmp.setLeft(event->x());
+        rectTmp.setTop(event->y());
+        rectTmp.setRight(event->x());
+        rectTmp.setBottom(event->y());
+        emit onPointChange(rectTmp);
+        update();
     }
 }
 
@@ -53,29 +48,51 @@ void PainterWidget::mouseReleaseEvent(QMouseEvent *event)
 {
     if(event->button()== Qt::LeftButton)
     {
-        pointRB.setX(event->x());
-        pointRB.setY(event->y());
-        qDebug()<< "Release  X:" << pointRB.x() << "  " << "Y:" << pointRB.y();
-        ViewItem *item = new ViewItem();
-        item->itemRect.setTopLeft(pointLT);
-        item->itemRect.setBottomRight(pointRB);
-        item->itemColor = Qt::red;
-        item->isEnable = true;
-        itemList.push_back(item);
+        rectTmp.setRight(event->x());
+        rectTmp.setBottom(event->y());
+        emit onPointChange(rectTmp);
         update();
+        isCanAddFlag = true;
     }
 
 }
 
 void PainterWidget::mouseMoveEvent(QMouseEvent *event)
 {
-
-    pointRB.setX(event->x());
-    pointRB.setY(event->y());
-
-    qDebug()<< "Move  X:" << pointRB.x() << "  " << "Y:" << pointRB.y();
-    tempItem.itemColor = Qt::red;
-    tempItem.isEnable = true;
-    tempItem.itemRect.setBottomRight(pointRB);
+    rectTmp.setRight(event->x());
+    rectTmp.setBottom(event->y());
+    emit onPointChange(rectTmp);
     update();
+}
+
+void PainterWidget::addRectItem(QString itemName)
+{
+    if( itemName.isEmpty() )
+    {
+        QMessageBox::warning(NULL, "warning", "当天不具备添加条件: 名称为空", QMessageBox::Yes, QMessageBox::Yes);
+        return;
+    }
+
+    if( isCanAddFlag )
+    {
+        isCanAddFlag = false;
+    }
+    else
+    {
+        QMessageBox::warning(NULL, "warning", "当天不具备添加条件: 确认是个已经添加？", QMessageBox::Yes, QMessageBox::Yes);
+        return;
+    }
+
+    QRect *item = new QRect(rectTmp);
+    rectList.push_back(item);
+    strList.push_back(itemName);
+
+    emit onRectItemChange(rectList, strList);
+}
+
+
+void PainterWidget::delRectItem(int i)
+{
+    strList.removeAt(i);
+    rectList.removeAt(i);
 }

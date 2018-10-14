@@ -14,12 +14,10 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    painterwidget.cpp \
-    viewitem.cpp
+    painterwidget.cpp
 
 HEADERS  += mainwindow.h \
-    painterwidget.h \
-    viewitem.h
+    painterwidget.h
 
 FORMS    += mainwindow.ui
 

@@ -6,9 +6,9 @@
 #include <QMessageBox>
 #include <QMouseEvent>
 #include <QList>
-#include "viewitem.h"
 #include <QPoint>
 #include <QDebug>
+#include <QList>
 
 class PainterWidget : public QLabel
 {
@@ -19,13 +19,20 @@ public:
     void mousePressEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
+    void addRectItem(QString itemName);
+    void delRectItem(int i);
 
-    QList<ViewItem*> itemList;
-    QPoint pointLT;
-    QPoint pointRB;
+    QList<QRect*> rectList;
+    QList<QString> strList;
+
+    QRect rectTmp;
+
 private:
-    ViewItem tempItem;
+    bool isCanAddFlag;
+
 signals:
+    void onPointChange(QRect &rectTmp);
+    void onRectItemChange(QList<QRect*> rectList, QList<QString> strList);
 
 public slots:
 };
