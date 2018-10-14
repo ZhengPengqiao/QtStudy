@@ -17,7 +17,6 @@ public:
 
 private:
     Ui::MainWindow *ui;
-
 public slots:
     void addItem();
     void delItem();

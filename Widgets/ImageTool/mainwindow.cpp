@@ -12,10 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->scrollArea->setVisible(true);
-
     ui->imageLabel->setPixmap(QPixmap(":/image/background2.png"));
-    ui->imageLabel->adjustSize();
 
     QStandardItemModel *item_model = new QStandardItemModel();
     item_model->setHorizontalHeaderItem(0, new QStandardItem(QObject::tr("Name")));

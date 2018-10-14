@@ -43,15 +43,9 @@
        </layout>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="imageHBoxLayout" stretch="6,2">
+       <layout class="QHBoxLayout" name="imageHBoxLayout" stretch="4,2">
         <item>
          <widget class="QScrollArea" name="scrollArea">
-          <property name="verticalScrollBarPolicy">
-           <enum>Qt::ScrollBarAlwaysOn</enum>
-          </property>
-          <property name="horizontalScrollBarPolicy">
-           <enum>Qt::ScrollBarAlwaysOn</enum>
-          </property>
           <property name="widgetResizable">
            <bool>true</bool>
           </property>
@@ -60,23 +54,19 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>577</width>
-             <height>395</height>
+             <width>525</width>
+             <height>409</height>
             </rect>
            </property>
-           <widget class="QLabel" name="imageLabel">
-            <property name="geometry">
-             <rect>
-              <x>0</x>
-              <y>0</y>
-              <width>59</width>
-              <height>14</height>
-             </rect>
-            </property>
-            <property name="text">
-             <string>TextLabel</string>
-            </property>
-           </widget>
+           <layout class="QGridLayout" name="gridLayout_2">
+            <item row="0" column="0">
+             <widget class="QLabel" name="imageLabel">
+              <property name="text">
+               <string>TextLabel</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </widget>
          </widget>
         </item>
@@ -93,6 +83,42 @@
             </item>
             <item>
              <widget class="QLineEdit" name="lineEdit"/>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="2,4">
+            <item>
+             <widget class="QLabel" name="label_LT">
+              <property name="text">
+               <string>左上点：</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_LT">
+              <property name="text">
+               <string>(0,0)</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="2,4">
+            <item>
+             <widget class="QLabel" name="label_RB">
+              <property name="text">
+               <string>右下点：</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_RB">
+              <property name="text">
+               <string>(0,0)</string>
+              </property>
+             </widget>
             </item>
            </layout>
           </item>
@@ -157,8 +183,8 @@
    <slot>addItem()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>60</x>
-     <y>206</y>
+     <x>663</x>
+     <y>282</y>
     </hint>
     <hint type="destinationlabel">
      <x>80</x>
@@ -173,8 +199,8 @@
    <slot>delItem()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>153</x>
-     <y>217</y>
+     <x>795</x>
+     <y>282</y>
     </hint>
     <hint type="destinationlabel">
      <x>158</x>
