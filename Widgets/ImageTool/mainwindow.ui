@@ -58,15 +58,7 @@
              <height>409</height>
             </rect>
            </property>
-           <layout class="QGridLayout" name="gridLayout_2">
-            <item row="0" column="0">
-             <widget class="QLabel" name="imageLabel">
-              <property name="text">
-               <string>TextLabel</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
+           <layout class="QGridLayout" name="gridLayout_2"/>
           </widget>
          </widget>
         </item>
@@ -170,8 +162,20 @@
      <height>19</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuOpen">
+    <property name="title">
+     <string>(&amp;F)ile</string>
+    </property>
+    <addaction name="action_O_pen"/>
+   </widget>
+   <addaction name="menuOpen"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="action_O_pen">
+   <property name="text">
+    <string>(&amp;O)pen</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
@@ -208,9 +212,26 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>action_O_pen</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>openFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>addItem()</slot>
   <slot>delItem()</slot>
+  <slot>openFile()</slot>
  </slots>
 </ui>

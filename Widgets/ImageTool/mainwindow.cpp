@@ -8,11 +8,14 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
+    painterwidget(new PainterWidget),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
-    ui->imageLabel->setPixmap(QPixmap(":/image/background2.png"));
+    painterwidget->setPixmap(QPixmap(":/image/background2.png"));
+
+    ui->scrollArea->setWidget(painterwidget);
 
     QStandardItemModel *item_model = new QStandardItemModel();
     item_model->setHorizontalHeaderItem(0, new QStandardItem(QObject::tr("Name")));
@@ -42,4 +45,9 @@ void MainWindow::addItem()
 void MainWindow::delItem()
 {
     ui->statusBar->showMessage("删除一条项目");
+}
+
+void MainWindow::openFile()
+{
+    ui->statusBar->showMessage("openFile");
 }
