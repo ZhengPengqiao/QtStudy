@@ -17,6 +17,10 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+public slots:
+    void addItem();
+    void delItem();
 };
 
 #endif // MAINWINDOW_H
