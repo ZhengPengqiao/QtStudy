@@ -55,7 +55,7 @@ void MainWindow::delItem()
     item_model->removeRow(currRow);
     painterwidget->delRectItem(currRow);
 
-    painterwidget->update();
+    painterwidget->updateShow();
     ui->statusBar->showMessage("删除一条项目 " + QString::number(currRow));
 }
 
@@ -149,28 +149,28 @@ void MainWindow::onSpinBoxXChange(int value)
 {
     ui->statusBar->showMessage( "onSpinBoxXChange (" + QString::number( value, 10));
     painterwidget->rectTmp.setLeft(value);
-    painterwidget->update();
+    painterwidget->updateShow();
 }
 
 void MainWindow::onSpinBoxYChange(int value)
 {
     ui->statusBar->showMessage( "onSpinBoxYChange (" + QString::number( value, 10));
     painterwidget->rectTmp.setTop(value);
-    painterwidget->update();
+    painterwidget->updateShow();
 }
 
 void MainWindow::onSpinBoxWidthChange(int value)
 {
     ui->statusBar->showMessage( "onSpinBoxWidthChange (" + QString::number( value, 10));
     painterwidget->rectTmp.setWidth(value);
-    painterwidget->update();
+    painterwidget->updateShow();
 }
 
 void MainWindow::onSpinBoxHeightChange(int value)
 {
     ui->statusBar->showMessage( "onSpinBoxHeightChange (" + QString::number( value, 10));
     painterwidget->rectTmp.setHeight(value);
-    painterwidget->update();
+    painterwidget->updateShow();
 }
 
 void MainWindow::onSaveSubImagePress()

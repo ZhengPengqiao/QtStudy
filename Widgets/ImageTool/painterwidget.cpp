@@ -39,7 +39,7 @@ void PainterWidget::mousePressEvent(QMouseEvent *event)
         rectTmp.setRight(event->x());
         rectTmp.setBottom(event->y());
         emit onPointChange(rectTmp);
-        update();
+        updateShow();
     }
 }
 
@@ -51,7 +51,7 @@ void PainterWidget::mouseReleaseEvent(QMouseEvent *event)
         rectTmp.setRight(event->x());
         rectTmp.setBottom(event->y());
         emit onPointChange(rectTmp);
-        update();
+        updateShow();
         isCanAddFlag = true;
     }
 
@@ -62,7 +62,8 @@ void PainterWidget::mouseMoveEvent(QMouseEvent *event)
     rectTmp.setRight(event->x());
     rectTmp.setBottom(event->y());
     emit onPointChange(rectTmp);
-    update();
+    updateShow();
+
 }
 
 void PainterWidget::addRectItem(QString itemName)
@@ -119,4 +120,9 @@ int PainterWidget::saveSubImage()
     }
 
     return count;
+}
+
+void PainterWidget::updateShow()
+{
+    update(0,0, width(), height());
 }

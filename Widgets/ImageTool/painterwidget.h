@@ -22,6 +22,7 @@ public:
     void addRectItem(QString itemName);
     void delRectItem(int i);
     int saveSubImage();
+    void updateShow();
 
     QList<QRect*> rectList;
     QList<QRectF*> rectGlList;
