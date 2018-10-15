@@ -33,6 +33,7 @@ public slots:
     void onSpinBoxHeightChange(int value);
     void onSpinBoxWidthChange(int value);
     void onRectItemChange(QList<QRect*> rectList, QList<QString> strList, QList<QRectF*> rectGlList);
+    void onSaveSubImagePress();
 };
 
 #endif // MAINWINDOW_H

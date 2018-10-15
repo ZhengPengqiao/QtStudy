@@ -104,3 +104,19 @@ void PainterWidget::delRectItem(int i)
     rectList.removeAt(i);
     rectGlList.removeAt(i);
 }
+
+int PainterWidget::saveSubImage()
+{
+    QPixmap subImage;
+    int count = 0;
+
+    for(int i = 0; i < rectList.length(); i++)
+    {
+        subImage = this->pixmap()->copy(rectList.at(i)->x() , rectList.at(i)->y(), rectList.at(i)->width(), rectList.at(i)->height());
+        qDebug() << strList.at(i)+ QString::number(i,10) +".png";
+        subImage.save(strList.at(i) + ".png");
+        count++;
+    }
+
+    return count;
+}

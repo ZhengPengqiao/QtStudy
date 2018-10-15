@@ -172,3 +172,10 @@ void MainWindow::onSpinBoxHeightChange(int value)
     painterwidget->rectTmp.setHeight(value);
     painterwidget->update();
 }
+
+void MainWindow::onSaveSubImagePress()
+{
+    int count = painterwidget->saveSubImage();
+    ui->statusBar->showMessage( "Save SubImage Ok 数目 : " + QString::number(count, 10));
+    QMessageBox::information(NULL, "information", "图片已经保存完成 : 数目：" + QString::number(count, 10), QMessageBox::Yes, QMessageBox::Yes);
+}

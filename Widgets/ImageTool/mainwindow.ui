@@ -186,6 +186,13 @@
            </widget>
           </item>
           <item>
+           <widget class="QPushButton" name="pushButton">
+            <property name="text">
+             <string>保存子图片</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <spacer name="verticalSpacer">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
@@ -220,6 +227,7 @@
      <string>(&amp;F)ile</string>
     </property>
     <addaction name="action_O_pen"/>
+    <addaction name="action_S_ave_SubImage"/>
    </widget>
    <addaction name="menuOpen"/>
   </widget>
@@ -227,6 +235,11 @@
   <action name="action_O_pen">
    <property name="text">
     <string>(&amp;O)pen</string>
+   </property>
+  </action>
+  <action name="action_S_ave_SubImage">
+   <property name="text">
+    <string>(&amp;S)ave SubImage</string>
    </property>
   </action>
  </widget>
@@ -361,6 +374,38 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>action_S_ave_SubImage</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onSaveSubImagePress()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onSaveSubImagePress()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>764</x>
+     <y>336</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>783</x>
+     <y>411</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>addItem()</slot>
@@ -370,5 +415,6 @@
   <slot>onSpinBoxYChange(int)</slot>
   <slot>onSpinBoxHeightChange(int)</slot>
   <slot>onSpinBoxWidthChange(int)</slot>
+  <slot>onSaveSubImagePress()</slot>
  </slots>
 </ui>

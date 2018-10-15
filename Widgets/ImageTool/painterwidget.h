@@ -21,6 +21,7 @@ public:
     void mouseMoveEvent(QMouseEvent *event);
     void addRectItem(QString itemName);
     void delRectItem(int i);
+    int saveSubImage();
 
     QList<QRect*> rectList;
     QList<QRectF*> rectGlList;
