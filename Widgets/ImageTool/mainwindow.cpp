@@ -44,6 +44,7 @@ void MainWindow::addItem()
 {
     ui->statusBar->showMessage("添加一条项目");
     painterwidget->addRectItem(ui->lineEdit->text());
+    painterwidget->updateShow();
 }
 
 
