@@ -20,11 +20,11 @@ void PainterWidget::paintEvent(QPaintEvent *event)
     for(int i = 0; i < rectList.length(); i++)
     {
         rectItem = rectList.at(i);
-        painter.setPen(QPen(Qt::blue,4)); //设置画笔形式
+        painter.setPen(QPen(Qt::blue,1)); //设置画笔形式
         painter.drawRect(*rectItem);
     }
 
-    painter.setPen(QPen(Qt::yellow,2)); //设置画笔形式
+    painter.setPen(QPen(Qt::yellow,1)); //设置画笔形式
     painter.drawRect(rectTmp);
 }
 
