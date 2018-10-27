@@ -48,30 +48,52 @@
 **
 ****************************************************************************/
 
-#include <QApplication>
-#include <QLabel>
-#include <QSurfaceFormat>
+#ifndef MAINWIDGET_H
+#define MAINWIDGET_H
 
-#ifndef QT_NO_OPENGL
-#include "mainwidget.h"
-#endif
+#include <QOpenGLWidget>
+#include <QOpenGLFunctions>
+#include <QMatrix4x4>
+#include <QQuaternion>
+#include <QVector2D>
+#include <QBasicTimer>
+#include <QOpenGLShaderProgram>
+#include <QOpenGLTexture>
+#include <QOpenGLBuffer>
 
-int main(int argc, char *argv[])
+class GeometryEngine;
+
+class MainWidget : public QOpenGLWidget, protected QOpenGLFunctions
 {
-    QApplication app(argc, argv);
+    Q_OBJECT
 
-    QSurfaceFormat format;
-    format.setDepthBufferSize(24);
-    QSurfaceFormat::setDefaultFormat(format);
+public:
+    explicit MainWidget(QWidget *parent = 0);
+    ~MainWidget();
 
-    app.setApplicationName("cube");
-    app.setApplicationVersion("0.1");
-#ifndef QT_NO_OPENGL
-    MainWidget widget;
-    widget.show();
-#else
-    QLabel note("OpenGL Support required");
-    note.show();
-#endif
-    return app.exec();
-}
+    QOpenGLBuffer arrayBuf;
+protected:
+    void mousePressEvent(QMouseEvent *e) Q_DECL_OVERRIDE;
+    void timerEvent(QTimerEvent *e) Q_DECL_OVERRIDE;
+
+    void initializeGL() Q_DECL_OVERRIDE;
+    void resizeGL(int w, int h) Q_DECL_OVERRIDE;
+    void paintGL() Q_DECL_OVERRIDE;
+
+    void initShaders();
+    void initTextures();
+
+private:
+    QBasicTimer timer;
+    QOpenGLShaderProgram program;
+
+    QOpenGLTexture *texture1;
+    QOpenGLTexture *texture2;
+
+    QMatrix4x4 projection;
+
+    bool textureFlag;
+    float angle;
+};
+
+#endif // MAINWIDGET_H

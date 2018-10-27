@@ -6,15 +6,24 @@
 #include <QOpenGLFunctions>
 #include <QOpenGLShaderProgram>
 #include <QOpenGLBuffer>
+#include <QBasicTimer>
+#include <QOpenGLVertexArrayObject>
 
 class OpenGLWidget : public QOpenGLWidget, protected QOpenGLFunctions
 {
     Q_OBJECT
 public:
     explicit OpenGLWidget(QWidget *parent = 0);
+    void timerEvent(QTimerEvent *e);
+    void setXRotation(int val);
+    void setYRotation(int val);
+    void setZRotation(int val);
 
-    QOpenGLBuffer arrayBuf;
-    QOpenGLBuffer indexBuf;
+    ~OpenGLWidget();
+
+    int xRot;
+    int yRot;
+    int zRot;
 
 protected:
     void initializeGL();
@@ -27,16 +36,13 @@ private:
     GLuint matrixLocation;
     GLuint vertexLocation;
     GLuint clorLocation;
-    // 计算获得数组长度
-    GLfloat vVerticesLen;
-    GLuint triIndexLen;
-    GLfloat colorsLen;
     GLuint verVbo;
-    GLuint indexVbo;
     GLuint colorVbo;
 
     QMatrix4x4 projection;
 
+    QBasicTimer timer;
+    GLuint vCount;
 signals:
 
 public slots:
