@@ -1,0 +1,239 @@
+QAbstractScrollArea{
+	background-color: rgb(194, 255, 228);
+}
+
+QCheckBox{
+	background-color: rgb(194, 255, 228);	
+}
+
+QColumnView{
+	background-color: rgb(194, 255, 228);
+}
+
+QComboBox{
+	background-color: rgb(194, 255, 228);
+}
+
+QDateEdit{
+	background-color: rgb(194, 255, 228);
+}
+
+QTextBrowser{
+	background-color: rgb(194, 255, 228);
+}
+
+QDateTimeEdit{
+	background-color: rgb(194, 255, 228);
+}
+
+QDialog{
+	background-color: rgb(194, 255, 228);
+}
+
+QDialogButtonBox{
+	background-color: rgb(194, 255, 228);
+}
+
+QDockWidget{
+	background-color: rgb(194, 255, 228);
+}
+
+QDoubleSpinBox{
+	background-color: rgb(194, 255, 228);
+}
+
+QFrame{
+	background-color: rgb(194, 255, 228);
+}
+
+QGraphicsView{
+	background-color: rgb(194, 255, 228);
+}
+
+QGroupBox{
+	background-color: rgb(194, 255, 228);
+}
+
+QHeaderView{
+	background-color: rgb(194, 255, 228);
+}
+
+QLabel{
+	background-color: rgb(194, 255, 228);
+}
+
+QLabel::hover{
+	background-color: rgb(170, 254, 255);
+	border-color:rgb(145, 255, 133);
+}
+
+
+QLineEdit{
+	background-color: rgb(194, 255, 228);
+}
+
+QListView{
+	background-color: rgb(194, 255, 228);
+}
+
+QListWidget{
+	background-color: rgb(194, 255, 228);
+}
+
+QMainWindow{
+	background-color: rgb(194, 255, 228);
+}
+
+QMenu{
+	background-color: rgb(194, 255, 228);
+}
+
+QMenuBar{
+	background-color: rgb(194, 255, 228);
+}
+
+QMessageBox{
+	background-color: rgb(194, 255, 228);
+}
+
+QProgressBar{
+	background-color: rgb(194, 255, 228);
+}
+
+QProgressBar::hover{
+	background-color: rgb(99, 255, 143);
+}
+
+
+QPushButton{
+	background-color: rgb(194, 255, 228);
+}
+
+QPushButton::hover{
+	background-color: rgb(99, 255, 143);
+}
+
+
+QRadioButton{
+	background-color: rgb(194, 255, 228);
+}
+
+QRadioButton::hover{
+	background-color: rgb(99, 255, 143);
+}
+
+QScrollBar{
+	background-color: rgb(194, 255, 228);
+}
+
+QSizeGrip{
+	background-color: rgb(194, 255, 228);
+}
+
+QSlider{
+	background-color: rgb(194, 255, 228);
+}
+
+QSpinBox{
+	background-color: rgb(194, 255, 228);
+}
+
+QSplitter{
+	background-color: rgb(194, 255, 228);
+}
+
+QStatusBar{
+	background-color: rgb(194, 255, 228);
+}
+
+QTabBar{
+	background-color: rgb(194, 255, 228);
+}
+
+QTabWidget{
+	background-color: rgb(194, 255, 228);
+}
+
+QTableView{
+	background-color: rgb(194, 255, 228);
+}
+
+QTableWidget{
+	background-color: rgb(194, 255, 228);
+}
+
+QTextEdit{
+	background-color: rgb(194, 255, 228);
+}
+
+QTimeEdit{
+	background-color: rgb(194, 255, 228);
+}
+
+QToolBar{
+	background-color: rgb(194, 255, 228);
+}
+
+QToolButton{
+	background-color: rgb(194, 255, 228);
+}
+
+QToolBox{
+	background-color: rgb(194, 255, 228);
+}
+
+QToolTip{
+	background-color: rgb(194, 255, 228);
+}
+
+QTreeView{
+	background-color: rgb(194, 255, 228);
+}
+
+QTreeWidget{
+	background-color: rgb(194, 255, 228);
+}
+
+QWidget{
+	background-color: rgb(194, 255, 228);
+}
+
+QPlainTextEdit{
+	background-color: rgb(194, 255, 228);
+}
+
+QCommandLinkButton{
+	background-color: rgb(194, 255, 228);
+}
+
+QStackedWidget{
+	background-color: rgb(194, 255, 228);
+}
+
+QMdiArea{
+	background-color: rgb(194, 255, 228);
+}
+
+QDial{
+	background-color: rgb(194, 255, 228);
+}
+
+QCalendarWidget{
+	background-color: rgb(194, 255, 228);
+}
+
+QLCDNumber{
+	background-color: rgb(194, 255, 228);
+}
+
+QDeclarativeView{
+	background-color: rgb(194, 255, 228);
+}
+
+QWebView{
+	background-color: rgb(194, 255, 228);
+}
+
+QAbstractItemView{
+	background-color: rgb(194, 255, 228);
+}
