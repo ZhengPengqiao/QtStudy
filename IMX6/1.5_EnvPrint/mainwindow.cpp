@@ -34,6 +34,8 @@ MainWindow::MainWindow(QFrame *parent) :
     envEdit->setGeometry(150, 200, 600, 300);
     envEdit->setStyleSheet("background-color: rgb(255, 255, 255, 40);");
     envEdit->setReadOnly(true);
+    envEdit->viewport()->installEventFilter(this);
+
 
     QStringList environmentList = QProcess::systemEnvironment();
     foreach (QString environment, environmentList )
@@ -86,4 +88,20 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 }
 
 
-
+bool MainWindow::eventFilter(QObject* o, QEvent* e)
+{
+    Q_UNUSED(o);
+    if(e->type() == QEvent::MouseButtonPress){
+        QMouseEvent* pMe = static_cast<QMouseEvent*>(e);
+        //这里不进行任何操作即代表使该手势失效
+        testLabel->setText("POS"+QString::number(pMe->x()) +","+ QString::number(pMe->y()));
+        return true;
+    }
+    if(e->type()==QEvent::KeyPress){
+        QKeyEvent* pMe = static_cast<QKeyEvent*>(e);
+        keyLabel->setText("Key_Return: " + QString::number(key_count++) + " " + QString::number(pMe->key()));
+        //这里不进行任何操作即代表使该手势失效
+        return true;
+    }
+    return false;
+}

@@ -24,6 +24,8 @@ public:
     QTextEdit *envEdit;
 
     int key_count;
+private slots:
+    bool eventFilter(QObject *obj, QEvent *e);
 };
 
 #endif // MAINWINDOW_H
