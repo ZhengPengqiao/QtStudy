@@ -16,12 +16,17 @@ public:
     ~MainWindow();
     void paintEvent(QPaintEvent *event);
     void timerEvent(QTimerEvent *event);
+    void resizeEvent(QResizeEvent *ev);
+public slots:
+    void SelectImagea();
 
 private:
-    int x;
+    double x;
     int m_nTimerId;
-    int speed;
+    double speed;
     QPixmap *pix;
+    QPixmap showpix;
+    int pixIndex;
 };
 
 #endif

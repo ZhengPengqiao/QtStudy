@@ -19,4 +19,5 @@ HEADERS  += mainwindow.h
 
 FORMS    +=
 
-RESOURCES +=
+RESOURCES += \
+    picture.qrc
