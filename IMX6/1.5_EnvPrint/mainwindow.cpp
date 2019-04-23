@@ -47,27 +47,27 @@ MainWindow::MainWindow(QFrame *parent) :
     QPushButton *ltButton = new QPushButton(this);
     ltButton->setGeometry(30,30, 30, 30);
     ltButton->setObjectName("ltButton");
-    ltButton->setStyleSheet(QStringLiteral("#ltButton{border-image:url(:/assert/dot.png);}"));
+    ltButton->setStyleSheet(QStringLiteral("#ltButton{border-image:url(://assert/dot.png);}"));
 
     QPushButton *lbButton = new QPushButton(this);
     lbButton->setGeometry(30, rect.height()-60, 30, 30);
     lbButton->setObjectName("lbButton");
-    lbButton->setStyleSheet(QStringLiteral("#lbButton{border-image:url(:/assert/dot.png);}"));
+    lbButton->setStyleSheet(QStringLiteral("#lbButton{border-image:url(://assert/dot.png);}"));
 
     QPushButton *rtButton = new QPushButton(this);
     rtButton->setGeometry(rect.width()-60,30, 30, 30);
     rtButton->setObjectName("rtButton");
-    rtButton->setStyleSheet(QStringLiteral("#rtButton{border-image:url(:/assert/dot.png);}"));
+    rtButton->setStyleSheet(QStringLiteral("#rtButton{border-image:url(://assert/dot.png);}"));
 
     QPushButton *rbButton = new QPushButton(this);
     rbButton->setGeometry(rect.width()-60, rect.height()-60, 30, 30);
     rbButton->setObjectName("rbButton");
-    rbButton->setStyleSheet(QStringLiteral("#rbButton{border-image:url(:/assert/dot.png);}"));
+    rbButton->setStyleSheet(QStringLiteral("#rbButton{border-image:url(://assert/dot.png);}"));
 
     QPushButton *ctButton = new QPushButton(this);
     ctButton->setGeometry((rect.width()-60)/2, (rect.height()-60)/2, 30, 30);
     ctButton->setObjectName("ctButton");
-    ctButton->setStyleSheet(QStringLiteral("#ctButton{border-image:url(:/assert/dot.png);}"));
+    ctButton->setStyleSheet(QStringLiteral("#ctButton{border-image:url(://assert/dot.png);}"));
 }
 
 MainWindow::~MainWindow()

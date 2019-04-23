@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
 #if 1
-    int fontId = QFontDatabase::addApplicationFont(":/assert/simsun.ttc");
+    int fontId = QFontDatabase::addApplicationFont("://assert/simsun.ttc");
     //将字体Id传给applicationFontFamilies,得到一个QStringList,其中的第一个元素为新添加字体的family
     QString msyh = QFontDatabase::applicationFontFamilies ( fontId ).at(0);
     QFont font;
@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 
     MainWindow w;
     w.setObjectName("mainWindow");
-    w.setStyleSheet("MainWindow#mainWindow{border-image:url(:/assert/windows.png);}");
+    w.setStyleSheet("MainWindow#mainWindow{border-image:url(://assert/windows.png);}");
     w.setAutoFillBackground(true);
 
     w.show();
