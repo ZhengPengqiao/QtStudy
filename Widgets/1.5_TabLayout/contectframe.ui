@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ContectFrame</class>
+ <widget class="QWidget" name="ContectFrame">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>494</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="0" column="0">
+    <widget class="QStackedWidget" name="stackedWidget">
+     <widget class="Test1Page" name="test1">
+      <layout class="QGridLayout" name="gridLayout_3"/>
+     </widget>
+     <widget class="Test2Page" name="test2">
+      <layout class="QGridLayout" name="gridLayout_4"/>
+     </widget>
+     <widget class="Test3Page" name="test3">
+      <layout class="QGridLayout" name="gridLayout"/>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Test1Page</class>
+   <extends>QWidget</extends>
+   <header>test1page.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Test2Page</class>
+   <extends>QWidget</extends>
+   <header>test2page.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Test3Page</class>
+   <extends>QWidget</extends>
+   <header>test3page.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

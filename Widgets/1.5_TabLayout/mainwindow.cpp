@@ -1,65 +1,80 @@
 #include "mainwindow.h"
-#include <QPropertyAnimation>
-#include <QParallelAnimationGroup>
-#include <QSequentialAnimationGroup>
-#include <QGraphicsOpacityEffect>
+#include "ui_mainwindow.h"
+#include <QPushButton>
+#include <QDebug>
+
 MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent)
+    QMainWindow(parent),
+    ui(new Ui::MainWindow)
 {
-    this->setGeometry(100,100,720,480);
-
-    button = new QPushButton(this);
-    button->setStyleSheet("background-color:rgb(0,0,0)");
-
-    //基础动画1
-    pAnimation1 = new QPropertyAnimation(button, "geometry");
-    pAnimation1->setDuration(700);
-    pAnimation1->setStartValue(QRect(0, this->height()/2, 50, 50));
-    pAnimation1->setEndValue(QRect(this->width()-50, this->height()/2, 50, 50));
-    pAnimation1->setEasingCurve(QEasingCurve::Linear);
-
-    //基础动画2
-    pAnimation2 = new QPropertyAnimation(button, "geometry");
-    pAnimation2->setDuration(700);
-    pAnimation2->setStartValue(QRect(this->width()-50, this->height()/2, 50, 50));
-    pAnimation2->setEndValue(QRect(0, this->height()/2, 50, 50));
-    pAnimation2->setEasingCurve(QEasingCurve::Linear);
-
-    //串行动画分组
-    QSequentialAnimationGroup *pGroup = new QSequentialAnimationGroup(this);
-    pGroup->addAnimation(pAnimation1);
-    pGroup->addAnimation(pAnimation2);
-
-    //不透明度
-    QGraphicsOpacityEffect *pButtonOpacity = new QGraphicsOpacityEffect(this);
-    pButtonOpacity->setOpacity(1);
-    button->setGraphicsEffect(pButtonOpacity);
-
-    //并行动画组
-    m_group = new QParallelAnimationGroup(this);
-    m_group->addAnimation(pGroup);
-
-    m_group->setDirection(QAbstractAnimation::Forward);
-    m_group->setLoopCount(-1);
-    m_group->start();
+    ui->setupUi(this);
+    setWindowFlags(Qt::FramelessWindowHint);
+    connect(ui->tabFrame, &TabFrame::button_clicked, this, &MainWindow::tabFrame_obclicked);
 }
 
 MainWindow::~MainWindow()
 {
-    delete button;
+    delete ui;
 }
 
-/**
- * 窗口大小更改时,重新设置动画的宽度
- * @brief MainWindow::resizeEvent
- * @param ev
- */
-void MainWindow::resizeEvent(QResizeEvent *ev)
-{
-    (void)ev;
-    pAnimation1->setStartValue(QRect(0, this->height()/2, 50, 50));
-    pAnimation1->setEndValue(QRect(this->width()-50, this->height()/2, 50, 50));
 
-    pAnimation2->setStartValue(QRect(this->width()-50, this->height()/2, 50, 50));
-    pAnimation2->setEndValue(QRect(0, this->height()/2, 50, 50));
+void MainWindow::resizeEvent(QResizeEvent *event)
+{
+    qDebug() << event;
+}
+
+
+//拖拽操作
+void MainWindow::mousePressEvent(QMouseEvent *event)
+{
+    if(event->button() == Qt::LeftButton)
+    {
+        m_bDrag = true;
+        //获得鼠标的初始位置
+        mouseStartPoint = event->globalPos();
+        //mouseStartPoint = event->pos();
+        //获得窗口的初始位置
+        windowTopLeftPoint = this->frameGeometry().topLeft();
+    }
+}
+
+void MainWindow::mouseMoveEvent(QMouseEvent *event)
+{
+    if(m_bDrag)
+    {
+        //获得鼠标移动的距离
+        QPoint distance = event->globalPos() - mouseStartPoint;
+        //QPoint distance = event->pos() - mouseStartPoint;
+        //改变窗口的位置
+        this->move(windowTopLeftPoint + distance);
+    }
+}
+
+void MainWindow::mouseReleaseEvent(QMouseEvent *event)
+{
+    if(event->button() == Qt::LeftButton)
+    {
+        m_bDrag = false;
+    }
+}
+
+
+
+void MainWindow::tabFrame_obclicked(int buttonID)
+{
+    switch( buttonID )
+    {
+        case TabFrame::BUTTON_EXIT:
+            exit(0);
+        break;
+        case TabFrame::BUTTON_TEST1:
+            ui->contextFrame->setCurrentIndex(0);
+        break;
+        case TabFrame::BUTTON_TEST2:
+            ui->contextFrame->setCurrentIndex(1);
+        break;
+        case TabFrame::BUTTON_TEST3:
+            ui->contextFrame->setCurrentIndex(2);
+        break;
+    }
 }

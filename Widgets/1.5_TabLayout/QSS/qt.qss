@@ -1,0 +1,103 @@
+QPushButton#button_exit {
+    border-image: url(:/assert/buttonback.png);
+    font: 18pt "Sans Serif";
+}
+
+QPushButton#button_exit:hover {
+    border-image: url(:/assert/buttonback_active.png);
+    font: 18pt "Sans Serif";
+}
+
+QPushButton#button_exit:pressed {
+    border-image: url(:/assert/buttonback_exit.png);
+    font: 18pt "Sans Serif";
+}
+
+
+QPushButton#button_test1 {
+    border-image: url(:/assert/buttonback.png);
+    font: 18pt "Sans Serif";
+}
+
+QPushButton#button_test1:hover {
+    border-image: url(:/assert/buttonback_active.png);
+    font: 18pt "Sans Serif";
+}
+
+QPushButton#button_test1:pressed {
+    border-image: url(:/assert/buttonback_exit.png);
+    font: 18pt "Sans Serif";
+}
+
+
+QPushButton#button_test2 {
+    border-image: url(:/assert/buttonback.png);
+    font: 18pt "Sans Serif";
+}
+
+QPushButton#button_test2:hover {
+    border-image: url(:/assert/buttonback_active.png);
+    font: 18pt "Sans Serif";
+}
+
+QPushButton#button_test2:pressed {
+    border-image: url(:/assert/buttonback_exit.png);
+    font: 18pt "Sans Serif";
+}
+
+
+QPushButton#button_test3 {
+    border-image: url(:/assert/buttonback.png);
+    font: 18pt "Sans Serif";
+}
+
+QPushButton#button_test3:hover {
+    border-image: url(:/assert/buttonback_active.png);
+    font: 18pt "Sans Serif";
+}
+
+QPushButton#button_test3:pressed {
+    border-image: url(:/assert/buttonback_exit.png);
+    font: 18pt "Sans Serif";
+}
+
+
+QTabWidget::pane /* The tab widget frame */
+{
+    top:40px;
+    border-image: url(:/assert/buttonback_exit.png);
+}
+
+
+
+QTabBar::tab
+{
+    color:#FF0000;
+    border-image: url(:/assert/buttonback.png);
+    height:100;
+    width:100;
+}
+
+
+QTabBar::tab:hover
+{
+    color:#FF0000;
+    border-image: url(:/assert/buttonback_hover.png);
+    height:100;
+    width:100;
+}
+
+
+QTabBar::tab:selected
+{
+    color:#FFFFFF;
+    border-image: url(:/assert/buttonback_active.png);
+    height:100;
+    width:100;
+}
+
+
+/*整个最上面的tab栏*/
+QTabWidget::tab-bar {
+    alignment: left;
+}

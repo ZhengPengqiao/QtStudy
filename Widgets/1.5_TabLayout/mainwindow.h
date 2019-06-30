@@ -2,9 +2,13 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QParallelAnimationGroup>
-#include <QPushButton>
-#include <QPropertyAnimation>
+#include <QSplitter>
+#include "contectframe.h"
+#include <QMouseEvent>
+
+namespace Ui {
+class MainWindow;
+}
 
 class MainWindow : public QMainWindow
 {
@@ -13,13 +17,25 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    void resizeEvent(QResizeEvent *ev);
+
+
+protected:
+    virtual void resizeEvent(QResizeEvent *event) override;
+    //拖拽窗口
+    void mousePressEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event);
+
+public slots:
+    void tabFrame_obclicked(int buttonID);
 
 private:
-    QPushButton *button;
-    QParallelAnimationGroup *m_group;
-    QPropertyAnimation *pAnimation1;
-    QPropertyAnimation *pAnimation2;
+    bool        m_bDrag;
+    QPoint      mouseStartPoint;
+    QPoint      windowTopLeftPoint;
+
+private:
+    Ui::MainWindow *ui;
 };
 
 #endif // MAINWINDOW_H
