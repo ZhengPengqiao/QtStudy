@@ -1,9 +1,9 @@
-#include "test3page.h"
-#include "ui_test3page.h"
+#include "lcdpage.h"
+#include "ui_lcdpage.h"
 
-Test3Page::Test3Page(QWidget *parent) :
+LcdPage::LcdPage(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::Test3Page),
+    ui(new Ui::LcdPage),
     lcdNum(0)
 {
     ui->setupUi(this);
@@ -12,13 +12,13 @@ Test3Page::Test3Page(QWidget *parent) :
     timer->start(1000);
 }
 
-Test3Page::~Test3Page()
+LcdPage::~LcdPage()
 {
     delete ui;
 }
 
 
-void Test3Page::timerUpDate()
+void LcdPage::timerUpDate()
 {
     ui->lcdNumber->display(lcdNum++);
 }

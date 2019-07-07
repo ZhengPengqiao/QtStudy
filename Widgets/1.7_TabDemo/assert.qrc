@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>assert/buttonback.png</file>
+        <file>assert/buttonback_active.png</file>
+        <file>assert/windows_back.jpg</file>
+        <file>QSS/qt.qss</file>
+        <file>assert/shader.frag</file>
+        <file>assert/shader.vert</file>
+        <file>assert/buttonback_hover.png</file>
+    </qresource>
+</RCC>

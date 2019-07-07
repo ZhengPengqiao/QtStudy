@@ -5,16 +5,16 @@
 #include <QTimer>
 
 namespace Ui {
-class Test3Page;
+class LcdPage;
 }
 
-class Test3Page : public QWidget
+class LcdPage : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit Test3Page(QWidget *parent = 0);
-    ~Test3Page();
+    explicit LcdPage(QWidget *parent = 0);
+    ~LcdPage();
 
     QTimer *timer;
     int lcdNum;
@@ -23,7 +23,7 @@ public slots:
     void timerUpDate();
 
 private:
-    Ui::Test3Page *ui;
+    Ui::LcdPage *ui;
 };
 
 #endif // TEST3PAGE_H

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Test3Page</class>
- <widget class="QWidget" name="Test3Page">
+ <class>LcdPage</class>
+ <widget class="QWidget" name="LcdPage">
   <property name="geometry">
    <rect>
     <x>0</x>

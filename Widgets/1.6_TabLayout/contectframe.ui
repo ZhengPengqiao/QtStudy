@@ -22,7 +22,7 @@
      <widget class="Test2Page" name="test2">
       <layout class="QGridLayout" name="gridLayout_4"/>
      </widget>
-     <widget class="Test3Page" name="test3">
+     <widget class="LcdPage" name="test3">
       <layout class="QGridLayout" name="gridLayout"/>
      </widget>
     </widget>
@@ -30,6 +30,12 @@
   </layout>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>LcdPage</class>
+   <extends>QWidget</extends>
+   <header>lcdpage.h</header>
+   <container>1</container>
+  </customwidget>
   <customwidget>
    <class>Test1Page</class>
    <extends>QWidget</extends>
@@ -40,12 +46,6 @@
    <class>Test2Page</class>
    <extends>QWidget</extends>
    <header>test2page.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>Test3Page</class>
-   <extends>QWidget</extends>
-   <header>test3page.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

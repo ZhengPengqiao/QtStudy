@@ -28,26 +28,26 @@ SOURCES += main.cpp \
     contectframe.cpp \
     test1page.cpp \
     test2page.cpp \
-    test3page.cpp \
     openglwidget.cpp \
-    tabframe.cpp
+    tabframe.cpp \
+    lcdpage.cpp
 
 HEADERS  += \
     mainwindow.h \
     contectframe.h \
     test1page.h \
     test2page.h \
-    test3page.h \
     tabframe.h \
-    openglwidget.h
+    openglwidget.h \
+    lcdpage.h
 
 FORMS    += \
     mainwindow.ui \
     contectframe.ui \
     test1page.ui \
     test2page.ui \
-    test3page.ui \
-    tabframe.ui
+    tabframe.ui \
+    lcdpage.ui
 
 DISTFILES +=
 
