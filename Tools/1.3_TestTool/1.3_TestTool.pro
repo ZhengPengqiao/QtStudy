@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -26,16 +26,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp \
     mainwindow.cpp \
     customtabstyle.cpp \
-    openglwidget.cpp
+    serialform.cpp \
+    openglform.cpp
 
 HEADERS  += \
     mainwindow.h \
     customtabstyle.h \
-    openglwidget.h
+    serialform.h \
+    openglform.h
 
 FORMS    += \
     mainwindow.ui \
-    openglwidget.ui
+    serialform.ui \
+    openglform.ui
 
 DISTFILES +=
 

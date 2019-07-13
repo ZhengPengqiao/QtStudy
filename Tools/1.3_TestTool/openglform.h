@@ -13,14 +13,14 @@ namespace Ui {
 class OpenGLWidget;
 }
 
-class OpenGLWidget : public QOpenGLWidget, protected QOpenGLFunctions
+class OpenGLForm : public QOpenGLWidget, protected QOpenGLFunctions
 {
     Q_OBJECT
 
 public:
-    explicit OpenGLWidget(QWidget *parent = 0);
+    explicit OpenGLForm(QWidget *parent = 0);
     void timerEvent(QTimerEvent *e);
-    ~OpenGLWidget();
+    ~OpenGLForm();
     QOpenGLBuffer positionBuf;
     QOpenGLBuffer colorBuf;
     QOpenGLVertexArrayObject mObject;

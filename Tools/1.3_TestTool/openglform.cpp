@@ -1,7 +1,7 @@
-#include "openglwidget.h"
-#include "ui_openglwidget.h"
+#include "openglform.h"
+#include "ui_openglform.h"
 
-OpenGLWidget::OpenGLWidget(QWidget *parent) :
+OpenGLForm::OpenGLForm(QWidget *parent) :
     QOpenGLWidget(parent),
     ui(new Ui::OpenGLWidget),
     angle(0),
@@ -14,7 +14,7 @@ OpenGLWidget::OpenGLWidget(QWidget *parent) :
 }
 
 
-OpenGLWidget::~OpenGLWidget()
+OpenGLForm::~OpenGLForm()
 {
 
     delete ui;
@@ -23,18 +23,22 @@ OpenGLWidget::~OpenGLWidget()
     delete program;
 }
 
-void OpenGLWidget::timerEvent(QTimerEvent *)
+void OpenGLForm::timerEvent(QTimerEvent *)
 {
     // Request an update
     update(this->x(), this->y(), this->width(), this->height());
 }
 
 
-void OpenGLWidget::initializeGL()
+void OpenGLForm::initializeGL()
 {
     //调用内容初始化函数
     initializeOpenGLFunctions();
     QOpenGLFunctions *f = QOpenGLContext::currentContext()->functions();
+
+    QSurfaceFormat surfaceFormat;
+    surfaceFormat.setSamples(4);//多重采样
+    setFormat(surfaceFormat);
 
     //三角形顶点坐标
     GLfloat vertex[] = {
@@ -104,7 +108,7 @@ void OpenGLWidget::initializeGL()
 }
 
 
-void OpenGLWidget::resizeGL(int w, int h)
+void OpenGLForm::resizeGL(int w, int h)
 {
     //当窗口大小改变时，调整界面坐标显示高度和宽度
     glViewport(0, 0, w, h);
@@ -118,10 +122,15 @@ void OpenGLWidget::resizeGL(int w, int h)
 }
 
 
-void OpenGLWidget::paintGL()
+void OpenGLForm::paintGL()
 {
     program->bind();
     {
+        glEnable(GL_LINE_SMOOTH);
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
 
@@ -130,12 +139,13 @@ void OpenGLWidget::paintGL()
         program->setUniformValue("proMatrix", projection * matrix);
 
         glDrawArrays(GL_TRIANGLES, 0, vCount);
+
     }
     program->release();
 }
 
-void OpenGLWidget::valueChange(int val)
+void OpenGLForm::valueChange(int val)
 {
     angle = val/10.0f;
-    ui->label->setText(QString("速度:%1").arg(angle));
+    ui->label->setText("速度:"+QString::number(angle, 'f', 1) );
 }

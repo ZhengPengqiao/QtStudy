@@ -18,21 +18,6 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <property name="leftMargin">
-     <number>0</number>
-    </property>
-    <property name="topMargin">
-     <number>0</number>
-    </property>
-    <property name="rightMargin">
-     <number>0</number>
-    </property>
-    <property name="bottomMargin">
-     <number>0</number>
-    </property>
-    <property name="spacing">
-     <number>0</number>
-    </property>
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="tabPosition">
@@ -50,11 +35,15 @@
       <property name="tabBarAutoHide">
        <bool>false</bool>
       </property>
-      <widget class="OpenGLWidget" name="opengl">
+      <widget class="OpenGLForm" name="openglPage">
        <attribute name="title">
         <string>opengl样例</string>
        </attribute>
-       <layout class="QGridLayout" name="gridLayout_2"/>
+      </widget>
+      <widget class="SerialForm" name="serialPage">
+       <attribute name="title">
+        <string>串口通信</string>
+       </attribute>
       </widget>
      </widget>
     </item>
@@ -63,9 +52,15 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>OpenGLWidget</class>
+   <class>SerialForm</class>
    <extends>QWidget</extends>
-   <header>openglwidget.h</header>
+   <header>serialform.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>OpenGLForm</class>
+   <extends>QWidget</extends>
+   <header>openglform.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
