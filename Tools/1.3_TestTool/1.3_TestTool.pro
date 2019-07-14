@@ -27,18 +27,21 @@ SOURCES += main.cpp \
     mainwindow.cpp \
     customtabstyle.cpp \
     serialform.cpp \
-    openglform.cpp
+    openglform.cpp \
+    tthbpform.cpp
 
 HEADERS  += \
     mainwindow.h \
     customtabstyle.h \
     serialform.h \
-    openglform.h
+    openglform.h \
+    tthbpform.h
 
 FORMS    += \
     mainwindow.ui \
     serialform.ui \
-    openglform.ui
+    openglform.ui \
+    tthbpform.ui
 
 DISTFILES +=
 

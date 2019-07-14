@@ -27,7 +27,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <property name="tabsClosable">
        <bool>false</bool>
@@ -43,6 +43,11 @@
       <widget class="SerialForm" name="serialPage">
        <attribute name="title">
         <string>串口通信</string>
+       </attribute>
+      </widget>
+      <widget class="TTHBPForm" name="TTHBPPage">
+       <attribute name="title">
+        <string>TTHBP测试</string>
        </attribute>
       </widget>
      </widget>
@@ -61,6 +66,12 @@
    <class>OpenGLForm</class>
    <extends>QWidget</extends>
    <header>openglform.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>TTHBPForm</class>
+   <extends>QWidget</extends>
+   <header>tthbpform.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

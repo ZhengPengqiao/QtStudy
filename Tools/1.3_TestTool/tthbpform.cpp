@@ -1,14 +1,14 @@
-#include "serialform.h"
-#include "ui_serialform.h"
+#include "tthbpform.h"
+#include "ui_tthbpform.h"
 #include <QSerialPortInfo>
 #include <QDebug>
 #include <QTime>
 #include <QListWidgetItem>
 #include <QSerialPort>
 
-SerialForm::SerialForm(QWidget *parent) :
+TTHBPForm::TTHBPForm(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::SerialForm)
+    ui(new Ui::TTHBPForm)
 {
     ui->setupUi(this);
     QStringList m_serialPortName;
@@ -19,9 +19,11 @@ SerialForm::SerialForm(QWidget *parent) :
     }
 
     m_serialPort = nullptr;
+    frameId = 0;
+    memset(P, 0, sizeof(P));
 }
 
-SerialForm::~SerialForm()
+TTHBPForm::~TTHBPForm()
 {
     delete ui;
 
@@ -36,7 +38,7 @@ SerialForm::~SerialForm()
     }
 }
 
-void SerialForm::button_SerialPort_onClick()
+void TTHBPForm::button_SerialPort_onClick()
 {
     QStringList m_serialPortName;
 
@@ -46,16 +48,18 @@ void SerialForm::button_SerialPort_onClick()
         m_serialPortName << info.portName();
         ui->comboBox_SerialPort->addItem(info.portName());
     }
+    m_serialPort = nullptr;
 }
 
 
-void SerialForm::pushButton_SendText_onClick()
+void TTHBPForm::pushButton_SendText_onClick()
 {
     if( m_serialPort == nullptr )
     {
         ui->textEdit_Text->append("Send 串口没有打开");
         return;
     }
+
 
     if( !ui->lineEdit_Text->text().isEmpty() )
     {
@@ -71,13 +75,8 @@ void SerialForm::pushButton_SendText_onClick()
     }
 }
 
-void SerialForm::listWidget_SendHistory_onClick(QModelIndex index)
-{
-    ui->lineEdit_Text->setText(ui->listWidget_SendHistory->currentItem()->text());
-}
 
-
-void SerialForm::button_OpenSerial_onClick()
+void TTHBPForm::button_OpenSerial_onClick()
 {
 
     m_serialPort = new QSerialPort();//实例化串口类一个对象
@@ -109,12 +108,12 @@ void SerialForm::button_OpenSerial_onClick()
 
     //连接信号槽 当下位机发送数据QSerialPortInfo 会发送个 readyRead 信号,我们
     //定义个槽void receiveInfo()解析数据
-    connect(m_serialPort, &QSerialPort::readyRead, this, &SerialForm::serialPort_onReceive);
+    connect(m_serialPort, &QSerialPort::readyRead, this, &TTHBPForm::serialPort_onReceive);
 
 
 }
 
-void SerialForm::button_CloseSerial_onClick()
+void TTHBPForm::button_CloseSerial_onClick()
 {
     if (m_serialPort->isOpen())
     {
@@ -127,7 +126,7 @@ void SerialForm::button_CloseSerial_onClick()
 
 
 //接收单片机的数据
-void SerialForm::serialPort_onReceive()
+void TTHBPForm::serialPort_onReceive()
 {
     QByteArray info = m_serialPort->readAll();
 
@@ -147,11 +146,11 @@ void SerialForm::serialPort_onReceive()
 }
 
 /**
- * @brief SerialForm::convertByteArrayToHexStr
+ * @brief TTHBPForm::convertByteArrayToHexStr
  * @param str
  * @param byteData
  */
-void SerialForm::convertByteArrayToHexStr(const QByteArray &byteArray, QString &str)
+void TTHBPForm::convertByteArrayToHexStr(const QByteArray &byteArray, QString &str)
 {
     int i;
     int len = byteArray.length();
@@ -166,10 +165,10 @@ void SerialForm::convertByteArrayToHexStr(const QByteArray &byteArray, QString &
 
 
 /**
- * @brief SerialForm::sendInfoAsASCII
+ * @brief TTHBPForm::sendInfoAsASCII
  * @param info
  */
-void SerialForm::sendInfoAsASCII(const QString &info)
+void TTHBPForm::sendInfoAsASCII(const QString &info)
 {
     QByteArray sendBuf;
     //把QString 转换 为 ByteArray
@@ -178,7 +177,6 @@ void SerialForm::sendInfoAsASCII(const QString &info)
     // 将发送的指令,添加到历史列表和显示列表中
     ui->textEdit_Text->append(QTime::currentTime().toString("HH:mm:ss.zzz") \
                               + "---->:" + sendBuf);
-    ui->listWidget_SendHistory->addItem(new QListWidgetItem(sendBuf));
 
 
     if( m_serialPort == nullptr )
@@ -194,10 +192,10 @@ void SerialForm::sendInfoAsASCII(const QString &info)
 }
 
 /**
- * @brief SerialForm::sendInfoAsHex
+ * @brief TTHBPForm::sendInfoAsHex
  * @param info
  */
-void SerialForm::sendInfoAsHex(const QString &info)
+void TTHBPForm::sendInfoAsHex(const QString &info)
 {
     QByteArray sendBuf;
 
@@ -206,7 +204,6 @@ void SerialForm::sendInfoAsHex(const QString &info)
     // 将发送的指令,添加到历史列表和显示列表中
     ui->textEdit_Text->append(QTime::currentTime().toString("HH:mm:ss.zzz") \
                               + "---->:" + info);
-    ui->listWidget_SendHistory->addItem(new QListWidgetItem(info));
 
 
     if( m_serialPort == nullptr )
@@ -222,7 +219,7 @@ void SerialForm::sendInfoAsHex(const QString &info)
 }
 
 
-void SerialForm::convertStringHexToByteArray(const QString &str, QByteArray &byteData)
+void TTHBPForm::convertStringHexToByteArray(const QString &str, QByteArray &byteData)
 {
     int hexdata,lowhexdata;
     int hexdatalen = 0;
@@ -258,14 +255,14 @@ void SerialForm::convertStringHexToByteArray(const QString &str, QByteArray &byt
 
 
 /**
- * @brief SerialForm::convertCharToHex
+ * @brief TTHBPForm::convertCharToHex
  * 0-9的ASCII值是(0x30,49)-(0x39,57)
  * A-F的ASCII值是(0x41,65)-(0x46,70)
  * a-f的ASCII值是(0x61,97)-(0x66,102)
  * @param ch : 将字符转换成ASCII对应的值
  * @return 转换后的ASCII的值
  */
-char SerialForm::convertCharToHex(char ch)
+char TTHBPForm::convertCharToHex(char ch)
 {
     if((ch >= '0') && (ch <= '9'))
          return ch-0x30;
@@ -274,4 +271,82 @@ char SerialForm::convertCharToHex(char ch)
      else if((ch >= 'a') && (ch <= 'f'))
          return ch-'a'+10;
      else return (-1);
+}
+
+void TTHBPForm::pushButton_PIN_onClick()
+{
+    QString strName = sender()->objectName();
+    QString tmp;
+    int i=0, j=0;
+    char reg = 0;
+    char val = 0;
+    QString str;
+    QByteArray byteData;
+
+
+    for( i = 0; i <= 3; i++ )
+    {
+        for( j = 0; j < 8; j++ )
+        {
+            tmp = QString("pushButton_P%1_%2").arg(i).arg(j);
+            if( strName == tmp)
+            {
+                if( (P[i]&(1<<j)) == 0 )
+                {
+                    P[i] |= (1<<j);
+                    val = 1;
+                }
+                else
+                {
+                    P[i] &= ~(1<<j);
+                    val = 0;
+                }
+                frameId++;
+                reg = ((i<<4)+j);
+                byteData.append(0x03);
+                byteData.append(frameId);
+                byteData.append(0x02);
+                byteData.append(reg);
+                byteData.append(val);
+                byteData.append(0x03^frameId^0x02^reg^val);
+                byteData.append(0x3a);
+                byteData.append(0x3c);
+                convertByteArrayToHexStr(byteData.toHex(), str);
+
+                sendInfoAsHex(str);
+            }
+        }
+    }
+
+    for( j = 0; j < 4; j++ )
+    {
+        tmp = QString("pushButton_P4_%1").arg(j);
+        if( strName == tmp)
+        {
+            if( (P[4]&(1<<j)) == 0 )
+            {
+                P[4] |= (1<<j);
+                val = 1;
+            }
+            else
+            {
+                P[i] &= ~(1<<j);
+                val = 0;
+            }
+
+            reg = ((4<<4)+j);
+            frameId++;
+            byteData.append(0x03);
+            byteData.append(frameId);
+            byteData.append(0x02);
+            byteData.append(reg);
+            byteData.append(val);
+            byteData.append(0x03^frameId^0x02^reg^val);
+            byteData.append(0x3a);
+            byteData.append(0x3c);
+            convertByteArrayToHexStr(byteData.toHex(), str);
+
+            sendInfoAsHex(str);
+        }
+    }
 }

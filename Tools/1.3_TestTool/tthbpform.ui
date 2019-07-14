@@ -1,0 +1,1381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>TTHBPForm</class>
+ <widget class="QWidget" name="TTHBPForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>972</width>
+    <height>377</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout" stretch="2,4">
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_ctrl">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_SerialPort" stretch="2,5,1">
+         <item>
+          <widget class="QLabel" name="label_SerialPort">
+           <property name="text">
+            <string>串口:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox_SerialPort"/>
+         </item>
+         <item>
+          <widget class="QPushButton" name="button_SerialPort">
+           <property name="minimumSize">
+            <size>
+             <width>20</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>20</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="sizeIncrement">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton#button_SerialPort::pressed{border-image: url(:/assert/ICON/076.png);}
+QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_SerialRate" stretch="2,6">
+         <item>
+          <widget class="QLabel" name="label_SerialRate">
+           <property name="text">
+            <string>波特率:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox_SerialRate">
+           <property name="currentText">
+            <string>9600</string>
+           </property>
+           <item>
+            <property name="text">
+             <string>600</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>1200</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>1800</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>2400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>4800</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>9600</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>19200</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>38400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>57600</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>115200</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>230400</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>460800</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>576000</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>921600</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_DataWidth" stretch="2,6">
+         <item>
+          <widget class="QLabel" name="label_DataWidth">
+           <property name="text">
+            <string>数据位:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox_DataWidth">
+           <property name="currentText">
+            <string>8</string>
+           </property>
+           <item>
+            <property name="text">
+             <string>5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>6</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>7</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>8</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_StopWidth" stretch="2,6">
+         <item>
+          <widget class="QLabel" name="label_StopWidth">
+           <property name="text">
+            <string>停止位:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox_StopWidth">
+           <item>
+            <property name="text">
+             <string>1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>2</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_SerialStatus">
+         <item>
+          <widget class="QLabel" name="label_SerialStatus">
+           <property name="text">
+            <string>串口状态:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_SerialStatusBack">
+           <property name="minimumSize">
+            <size>
+             <width>80</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border-image: url(:/assert/ICON/102.png);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_button">
+         <item>
+          <widget class="QPushButton" name="button_OpenSerial">
+           <property name="text">
+            <string>打开串口</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="button_CloseSerial">
+           <property name="text">
+            <string>关闭串口</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QRadioButton" name="radioButton_ASCII">
+           <property name="text">
+            <string>ASCII</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="radioButton_HEX">
+           <property name="text">
+            <string>十六进制</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_show">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_showText" stretch="6,1,1">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <item>
+            <layout class="QGridLayout" name="gridLayout_2">
+             <item row="2" column="1">
+              <widget class="QPushButton" name="pushButton_P2_1">
+               <property name="text">
+                <string>P2_1</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="0">
+              <widget class="QPushButton" name="pushButton_P4_0">
+               <property name="text">
+                <string>P4_0</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="7">
+              <widget class="QPushButton" name="pushButton_P1_7">
+               <property name="text">
+                <string>P1_7</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="5">
+              <widget class="QPushButton" name="pushButton_P2_5">
+               <property name="text">
+                <string>P2_5</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="3">
+              <widget class="QPushButton" name="pushButton_P0_3">
+               <property name="text">
+                <string>P0_3</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="4">
+              <widget class="QPushButton" name="pushButton_P3_4">
+               <property name="text">
+                <string>P3_4</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="5">
+              <widget class="QPushButton" name="pushButton_P1_5">
+               <property name="text">
+                <string>P1_5</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QPushButton" name="pushButton_P0_1">
+               <property name="text">
+                <string>P0_1</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="2">
+              <widget class="QPushButton" name="pushButton_P4_2">
+               <property name="text">
+                <string>P4_2</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="6">
+              <widget class="QPushButton" name="pushButton_P1_6">
+               <property name="text">
+                <string>P1_6</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="7">
+              <widget class="QPushButton" name="pushButton_P0_7">
+               <property name="text">
+                <string>P0_7</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QPushButton" name="pushButton_P1_0">
+               <property name="text">
+                <string>P1_0</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="5">
+              <widget class="QPushButton" name="pushButton_P3_5">
+               <property name="text">
+                <string>P3_5</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="QPushButton" name="pushButton_P3_1">
+               <property name="text">
+                <string>P3_1</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QPushButton" name="pushButton_P1_1">
+               <property name="text">
+                <string>P1_1</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="2">
+              <widget class="QPushButton" name="pushButton_P3_2">
+               <property name="text">
+                <string>P3_2</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="3">
+              <widget class="QPushButton" name="pushButton_P3_3">
+               <property name="text">
+                <string>P3_3</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="7">
+              <widget class="QPushButton" name="pushButton_P3_7">
+               <property name="text">
+                <string>P3_7</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <widget class="QPushButton" name="pushButton_P0_2">
+               <property name="text">
+                <string>P0_2</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="2">
+              <widget class="QPushButton" name="pushButton_P2_2">
+               <property name="text">
+                <string>P2_2</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="6">
+              <widget class="QPushButton" name="pushButton_P2_6">
+               <property name="text">
+                <string>P2_6</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="7">
+              <widget class="QPushButton" name="pushButton_P2_7">
+               <property name="text">
+                <string>P2_7</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="4">
+              <widget class="QPushButton" name="pushButton_P0_4">
+               <property name="text">
+                <string>P0_4</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="QPushButton" name="pushButton_P0_0">
+               <property name="text">
+                <string>P0_0</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="checked">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="6">
+              <widget class="QPushButton" name="pushButton_P3_6">
+               <property name="text">
+                <string>P3_6</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="6">
+              <widget class="QPushButton" name="pushButton_P0_6">
+               <property name="text">
+                <string>P0_6</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="3">
+              <widget class="QPushButton" name="pushButton_P4_3">
+               <property name="text">
+                <string>P4_3</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="3">
+              <widget class="QPushButton" name="pushButton_P1_3">
+               <property name="text">
+                <string>P1_3</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="5">
+              <widget class="QPushButton" name="pushButton_P0_5">
+               <property name="text">
+                <string>P0_5</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="2">
+              <widget class="QPushButton" name="pushButton_P1_2">
+               <property name="text">
+                <string>P1_2</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="4">
+              <widget class="QPushButton" name="pushButton_P1_4">
+               <property name="text">
+                <string>P1_4</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="3">
+              <widget class="QPushButton" name="pushButton_P2_3">
+               <property name="text">
+                <string>P2_3</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="4">
+              <widget class="QPushButton" name="pushButton_P2_4">
+               <property name="text">
+                <string>P2_4</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QPushButton" name="pushButton_P3_0">
+               <property name="text">
+                <string>P3_0</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QPushButton" name="pushButton_P2_0">
+               <property name="text">
+                <string>P2_0</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="1">
+              <widget class="QPushButton" name="pushButton_P4_1">
+               <property name="text">
+                <string>P4_1</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QTextEdit" name="textEdit_Text">
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_inputCtrl">
+           <item>
+            <widget class="QPushButton" name="pushButton_SendText">
+             <property name="text">
+              <string>发送数据</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_Text"/>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>button_SerialPort</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>button_SerialPort_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>263</x>
+     <y>32</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>444</x>
+     <y>3</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_SendText</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_SendText_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>354</x>
+     <y>357</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>237</x>
+     <y>375</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit_Text</sender>
+   <signal>returnPressed()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_SendText_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>381</x>
+     <y>346</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>422</x>
+     <y>372</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>button_CloseSerial</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>button_CloseSerial_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>177</x>
+     <y>185</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>2</x>
+     <y>163</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>button_OpenSerial</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>button_OpenSerial_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>57</x>
+     <y>185</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>3</x>
+     <y>208</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P0_0</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>355</x>
+     <y>50</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>162</x>
+     <y>4</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P0_1</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>441</x>
+     <y>50</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>171</x>
+     <y>-6</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P0_2</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>527</x>
+     <y>50</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>617</x>
+     <y>14</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P0_3</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>613</x>
+     <y>50</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>617</x>
+     <y>48</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P0_4</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>699</x>
+     <y>50</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>615</x>
+     <y>79</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P0_5</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>785</x>
+     <y>50</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>615</x>
+     <y>113</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P0_6</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>871</x>
+     <y>50</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>308</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P0_7</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>957</x>
+     <y>50</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>308</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P1_0</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>355</x>
+     <y>93</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>308</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P1_1</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>441</x>
+     <y>93</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>308</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P1_2</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>527</x>
+     <y>93</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>308</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P1_3</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>613</x>
+     <y>93</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>308</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P1_4</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>699</x>
+     <y>93</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>308</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P1_7</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>957</x>
+     <y>93</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>308</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P1_5</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>785</x>
+     <y>93</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>308</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P1_6</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>871</x>
+     <y>93</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>308</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P2_1</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>441</x>
+     <y>136</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>308</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P2_0</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>355</x>
+     <y>136</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>308</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P2_2</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>527</x>
+     <y>136</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>308</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P2_4</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>699</x>
+     <y>136</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>308</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P2_5</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>785</x>
+     <y>136</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>308</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P2_3</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>613</x>
+     <y>136</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>308</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P2_7</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>957</x>
+     <y>136</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>308</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P2_6</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>871</x>
+     <y>136</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>308</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P3_0</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>355</x>
+     <y>179</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>308</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P3_1</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>441</x>
+     <y>179</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>308</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P3_2</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>527</x>
+     <y>179</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>308</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P3_3</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>613</x>
+     <y>179</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>308</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P3_4</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>699</x>
+     <y>179</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>308</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P3_5</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>785</x>
+     <y>179</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>308</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P3_6</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>871</x>
+     <y>179</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>308</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P3_7</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>957</x>
+     <y>179</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>308</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P4_0</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>355</x>
+     <y>222</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>308</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P4_1</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>441</x>
+     <y>222</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>308</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P4_2</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>527</x>
+     <y>222</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>308</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P4_3</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PIN_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>613</x>
+     <y>222</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>308</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>button_SerialPort_onClick()</slot>
+  <slot>pushButton_SendText_onClick()</slot>
+  <slot>listWidget_SendHistory_onClick(QModelIndex)</slot>
+  <slot>button_CloseSerial_onClick()</slot>
+  <slot>button_OpenSerial_onClick()</slot>
+  <slot>horizontalSlider_LedHz_valueChange(int)</slot>
+  <slot>pushButton_PIN_onClick()</slot>
+ </slots>
+</ui>
