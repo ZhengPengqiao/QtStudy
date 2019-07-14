@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QModelIndex>
 #include <QSerialPort>
+#include <QBasicTimer>
 
 namespace Ui {
 class TTHBPForm;
@@ -22,7 +23,6 @@ public:
     char convertCharToHex(char ch);
     void convertStringHexToByteArray(const QString &str, QByteArray &byteData);
 
-
     QSerialPort *m_serialPort;
 
     char frameId;
@@ -35,6 +35,8 @@ public slots:
     void button_CloseSerial_onClick();
     void serialPort_onReceive();
     void pushButton_PIN_onClick();
+    void pushButton_PINALL_onClick();
+    void pushButton_PINUpdate_onClick();
 
 private:
     Ui::TTHBPForm *ui;

@@ -75,6 +75,9 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
            <property name="currentText">
             <string>9600</string>
            </property>
+           <property name="currentIndex">
+            <number>5</number>
+           </property>
            <item>
             <property name="text">
              <string>600</string>
@@ -162,6 +165,9 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
           <widget class="QComboBox" name="comboBox_DataWidth">
            <property name="currentText">
             <string>8</string>
+           </property>
+           <property name="currentIndex">
+            <number>3</number>
            </property>
            <item>
             <property name="text">
@@ -314,17 +320,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
           <layout class="QHBoxLayout" name="horizontalLayout_3">
            <item>
             <layout class="QGridLayout" name="gridLayout_2">
-             <item row="2" column="1">
-              <widget class="QPushButton" name="pushButton_P2_1">
-               <property name="text">
-                <string>P2_1</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="0">
+             <item row="4" column="8">
               <widget class="QPushButton" name="pushButton_P4_0">
                <property name="text">
                 <string>P4_0</string>
@@ -334,7 +330,74 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
                </property>
               </widget>
              </item>
-             <item row="1" column="7">
+             <item row="2" column="8">
+              <widget class="QPushButton" name="pushButton_P2_0">
+               <property name="text">
+                <string>P2_0</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="8">
+              <widget class="QPushButton" name="pushButton_P1_0">
+               <property name="text">
+                <string>P1_0(T2)</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="8">
+              <widget class="QPushButton" name="pushButton_P0_0">
+               <property name="text">
+                <string>P0_0</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="checked">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QPushButton" name="pushButton_P3_ALL">
+               <property name="text">
+                <string>P3_ALL</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <widget class="QPushButton" name="pushButton_P0_6">
+               <property name="text">
+                <string>P0_6</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="8">
+              <widget class="QPushButton" name="pushButton_P3_0">
+               <property name="text">
+                <string>P3_0(RX)</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QPushButton" name="pushButton_P1_ALL">
+               <property name="text">
+                <string>P1_ALL</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
               <widget class="QPushButton" name="pushButton_P1_7">
                <property name="text">
                 <string>P1_7</string>
@@ -344,77 +407,14 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
                </property>
               </widget>
              </item>
-             <item row="2" column="5">
-              <widget class="QPushButton" name="pushButton_P2_5">
+             <item row="2" column="0">
+              <widget class="QPushButton" name="pushButton_P2_ALL">
                <property name="text">
-                <string>P2_5</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="3">
-              <widget class="QPushButton" name="pushButton_P0_3">
-               <property name="text">
-                <string>P0_3</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="4">
-              <widget class="QPushButton" name="pushButton_P3_4">
-               <property name="text">
-                <string>P3_4</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="5">
-              <widget class="QPushButton" name="pushButton_P1_5">
-               <property name="text">
-                <string>P1_5</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
+                <string>P2_ALL</string>
                </property>
               </widget>
              </item>
              <item row="0" column="1">
-              <widget class="QPushButton" name="pushButton_P0_1">
-               <property name="text">
-                <string>P0_1</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="2">
-              <widget class="QPushButton" name="pushButton_P4_2">
-               <property name="text">
-                <string>P4_2</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="6">
-              <widget class="QPushButton" name="pushButton_P1_6">
-               <property name="text">
-                <string>P1_6</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="7">
               <widget class="QPushButton" name="pushButton_P0_7">
                <property name="text">
                 <string>P0_7</string>
@@ -424,110 +424,37 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
                </property>
               </widget>
              </item>
-             <item row="1" column="0">
-              <widget class="QPushButton" name="pushButton_P1_0">
-               <property name="text">
-                <string>P1_0</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="5">
-              <widget class="QPushButton" name="pushButton_P3_5">
-               <property name="text">
-                <string>P3_5</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
              <item row="3" column="1">
-              <widget class="QPushButton" name="pushButton_P3_1">
-               <property name="text">
-                <string>P3_1</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="1">
-              <widget class="QPushButton" name="pushButton_P1_1">
-               <property name="text">
-                <string>P1_1</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="2">
-              <widget class="QPushButton" name="pushButton_P3_2">
-               <property name="text">
-                <string>P3_2</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="3">
-              <widget class="QPushButton" name="pushButton_P3_3">
-               <property name="text">
-                <string>P3_3</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="7">
               <widget class="QPushButton" name="pushButton_P3_7">
                <property name="text">
-                <string>P3_7</string>
+                <string>P3_7(/RD)</string>
                </property>
                <property name="checkable">
                 <bool>true</bool>
                </property>
               </widget>
              </item>
-             <item row="0" column="2">
+             <item row="0" column="0">
+              <widget class="QPushButton" name="pushButton_P0_ALL">
+               <property name="text">
+                <string>P0_ALL</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="5">
+              <widget class="QPushButton" name="pushButton_P0_3">
+               <property name="text">
+                <string>P0_3</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="6">
               <widget class="QPushButton" name="pushButton_P0_2">
                <property name="text">
                 <string>P0_2</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="2">
-              <widget class="QPushButton" name="pushButton_P2_2">
-               <property name="text">
-                <string>P2_2</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="6">
-              <widget class="QPushButton" name="pushButton_P2_6">
-               <property name="text">
-                <string>P2_6</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="7">
-              <widget class="QPushButton" name="pushButton_P2_7">
-               <property name="text">
-                <string>P2_7</string>
                </property>
                <property name="checkable">
                 <bool>true</bool>
@@ -544,60 +471,24 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
                </property>
               </widget>
              </item>
-             <item row="0" column="0">
-              <widget class="QPushButton" name="pushButton_P0_0">
+             <item row="4" column="0">
+              <widget class="QPushButton" name="pushButton_Update">
                <property name="text">
-                <string>P0_0</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-               <property name="checked">
-                <bool>false</bool>
+                <string>Update</string>
                </property>
               </widget>
              </item>
-             <item row="3" column="6">
-              <widget class="QPushButton" name="pushButton_P3_6">
+             <item row="2" column="1">
+              <widget class="QPushButton" name="pushButton_P2_7">
                <property name="text">
-                <string>P3_6</string>
+                <string>P2_7</string>
                </property>
                <property name="checkable">
                 <bool>true</bool>
                </property>
               </widget>
              </item>
-             <item row="0" column="6">
-              <widget class="QPushButton" name="pushButton_P0_6">
-               <property name="text">
-                <string>P0_6</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="3">
-              <widget class="QPushButton" name="pushButton_P4_3">
-               <property name="text">
-                <string>P4_3</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="3">
-              <widget class="QPushButton" name="pushButton_P1_3">
-               <property name="text">
-                <string>P1_3</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="5">
+             <item row="0" column="3">
               <widget class="QPushButton" name="pushButton_P0_5">
                <property name="text">
                 <string>P0_5</string>
@@ -607,7 +498,27 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
                </property>
               </widget>
              </item>
-             <item row="1" column="2">
+             <item row="0" column="7">
+              <widget class="QPushButton" name="pushButton_P0_1">
+               <property name="text">
+                <string>P0_1</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="7">
+              <widget class="QPushButton" name="pushButton_P1_1">
+               <property name="text">
+                <string>P1_1(T2Ex)</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="6">
               <widget class="QPushButton" name="pushButton_P1_2">
                <property name="text">
                 <string>P1_2</string>
@@ -617,20 +528,117 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
                </property>
               </widget>
              </item>
-             <item row="1" column="4">
-              <widget class="QPushButton" name="pushButton_P1_4">
+             <item row="1" column="5">
+              <widget class="QPushButton" name="pushButton_P1_3">
                <property name="text">
-                <string>P1_4</string>
+                <string>P1_3</string>
                </property>
                <property name="checkable">
                 <bool>true</bool>
                </property>
               </widget>
              </item>
-             <item row="2" column="3">
+             <item row="2" column="7">
+              <widget class="QPushButton" name="pushButton_P2_1">
+               <property name="text">
+                <string>P2_1</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="6">
+              <widget class="QPushButton" name="pushButton_P2_2">
+               <property name="text">
+                <string>P2_2</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="5">
               <widget class="QPushButton" name="pushButton_P2_3">
                <property name="text">
                 <string>P2_3</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="7">
+              <widget class="QPushButton" name="pushButton_P3_1">
+               <property name="text">
+                <string>P3_1(Tx)</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="6">
+              <widget class="QPushButton" name="pushButton_P3_2">
+               <property name="text">
+                <string>P3_2(INT0)</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="5">
+              <widget class="QPushButton" name="pushButton_P3_3">
+               <property name="text">
+                <string>P3_3(INT1)</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="7">
+              <widget class="QPushButton" name="pushButton_P4_1">
+               <property name="text">
+                <string>P4_1</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="6">
+              <widget class="QPushButton" name="pushButton_P4_2">
+               <property name="text">
+                <string>P4_2</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="5">
+              <widget class="QPushButton" name="pushButton_P4_3">
+               <property name="text">
+                <string>P4_3(INT2)</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="4">
+              <widget class="QPushButton" name="pushButton_P4_ALL">
+               <property name="text">
+                <string>P4_ALL</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="4">
+              <widget class="QPushButton" name="pushButton_P3_4">
+               <property name="text">
+                <string>P3_4(T0)</string>
                </property>
                <property name="checkable">
                 <bool>true</bool>
@@ -647,30 +655,70 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
                </property>
               </widget>
              </item>
-             <item row="3" column="0">
-              <widget class="QPushButton" name="pushButton_P3_0">
+             <item row="1" column="4">
+              <widget class="QPushButton" name="pushButton_P1_4">
                <property name="text">
-                <string>P3_0</string>
+                <string>P1_4</string>
                </property>
                <property name="checkable">
                 <bool>true</bool>
                </property>
               </widget>
              </item>
-             <item row="2" column="0">
-              <widget class="QPushButton" name="pushButton_P2_0">
+             <item row="1" column="3">
+              <widget class="QPushButton" name="pushButton_P1_5">
                <property name="text">
-                <string>P2_0</string>
+                <string>P1_5</string>
                </property>
                <property name="checkable">
                 <bool>true</bool>
                </property>
               </widget>
              </item>
-             <item row="4" column="1">
-              <widget class="QPushButton" name="pushButton_P4_1">
+             <item row="2" column="3">
+              <widget class="QPushButton" name="pushButton_P2_5">
                <property name="text">
-                <string>P4_1</string>
+                <string>P2_5</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="3">
+              <widget class="QPushButton" name="pushButton_P3_5">
+               <property name="text">
+                <string>P3_5(T1)</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="2">
+              <widget class="QPushButton" name="pushButton_P3_6">
+               <property name="text">
+                <string>P3_6(/WR)</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="2">
+              <widget class="QPushButton" name="pushButton_P2_6">
+               <property name="text">
+                <string>P2_6</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="2">
+              <widget class="QPushButton" name="pushButton_P1_6">
+               <property name="text">
+                <string>P1_6</string>
                </property>
                <property name="checkable">
                 <bool>true</bool>
@@ -719,7 +767,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>button_SerialPort_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>263</x>
+     <x>177</x>
      <y>32</y>
     </hint>
     <hint type="destinationlabel">
@@ -735,7 +783,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_SendText_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>354</x>
+     <x>268</x>
      <y>357</y>
     </hint>
     <hint type="destinationlabel">
@@ -799,7 +847,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>355</x>
+     <x>269</x>
      <y>50</y>
     </hint>
     <hint type="destinationlabel">
@@ -815,7 +863,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>441</x>
+     <x>355</x>
      <y>50</y>
     </hint>
     <hint type="destinationlabel">
@@ -831,7 +879,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>527</x>
+     <x>441</x>
      <y>50</y>
     </hint>
     <hint type="destinationlabel">
@@ -847,7 +895,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>613</x>
+     <x>527</x>
      <y>50</y>
     </hint>
     <hint type="destinationlabel">
@@ -863,7 +911,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>699</x>
+     <x>613</x>
      <y>50</y>
     </hint>
     <hint type="destinationlabel">
@@ -879,7 +927,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>785</x>
+     <x>699</x>
      <y>50</y>
     </hint>
     <hint type="destinationlabel">
@@ -895,7 +943,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>871</x>
+     <x>785</x>
      <y>50</y>
     </hint>
     <hint type="destinationlabel">
@@ -911,7 +959,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>957</x>
+     <x>871</x>
      <y>50</y>
     </hint>
     <hint type="destinationlabel">
@@ -927,7 +975,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>355</x>
+     <x>269</x>
      <y>93</y>
     </hint>
     <hint type="destinationlabel">
@@ -943,7 +991,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>441</x>
+     <x>355</x>
      <y>93</y>
     </hint>
     <hint type="destinationlabel">
@@ -959,7 +1007,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>527</x>
+     <x>441</x>
      <y>93</y>
     </hint>
     <hint type="destinationlabel">
@@ -975,7 +1023,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>613</x>
+     <x>527</x>
      <y>93</y>
     </hint>
     <hint type="destinationlabel">
@@ -991,7 +1039,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>699</x>
+     <x>613</x>
      <y>93</y>
     </hint>
     <hint type="destinationlabel">
@@ -1007,7 +1055,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>957</x>
+     <x>871</x>
      <y>93</y>
     </hint>
     <hint type="destinationlabel">
@@ -1023,7 +1071,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>785</x>
+     <x>699</x>
      <y>93</y>
     </hint>
     <hint type="destinationlabel">
@@ -1039,7 +1087,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>871</x>
+     <x>785</x>
      <y>93</y>
     </hint>
     <hint type="destinationlabel">
@@ -1055,7 +1103,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>441</x>
+     <x>355</x>
      <y>136</y>
     </hint>
     <hint type="destinationlabel">
@@ -1071,7 +1119,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>355</x>
+     <x>269</x>
      <y>136</y>
     </hint>
     <hint type="destinationlabel">
@@ -1087,7 +1135,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>527</x>
+     <x>441</x>
      <y>136</y>
     </hint>
     <hint type="destinationlabel">
@@ -1103,7 +1151,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>699</x>
+     <x>613</x>
      <y>136</y>
     </hint>
     <hint type="destinationlabel">
@@ -1119,7 +1167,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>785</x>
+     <x>699</x>
      <y>136</y>
     </hint>
     <hint type="destinationlabel">
@@ -1135,7 +1183,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>613</x>
+     <x>527</x>
      <y>136</y>
     </hint>
     <hint type="destinationlabel">
@@ -1151,7 +1199,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>957</x>
+     <x>871</x>
      <y>136</y>
     </hint>
     <hint type="destinationlabel">
@@ -1167,7 +1215,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>871</x>
+     <x>785</x>
      <y>136</y>
     </hint>
     <hint type="destinationlabel">
@@ -1183,7 +1231,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>355</x>
+     <x>269</x>
      <y>179</y>
     </hint>
     <hint type="destinationlabel">
@@ -1199,7 +1247,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>441</x>
+     <x>355</x>
      <y>179</y>
     </hint>
     <hint type="destinationlabel">
@@ -1215,7 +1263,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>527</x>
+     <x>441</x>
      <y>179</y>
     </hint>
     <hint type="destinationlabel">
@@ -1231,7 +1279,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>613</x>
+     <x>527</x>
      <y>179</y>
     </hint>
     <hint type="destinationlabel">
@@ -1247,7 +1295,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>699</x>
+     <x>613</x>
      <y>179</y>
     </hint>
     <hint type="destinationlabel">
@@ -1263,7 +1311,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>785</x>
+     <x>699</x>
      <y>179</y>
     </hint>
     <hint type="destinationlabel">
@@ -1279,7 +1327,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>871</x>
+     <x>785</x>
      <y>179</y>
     </hint>
     <hint type="destinationlabel">
@@ -1295,7 +1343,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>957</x>
+     <x>871</x>
      <y>179</y>
     </hint>
     <hint type="destinationlabel">
@@ -1311,7 +1359,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>355</x>
+     <x>269</x>
      <y>222</y>
     </hint>
     <hint type="destinationlabel">
@@ -1327,7 +1375,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>441</x>
+     <x>355</x>
      <y>222</y>
     </hint>
     <hint type="destinationlabel">
@@ -1343,7 +1391,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>527</x>
+     <x>441</x>
      <y>222</y>
     </hint>
     <hint type="destinationlabel">
@@ -1359,12 +1407,108 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
    <slot>pushButton_PIN_onClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>613</x>
+     <x>527</x>
      <y>222</y>
     </hint>
     <hint type="destinationlabel">
      <x>308</x>
      <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P0_ALL</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PINALL_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>917</x>
+     <y>39</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>485</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P1_ALL</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PINALL_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>917</x>
+     <y>82</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>485</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P2_ALL</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PINALL_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>917</x>
+     <y>125</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>485</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P3_ALL</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PINALL_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>917</x>
+     <y>168</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>485</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_P4_ALL</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PINALL_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>589</x>
+     <y>217</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>966</x>
+     <y>216</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_Update</sender>
+   <signal>clicked()</signal>
+   <receiver>TTHBPForm</receiver>
+   <slot>pushButton_PINUpdate_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>898</x>
+     <y>217</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>6</x>
+     <y>255</y>
     </hint>
    </hints>
   </connection>
@@ -1377,5 +1521,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
   <slot>button_OpenSerial_onClick()</slot>
   <slot>horizontalSlider_LedHz_valueChange(int)</slot>
   <slot>pushButton_PIN_onClick()</slot>
+  <slot>pushButton_PINALL_onClick()</slot>
+  <slot>pushButton_PINUpdate_onClick()</slot>
  </slots>
 </ui>

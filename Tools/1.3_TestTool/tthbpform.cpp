@@ -5,6 +5,7 @@
 #include <QTime>
 #include <QListWidgetItem>
 #include <QSerialPort>
+#include <QThread>
 
 TTHBPForm::TTHBPForm(QWidget *parent) :
     QWidget(parent),
@@ -288,6 +289,9 @@ void TTHBPForm::pushButton_PIN_onClick()
     {
         for( j = 0; j < 8; j++ )
         {
+
+            byteData.clear();
+            str.clear();
             tmp = QString("pushButton_P%1_%2").arg(i).arg(j);
             if( strName == tmp)
             {
@@ -323,6 +327,9 @@ void TTHBPForm::pushButton_PIN_onClick()
         tmp = QString("pushButton_P4_%1").arg(j);
         if( strName == tmp)
         {
+
+            byteData.clear();
+            str.clear();
             if( (P[4]&(1<<j)) == 0 )
             {
                 P[4] |= (1<<j);
@@ -348,5 +355,67 @@ void TTHBPForm::pushButton_PIN_onClick()
 
             sendInfoAsHex(str);
         }
+    }
+}
+
+
+void TTHBPForm::pushButton_PINALL_onClick()
+{
+    QString strName = sender()->objectName();
+    QString tmp;
+    QByteArray byteData;
+    QString str;
+
+    char reg;
+    int i;
+    for( i = 0; i <= 4; i++ )
+    {
+        byteData.clear();
+        str.clear();
+        tmp = QString("pushButton_P%1_ALL").arg(i);
+        if( strName == tmp)
+        {
+            P[i] = ~P[i];
+            frameId++;
+            reg = ((i<<4)+8);
+            byteData.append(0x03);
+            byteData.append(frameId);
+            byteData.append(0x02);
+            byteData.append(reg);
+            byteData.append(P[i]);
+            byteData.append(0x03^frameId^0x02^reg^P[i]);
+            byteData.append(0x3a);
+            byteData.append(0x3c);
+            convertByteArrayToHexStr(byteData.toHex(), str);
+
+            sendInfoAsHex(str);
+        }
+    }
+}
+
+void TTHBPForm::pushButton_PINUpdate_onClick()
+{
+    QByteArray byteData;
+    QString str;
+
+    char reg;
+    int i;
+    for( i = 0; i <= 4; i++ )
+    {
+        byteData.clear();
+        str.clear();
+        frameId++;
+        reg = (i<<4)+8;
+        byteData.append(0x04);
+        byteData.append(frameId);
+        byteData.append(0x01);
+        byteData.append(reg);
+        byteData.append(0x04^frameId^0x01^reg);
+        byteData.append(0x3a);
+        byteData.append(0x3c);
+        convertByteArrayToHexStr(byteData.toHex(), str);
+
+        sendInfoAsHex(str);
+        QThread::msleep(3);
     }
 }
