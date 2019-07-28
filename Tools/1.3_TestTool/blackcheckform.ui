@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>492</width>
+    <width>578</width>
     <height>300</height>
    </rect>
   </property>
@@ -71,6 +71,13 @@
         </widget>
        </item>
        <item>
+        <widget class="QPushButton" name="pushButton">
+         <property name="text">
+          <string>添加监控区域</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <spacer name="horizontalSpacer">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
@@ -86,40 +93,81 @@
       </layout>
      </item>
      <item>
-      <widget class="QScrollArea" name="scrollArea">
-       <property name="widgetResizable">
-        <bool>true</bool>
+      <widget class="Line" name="line">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
        </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-       <widget class="QWidget" name="scrollAreaWidgetContents">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>470</width>
-          <height>220</height>
-         </rect>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_3">
-         <item row="0" column="0">
-          <widget class="QLabel" name="label">
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QLabel" name="label_roi">
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
       </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="imageHLayout" stretch="10,5">
+       <item>
+        <widget class="QScrollArea" name="scrollArea">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <widget class="QWidget" name="scrollAreaWidgetContents">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>365</width>
+            <height>209</height>
+           </rect>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_3" columnstretch="0,0">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item row="0" column="1">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <widget class="QScrollArea" name="scrollArea_2">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scrollAreaWidgetContents_2">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>181</width>
+            <height>209</height>
+           </rect>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_2">
+           <item row="0" column="0">
+            <layout class="QFormLayout" name="formLayout"/>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
      </item>
     </layout>
    </item>
@@ -141,7 +189,7 @@
    <slot>on_button_OpenVideo_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>205</x>
+     <x>158</x>
      <y>25</y>
     </hint>
     <hint type="destinationlabel">
@@ -157,8 +205,8 @@
    <slot>on_button_CloseVideo_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>268</x>
-     <y>34</y>
+     <x>302</x>
+     <y>36</y>
     </hint>
     <hint type="destinationlabel">
      <x>489</x>
@@ -173,8 +221,8 @@
    <slot>on_button_StartVideo_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>338</x>
-     <y>30</y>
+     <x>388</x>
+     <y>36</y>
     </hint>
     <hint type="destinationlabel">
      <x>488</x>
@@ -189,8 +237,8 @@
    <slot>on_button_StopVideo_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>440</x>
-     <y>27</y>
+     <x>474</x>
+     <y>36</y>
     </hint>
     <hint type="destinationlabel">
      <x>492</x>
@@ -214,6 +262,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>BlackCheckForm</receiver>
+   <slot>on_button_AddRect_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>560</x>
+     <y>36</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>488</x>
+     <y>25</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>on_button_OpenVideo_clicked()</slot>
@@ -221,5 +285,7 @@
   <slot>on_button_StartVideo_clicked()</slot>
   <slot>on_button_StopVideo_clicked()</slot>
   <slot>on_combo_Video_Change(QString)</slot>
+  <slot>on_button_AddRect_clicked()</slot>
+  <slot>on_Label_LinkActivited(QString)</slot>
  </slots>
 </ui>

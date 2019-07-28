@@ -2,7 +2,9 @@
 #define BLACKCHECKFORM_H
 
 #include <QWidget>
-
+#include <QList>
+#include <QLabel>
+#include <QMouseEvent>
 
 #include "opencv2/core/core.hpp"
 #include "opencv2/highgui/highgui.hpp"
@@ -32,7 +34,11 @@ public slots:
     void on_button_StartVideo_clicked();
     void on_button_OpenVideo_clicked();
     void on_combo_Video_Change(QString str);
+    void on_button_AddRect_clicked();
     void ReadFrame();
+    void mouseReleaseEvent(QMouseEvent * ev);
+    void mouseMoveEvent(QMouseEvent *ev);
+    void mousePressEvent(QMouseEvent *ev);
 
 private:
     Ui::BlackCheckForm *ui;
@@ -43,10 +49,13 @@ private:
     QString file_name;
     int video_mode;
     int video_number;
+    int index;
 
-    Rect rect_roi;
-
-
+    QRect rect;
+    QList<QRect> rectList;
+    QList<QLabel*> labelList;
+    Mat roiMat;
+    QImage roiimage;
 };
 
 

@@ -12,3 +12,4 @@ QTabWidget::pane /* The tab widget frame */
 QTabWidget::tab-bar {
     alignment: left;
 }
+
