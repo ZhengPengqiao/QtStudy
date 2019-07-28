@@ -23,25 +23,52 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 
+LIBS += -L$$PWD/../../Doc/opencv-3.4.0_install/lib/
+
+INCLUDEPATH += $$PWD/../../Doc/opencv-3.4.0_install/include
+DEPENDPATH += $$PWD/../../Doc/opencv-3.4.0_install/include
+
+LIBS += -lopencv_dnn
+LIBS += -lopencv_ml
+LIBS += -lopencv_objdetect
+LIBS += -lopencv_shape
+LIBS += -lopencv_stitching
+LIBS += -lopencv_superres
+LIBS += -lopencv_videostab
+LIBS += -lopencv_calib3d
+LIBS += -lopencv_features2d
+LIBS += -lopencv_highgui
+LIBS += -lopencv_videoio
+LIBS += -lopencv_imgcodecs
+LIBS += -lopencv_video
+LIBS += -lopencv_photo
+LIBS += -lopencv_imgproc
+LIBS += -lopencv_flann
+LIBS += -lopencv_core
+
+
 SOURCES += main.cpp \
     mainwindow.cpp \
     customtabstyle.cpp \
     serialform.cpp \
     openglform.cpp \
-    tthbpform.cpp
+    tthbpform.cpp \
+    blackcheckform.cpp
 
 HEADERS  += \
     mainwindow.h \
     customtabstyle.h \
     serialform.h \
     openglform.h \
-    tthbpform.h
+    tthbpform.h \
+    blackcheckform.h
 
 FORMS    += \
     mainwindow.ui \
     serialform.ui \
     openglform.ui \
-    tthbpform.ui
+    tthbpform.ui \
+    blackcheckform.ui
 
 DISTFILES +=
 

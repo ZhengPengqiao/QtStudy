@@ -27,7 +27,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>3</number>
       </property>
       <property name="tabsClosable">
        <bool>false</bool>
@@ -48,6 +48,11 @@
       <widget class="TTHBPForm" name="TTHBPPage">
        <attribute name="title">
         <string>TTHBP测试</string>
+       </attribute>
+      </widget>
+      <widget class="BlackCheckForm" name="blackCheckPage">
+       <attribute name="title">
+        <string>黑屏测试</string>
        </attribute>
       </widget>
      </widget>
@@ -72,6 +77,12 @@
    <class>TTHBPForm</class>
    <extends>QWidget</extends>
    <header>tthbpform.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>BlackCheckForm</class>
+   <extends>QWidget</extends>
+   <header>blackcheckform.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
