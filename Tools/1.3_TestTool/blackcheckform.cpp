@@ -55,10 +55,14 @@ void BlackCheckForm::ReadFrame()
 
             for( int i = 0; i < ui->formLayout->rowCount(); i++ )
             {
-                Rect rect(rectList.at(i).x(),rectList.at(i).y(),rectList.at(i).width(),rectList.at(i).height());
+                Rect rect(rectList.at(i).x(),
+                          rectList.at(i).y(),
+                          rectList.at(i).width(),
+                          rectList.at(i).height());
 
                 dst_frame(rect).copyTo(roiMat);
-                roiimage = QImage((const uchar*)roiMat.data, roiMat.cols, roiMat.rows, QImage::Format_RGB888);
+                roiimage = QImage((const uchar*)roiMat.data, roiMat.cols,
+                                  roiMat.rows, roiMat.cols*3, QImage::Format_RGB888);
                 labelList.at(i)->setPixmap(QPixmap::fromImage(roiimage));    //  将图片显示到label上
                 labelList.at(i)->resize(200,100);    //  将label控件resize到fame的尺寸
             }
