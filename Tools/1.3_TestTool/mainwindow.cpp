@@ -11,6 +11,19 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->tabWidget->tabBar()->setStyle(new CustomTabStyle);
+
+    connect(ui->TTHBPPage, &TTHBPForm::tthbp_receiveData,
+            ui->blackCheckPage, &BlackCheckForm::blackCheck_receiveData);
+
+    connect(ui->blackCheckPage, &BlackCheckForm::blackCheck_sendData,
+            ui->TTHBPPage, &TTHBPForm::tthbp_sendData);
+
+    connect(ui->blackCheckPage, &BlackCheckForm::blackCheck_openTTHBP,
+            ui->TTHBPPage, &TTHBPForm::button_OpenSerial_onClick);
+
+    connect(ui->blackCheckPage, &BlackCheckForm::blackCheck_closeTTHBP,
+            ui->TTHBPPage, &TTHBPForm::button_CloseSerial_onClick);
+
 }
 
 MainWindow::~MainWindow()

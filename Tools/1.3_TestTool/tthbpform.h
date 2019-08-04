@@ -37,6 +37,10 @@ public slots:
     void pushButton_PIN_onClick();
     void pushButton_PINALL_onClick();
     void pushButton_PINUpdate_onClick();
+    void tthbp_sendData(QByteArray buf);
+
+signals:
+    void tthbp_receiveData(QByteArray buf);
 
 private:
     Ui::TTHBPForm *ui;

@@ -111,7 +111,7 @@ void TTHBPForm::button_OpenSerial_onClick()
     //定义个槽void receiveInfo()解析数据
     connect(m_serialPort, &QSerialPort::readyRead, this, &TTHBPForm::serialPort_onReceive);
 
-
+    qDebug() << "TTHBP Serial Open";
 }
 
 void TTHBPForm::button_CloseSerial_onClick()
@@ -123,6 +123,7 @@ void TTHBPForm::button_CloseSerial_onClick()
     delete m_serialPort;
 
     ui->label_SerialStatusBack->setStyleSheet("border-image: url(:/assert/ICON/102.png);");
+    qDebug() << "TTHBP Serial Close";
 }
 
 
@@ -143,6 +144,7 @@ void TTHBPForm::serialPort_onReceive()
         ui->textEdit_Text->append(QTime::currentTime().toString("HH:mm:ss.zzz") +\
                                   "<----:" + str);
     }
+    emit tthbp_receiveData(info);
 
 }
 
@@ -418,4 +420,18 @@ void TTHBPForm::pushButton_PINUpdate_onClick()
         sendInfoAsHex(str);
         QThread::msleep(3);
     }
+}
+
+
+void TTHBPForm::tthbp_sendData(QByteArray buf)
+{
+    QString str;
+    if( m_serialPort == nullptr )
+    {
+        ui->textEdit_Text->append("Send 串口没有打开");
+        return;
+    }
+
+    convertByteArrayToHexStr(buf.toHex(), str);
+    sendInfoAsHex(str);
 }

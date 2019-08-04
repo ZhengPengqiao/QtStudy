@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>578</width>
+    <width>664</width>
     <height>300</height>
    </rect>
   </property>
@@ -71,7 +71,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="pushButton_addRect">
          <property name="text">
           <string>添加监控区域</string>
          </property>
@@ -79,6 +79,133 @@
        </item>
        <item>
         <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QPushButton" name="pushButton_tthbp">
+         <property name="text">
+          <string>TTHBP 打开</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_blankCtrl">
+         <property name="text">
+          <string>黑屏停止检测</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_checkCount">
+         <property name="text">
+          <string>测试次数:0 黑屏次数:0</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>黑屏阀值:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_blackhold">
+         <property name="text">
+          <string>200</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>上电延时检测:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_delayCheckDuration">
+         <property name="text">
+          <string>10</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>检测时长:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_checkDuration">
+         <property name="text">
+          <string>5</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>断电时长:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_powerOffDuration">
+         <property name="text">
+          <string>5</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_Setting">
+         <property name="text">
+          <string>确定配置</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_2">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
@@ -114,8 +241,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>365</width>
-            <height>209</height>
+            <width>422</width>
+            <height>141</height>
            </rect>
           </property>
           <layout class="QGridLayout" name="gridLayout_3" columnstretch="0,0">
@@ -155,8 +282,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>181</width>
-            <height>209</height>
+            <width>210</width>
+            <height>141</height>
            </rect>
           </property>
           <layout class="QGridLayout" name="gridLayout_2">
@@ -205,7 +332,7 @@
    <slot>on_button_CloseVideo_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>302</x>
+     <x>300</x>
      <y>36</y>
     </hint>
     <hint type="destinationlabel">
@@ -221,7 +348,7 @@
    <slot>on_button_StartVideo_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>388</x>
+     <x>386</x>
      <y>36</y>
     </hint>
     <hint type="destinationlabel">
@@ -237,7 +364,7 @@
    <slot>on_button_StopVideo_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>474</x>
+     <x>472</x>
      <y>36</y>
     </hint>
     <hint type="destinationlabel">
@@ -263,18 +390,66 @@
    </hints>
   </connection>
   <connection>
-   <sender>pushButton</sender>
+   <sender>pushButton_addRect</sender>
    <signal>clicked()</signal>
    <receiver>BlackCheckForm</receiver>
    <slot>on_button_AddRect_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>560</x>
+     <x>558</x>
      <y>36</y>
     </hint>
     <hint type="destinationlabel">
      <x>488</x>
      <y>25</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_Setting</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>BlackCheckForm</receiver>
+   <slot>on_button_Setting_clicked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>646</x>
+     <y>104</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>634</x>
+     <y>3</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_tthbp</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>BlackCheckForm</receiver>
+   <slot>on_button_TTHBP_clicked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>90</x>
+     <y>70</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>658</x>
+     <y>16</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_blankCtrl</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>BlackCheckForm</receiver>
+   <slot>on_button_BlankCtrl_clicked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>124</x>
+     <y>51</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>3</x>
+     <y>117</y>
     </hint>
    </hints>
   </connection>
@@ -287,5 +462,8 @@
   <slot>on_combo_Video_Change(QString)</slot>
   <slot>on_button_AddRect_clicked()</slot>
   <slot>on_Label_LinkActivited(QString)</slot>
+  <slot>on_button_Setting_clicked(bool)</slot>
+  <slot>on_button_TTHBP_clicked(bool)</slot>
+  <slot>on_button_BlankCtrl_clicked(bool)</slot>
  </slots>
 </ui>

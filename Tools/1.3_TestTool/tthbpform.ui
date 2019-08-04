@@ -297,7 +297,7 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
             <string>ASCII</string>
            </property>
            <property name="checked">
-            <bool>true</bool>
+            <bool>false</bool>
            </property>
           </widget>
          </item>
@@ -305,6 +305,9 @@ QPushButton#button_SerialPort{border-image: url(:/assert/ICON/026.png);}</string
           <widget class="QRadioButton" name="radioButton_HEX">
            <property name="text">
             <string>十六进制</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
