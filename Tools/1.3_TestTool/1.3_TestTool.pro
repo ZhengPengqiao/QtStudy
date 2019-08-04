@@ -53,7 +53,7 @@ SOURCES += main.cpp \
     serialform.cpp \
     openglform.cpp \
     tthbpform.cpp \
-    blackcheckform.cpp
+    colorcheckform.cpp
 
 HEADERS  += \
     mainwindow.h \
@@ -61,14 +61,14 @@ HEADERS  += \
     serialform.h \
     openglform.h \
     tthbpform.h \
-    blackcheckform.h
+    colorcheckform.h
 
 FORMS    += \
     mainwindow.ui \
     serialform.ui \
     openglform.ui \
     tthbpform.ui \
-    blackcheckform.ui
+    colorcheckform.ui
 
 DISTFILES +=
 

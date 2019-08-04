@@ -13,15 +13,15 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tabWidget->tabBar()->setStyle(new CustomTabStyle);
 
     connect(ui->TTHBPPage, &TTHBPForm::tthbp_receiveData,
-            ui->blackCheckPage, &BlackCheckForm::blackCheck_receiveData);
+            ui->colorCheckPage, &ColorCheckForm::colorCheck_receiveData);
 
-    connect(ui->blackCheckPage, &BlackCheckForm::blackCheck_sendData,
+    connect(ui->colorCheckPage, &ColorCheckForm::colorCheck_sendData,
             ui->TTHBPPage, &TTHBPForm::tthbp_sendData);
 
-    connect(ui->blackCheckPage, &BlackCheckForm::blackCheck_openTTHBP,
+    connect(ui->colorCheckPage, &ColorCheckForm::colorCheck_openTTHBP,
             ui->TTHBPPage, &TTHBPForm::button_OpenSerial_onClick);
 
-    connect(ui->blackCheckPage, &BlackCheckForm::blackCheck_closeTTHBP,
+    connect(ui->colorCheckPage, &ColorCheckForm::colorCheck_closeTTHBP,
             ui->TTHBPPage, &TTHBPForm::button_CloseSerial_onClick);
 
 }

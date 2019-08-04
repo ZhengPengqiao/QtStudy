@@ -50,9 +50,9 @@
         <string>TTHBP测试</string>
        </attribute>
       </widget>
-      <widget class="BlackCheckForm" name="blackCheckPage">
+      <widget class="ColorCheckForm" name="colorCheckPage">
        <attribute name="title">
-        <string>黑屏测试</string>
+        <string>颜色检测测试</string>
        </attribute>
       </widget>
      </widget>
@@ -80,9 +80,9 @@
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>BlackCheckForm</class>
+   <class>ColorCheckForm</class>
    <extends>QWidget</extends>
-   <header>blackcheckform.h</header>
+   <header>colorcheckform.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

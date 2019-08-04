@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>BlackCheckForm</class>
- <widget class="QWidget" name="BlackCheckForm">
+ <class>ColorCheckForm</class>
+ <widget class="QWidget" name="ColorCheckForm">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -355,7 +355,7 @@
   <connection>
    <sender>button_Open</sender>
    <signal>clicked()</signal>
-   <receiver>BlackCheckForm</receiver>
+   <receiver>ColorCheckForm</receiver>
    <slot>on_button_OpenVideo_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -371,7 +371,7 @@
   <connection>
    <sender>button_CLose</sender>
    <signal>clicked()</signal>
-   <receiver>BlackCheckForm</receiver>
+   <receiver>ColorCheckForm</receiver>
    <slot>on_button_CloseVideo_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -387,7 +387,7 @@
   <connection>
    <sender>button_Start</sender>
    <signal>clicked()</signal>
-   <receiver>BlackCheckForm</receiver>
+   <receiver>ColorCheckForm</receiver>
    <slot>on_button_StartVideo_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -403,7 +403,7 @@
   <connection>
    <sender>button_Stop</sender>
    <signal>clicked()</signal>
-   <receiver>BlackCheckForm</receiver>
+   <receiver>ColorCheckForm</receiver>
    <slot>on_button_StopVideo_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -419,7 +419,7 @@
   <connection>
    <sender>combo_Video</sender>
    <signal>currentIndexChanged(QString)</signal>
-   <receiver>BlackCheckForm</receiver>
+   <receiver>ColorCheckForm</receiver>
    <slot>on_combo_Video_Change(QString)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -435,7 +435,7 @@
   <connection>
    <sender>pushButton_addRect</sender>
    <signal>clicked()</signal>
-   <receiver>BlackCheckForm</receiver>
+   <receiver>ColorCheckForm</receiver>
    <slot>on_button_AddRect_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -451,7 +451,7 @@
   <connection>
    <sender>pushButton_Setting</sender>
    <signal>clicked(bool)</signal>
-   <receiver>BlackCheckForm</receiver>
+   <receiver>ColorCheckForm</receiver>
    <slot>on_button_Setting_clicked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -467,7 +467,7 @@
   <connection>
    <sender>pushButton_tthbp</sender>
    <signal>clicked(bool)</signal>
-   <receiver>BlackCheckForm</receiver>
+   <receiver>ColorCheckForm</receiver>
    <slot>on_button_TTHBP_clicked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -483,7 +483,7 @@
   <connection>
    <sender>pushButton_blankCtrl</sender>
    <signal>clicked(bool)</signal>
-   <receiver>BlackCheckForm</receiver>
+   <receiver>ColorCheckForm</receiver>
    <slot>on_button_BlankCtrl_clicked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -499,7 +499,7 @@
   <connection>
    <sender>comboBox_CheckColor</sender>
    <signal>currentIndexChanged(QString)</signal>
-   <receiver>BlackCheckForm</receiver>
+   <receiver>ColorCheckForm</receiver>
    <slot>on_combo_CheckColor_Change(QString)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -515,7 +515,7 @@
   <connection>
    <sender>comboBox_showCtrl</sender>
    <signal>currentIndexChanged(QString)</signal>
-   <receiver>BlackCheckForm</receiver>
+   <receiver>ColorCheckForm</receiver>
    <slot>on_combo_ShowCtrl_Change(QString)</slot>
    <hints>
     <hint type="sourcelabel">

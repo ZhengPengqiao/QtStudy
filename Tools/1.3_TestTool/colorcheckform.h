@@ -1,5 +1,5 @@
-#ifndef BLACKCHECKFORM_H
-#define BLACKCHECKFORM_H
+#ifndef COLORCHECKFORM_H
+#define COLORCHECKFORM_H
 
 #include <QWidget>
 #include <QList>
@@ -16,16 +16,16 @@ using namespace cv;
 using namespace std;
 
 namespace Ui {
-class BlackCheckForm;
+class ColorCheckForm;
 }
 
-class BlackCheckForm : public QWidget
+class ColorCheckForm : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit BlackCheckForm(QWidget *parent = 0);
-    ~BlackCheckForm();
+    explicit ColorCheckForm(QWidget *parent = 0);
+    ~ColorCheckForm();
 
     void getVideoMode(QString str);
     void checkColorCtrl(QString color);
@@ -45,20 +45,20 @@ public slots:
     void mousePressEvent(QMouseEvent *ev);
     QList<bool> checkBlackDeal();
     void dealCtrl();
-    void blackCheck_receiveData(QByteArray buf);
+    void colorCheck_receiveData(QByteArray buf);
     void on_button_TTHBP_clicked(bool val);
     void on_button_BlankCtrl_clicked(bool val);
     void on_combo_CheckColor_Change(QString color);
     void on_combo_ShowCtrl_Change(QString str);
 
 signals:
-    void blackCheck_openTTHBP();
-    void blackCheck_closeTTHBP();
-    void blackCheck_sendData(QByteArray buf);
+    void colorCheck_openTTHBP();
+    void colorCheck_closeTTHBP();
+    void colorCheck_sendData(QByteArray buf);
 
 
 private:
-    Ui::BlackCheckForm *ui;
+    Ui::ColorCheckForm *ui;
     QTimer *dealtimer;
     QTimer *timer;
     VideoCapture capture;
@@ -115,4 +115,4 @@ private:
 
 
 
-#endif // BLACKCHECKFORM_H
+#endif // COLORCHECKFORM_H

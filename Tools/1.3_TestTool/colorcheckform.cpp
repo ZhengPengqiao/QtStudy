@@ -1,5 +1,5 @@
-#include "blackcheckform.h"
-#include "ui_blackcheckform.h"
+#include "colorcheckform.h"
+#include "ui_colorcheckform.h"
 #include "ui_mainwindow.h"
 #include <QTimer>
 #include <QFileDialog>
@@ -8,9 +8,9 @@
 #include <QPen>
 #include "tthbpform.h"
 
-BlackCheckForm::BlackCheckForm(QWidget *parent) :
+ColorCheckForm::ColorCheckForm(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::BlackCheckForm),
+    ui(new Ui::ColorCheckForm),
     timeunit(0),
     checkBlankCount(0),
     checkCount(0),
@@ -60,13 +60,13 @@ BlackCheckForm::BlackCheckForm(QWidget *parent) :
 }
 
 
-BlackCheckForm::~BlackCheckForm()
+ColorCheckForm::~ColorCheckForm()
 {
     delete ui;
 }
 
 
-QList<bool> BlackCheckForm::checkBlackDeal()
+QList<bool> ColorCheckForm::checkBlackDeal()
 {
     int i = 0;
     QList<bool> qlist_ret;
@@ -84,7 +84,7 @@ QList<bool> BlackCheckForm::checkBlackDeal()
     return qlist_ret;
 }
 
-void BlackCheckForm::dealCtrl()
+void ColorCheckForm::dealCtrl()
 {
     if( ui->pushButton_Setting->isChecked() )
     {
@@ -138,7 +138,7 @@ void BlackCheckForm::dealCtrl()
             byteData.append(0x03^0x02^0x02^0x28^0xff);
             byteData.append(0x3a);
             byteData.append(0x3c);
-            emit blackCheck_sendData(byteData);
+            emit colorCheck_sendData(byteData);
             tmpBlankTimes = 0;
         }
         else if( dealStatus == DEALSTATUS_POWEROFF_DELAY )
@@ -158,7 +158,7 @@ void BlackCheckForm::dealCtrl()
             byteData.append(0x03^0x02^0x02^0x28^0x00);
             byteData.append(0x3a);
             byteData.append(0x3c);
-            emit blackCheck_sendData(byteData);
+            emit colorCheck_sendData(byteData);
         }
         else if( dealStatus == DEALSTATUS_DELAY_CHECK )
         {
@@ -202,7 +202,7 @@ void BlackCheckForm::dealCtrl()
     }
 }
 
-void BlackCheckForm::ReadFrame()
+void ColorCheckForm::ReadFrame()
 {
     Mat g_GaryFrame;
     Mat g_GrayDetectedEdges;
@@ -294,7 +294,7 @@ void BlackCheckForm::ReadFrame()
     }
 }
 
-void BlackCheckForm::on_button_OpenVideo_clicked()
+void ColorCheckForm::on_button_OpenVideo_clicked()
 {
     if( video_mode == 1 )
     {
@@ -315,7 +315,7 @@ void BlackCheckForm::on_button_OpenVideo_clicked()
 }
 
 
-void BlackCheckForm::on_button_CloseVideo_clicked()
+void ColorCheckForm::on_button_CloseVideo_clicked()
 {
     //  释放内存；
     capture.release();
@@ -325,7 +325,7 @@ void BlackCheckForm::on_button_CloseVideo_clicked()
     qDebug() << "on_button_CloseVideo_clicked";
 }
 
-void BlackCheckForm::on_button_StartVideo_clicked()
+void ColorCheckForm::on_button_StartVideo_clicked()
 {
     timer->start(25);   //  开始计时，每隔25毫秒更新一次，超时则发出timeout()信号
 
@@ -335,7 +335,7 @@ void BlackCheckForm::on_button_StartVideo_clicked()
     dealtimer->start(1000);
 }
 
-void BlackCheckForm::on_button_StopVideo_clicked()
+void ColorCheckForm::on_button_StopVideo_clicked()
 {
     timer->stop();      //  停止读取数据。
     dealtimer->stop();
@@ -344,14 +344,14 @@ void BlackCheckForm::on_button_StopVideo_clicked()
     qDebug() << "on_button_StopVideo_clicked";
 }
 
-void BlackCheckForm::on_combo_Video_Change(QString str)
+void ColorCheckForm::on_combo_Video_Change(QString str)
 {
     ui->statusBar->setText(str);
     getVideoMode(str);
     qDebug() << "on_combo_Video_Change" << str;
 }
 
-void BlackCheckForm::getVideoMode(QString str)
+void ColorCheckForm::getVideoMode(QString str)
 {
     if( str == "Camera Video0" )
     {
@@ -380,7 +380,7 @@ void BlackCheckForm::getVideoMode(QString str)
 }
 
 
-void BlackCheckForm::on_button_AddRect_clicked()
+void ColorCheckForm::on_button_AddRect_clicked()
 {
     QLabel *label_name = new QLabel(QString("(%1,%2)(%3,%4)")
                                     .arg(rect.x()).arg(rect.y())
@@ -398,14 +398,14 @@ void BlackCheckForm::on_button_AddRect_clicked()
 }
 
 
-void BlackCheckForm::mouseReleaseEvent(QMouseEvent *ev)
+void ColorCheckForm::mouseReleaseEvent(QMouseEvent *ev)
 {
     QPoint tp = ev->pos() - ui->scrollArea->pos() - ui->label->pos() - ui->scrollAreaWidgetContents->pos();
     rect.setBottomRight(tp);
     qDebug() << tp << "release" << rect;
 }
 
-void BlackCheckForm::mousePressEvent(QMouseEvent *ev)
+void ColorCheckForm::mousePressEvent(QMouseEvent *ev)
 {
     QPoint tp = ev->pos() - ui->scrollArea->pos() - ui->label->pos() - ui->scrollAreaWidgetContents->pos();
     rect.setTopLeft(tp);
@@ -414,7 +414,7 @@ void BlackCheckForm::mousePressEvent(QMouseEvent *ev)
 }
 
 
-void BlackCheckForm::mouseMoveEvent(QMouseEvent *ev)
+void ColorCheckForm::mouseMoveEvent(QMouseEvent *ev)
 {
     QPoint tp = ev->pos() - ui->scrollArea->pos() - ui->label->pos() - ui->scrollAreaWidgetContents->pos();
     rect.setBottomRight(tp);
@@ -422,25 +422,25 @@ void BlackCheckForm::mouseMoveEvent(QMouseEvent *ev)
 }
 
 
-void BlackCheckForm::on_button_TTHBP_clicked(bool val)
+void ColorCheckForm::on_button_TTHBP_clicked(bool val)
 {
     if( val )
     {
-        emit blackCheck_openTTHBP();
+        emit colorCheck_openTTHBP();
         ui->pushButton_tthbp->setText("TTHBP 关闭");
         ui->statusBar->setText("TTHBP 打开");
     }
     else
     {
 
-        emit blackCheck_closeTTHBP();
+        emit colorCheck_closeTTHBP();
         ui->pushButton_tthbp->setText("TTHBP 打开");
         ui->statusBar->setText("TTHBP 关闭");
     }
 }
 
 
-void BlackCheckForm::on_button_Setting_clicked(bool val)
+void ColorCheckForm::on_button_Setting_clicked(bool val)
 {
     if( val )
     {
@@ -477,12 +477,12 @@ void BlackCheckForm::on_button_Setting_clicked(bool val)
 }
 
 
-void BlackCheckForm::blackCheck_receiveData(QByteArray buf)
+void ColorCheckForm::colorCheck_receiveData(QByteArray buf)
 {
     qDebug() << "blackCheck_receiveData:" << buf;
 }
 
-void BlackCheckForm::on_button_BlankCtrl_clicked(bool val)
+void ColorCheckForm::on_button_BlankCtrl_clicked(bool val)
 {
     if( val )
     {
@@ -497,7 +497,7 @@ void BlackCheckForm::on_button_BlankCtrl_clicked(bool val)
 }
 
 
-void BlackCheckForm::checkColorCtrl(QString color)
+void ColorCheckForm::checkColorCtrl(QString color)
 {
     if( color == "Blue" )
     {
@@ -522,7 +522,7 @@ void BlackCheckForm::checkColorCtrl(QString color)
 }
 
 
-void BlackCheckForm::checkShowCtrl(QString color)
+void ColorCheckForm::checkShowCtrl(QString color)
 {
     if( color == "显示原图" )
     {
@@ -542,13 +542,13 @@ void BlackCheckForm::checkShowCtrl(QString color)
 }
 
 
-void BlackCheckForm::on_combo_CheckColor_Change(QString color)
+void ColorCheckForm::on_combo_CheckColor_Change(QString color)
 {
     checkColorCtrl(color);
 }
 
 
-void BlackCheckForm::on_combo_ShowCtrl_Change(QString str)
+void ColorCheckForm::on_combo_ShowCtrl_Change(QString str)
 {
     checkShowCtrl(str);
 }
