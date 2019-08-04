@@ -28,6 +28,8 @@ public:
     ~BlackCheckForm();
 
     void getVideoMode(QString str);
+    void checkColorCtrl(QString color);
+    void checkShowCtrl(QString color);
 
 public slots:
     void on_button_CloseVideo_clicked();
@@ -46,6 +48,8 @@ public slots:
     void blackCheck_receiveData(QByteArray buf);
     void on_button_TTHBP_clicked(bool val);
     void on_button_BlankCtrl_clicked(bool val);
+    void on_combo_CheckColor_Change(QString color);
+    void on_combo_ShowCtrl_Change(QString str);
 
 signals:
     void blackCheck_openTTHBP();
@@ -88,14 +92,25 @@ private:
         DEALSTATUS_POWEROFF,
         DEALSTATUS_POWEROFF_DELAY,
         DEALSTATUS_NONE,
-    };
-    int dealStatus;
+    }dealStatus;
     int timeCount;
     int checkBlankCount;  // 记录上电黑屏的次数
     int checkCount;         // 记录上电检测次数
     bool blankStopCtrl; // 标记遇到黑屏时,是否停止断电
     int tmpBlankCount; // 上电后多次检测, 本次检测的黑块数
     int tmpBlankTimes; // 上电后多次检测, 检测到黑屏的个数
+
+    enum{
+        CHECKCOLOR_RED,
+        CHECKCOLOR_BLUE,
+        CHECKCOLOR_GREEN,
+        CHECKCOLOR_GRAY,
+    }checkColor;
+
+    enum{
+        SHOWCTRL_RGB,
+        SHOWCTRL_CHANNEL,
+    }showCtrl;
 };
 
 

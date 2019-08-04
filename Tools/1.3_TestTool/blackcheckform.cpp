@@ -55,6 +55,8 @@ BlackCheckForm::BlackCheckForm(QWidget *parent) :
     }
 
     ui->label_checkCount->setText(QString("测试次数:%1 黑屏次数:%2").arg(checkCount).arg(checkBlankCount));
+    checkColorCtrl(ui->comboBox_CheckColor->currentText());
+    checkShowCtrl(ui->comboBox_showCtrl->currentText());
 }
 
 
@@ -212,7 +214,7 @@ void BlackCheckForm::ReadFrame()
         capture >> frame;
         if(!frame.empty())
         {
-            Mat gray, mat_mean, mat_stddev;
+            Mat meanImage, mat_mean, mat_stddev;
             //  OpenCV中Mat读入的图像是BGR格式，要转换为RGB格式
             cvtColor(frame, dst_frame, CV_BGR2RGB);
 
@@ -231,20 +233,54 @@ void BlackCheckForm::ReadFrame()
                 rectangle(dst_frame, rect, Scalar(colorList.at(i)->red(), colorList.at(i)->green(), colorList.at(i)->blue()), 1, LINE_8, 0);
 
                 dst_frame(rect).copyTo(roiMat);
-                cvtColor(roiMat, gray, CV_RGB2GRAY); // 转换为灰度图
-                meanStdDev(gray, mat_mean, mat_stddev);
+                if( checkColor == CHECKCOLOR_RED )
+                {
+                    vector<Mat> channels;
+                    split(roiMat, channels);//将原图的red颜色通道分离
+                    meanImage = channels.at(0);
+                }
+                else if( checkColor == CHECKCOLOR_GREEN )
+                {
+                    vector<Mat> channels;
+                    split(roiMat, channels);//将原图的green颜色通道分离
+                    meanImage = channels.at(1);
+                }
+                else if( checkColor == CHECKCOLOR_BLUE )
+                {
+                    vector<Mat> channels;
+                    split(roiMat, channels);//将原图的blue颜色通道分离
+                    meanImage = channels.at(2);
+                }
+                else //CHECKCOLOR_GRAY
+                {
+                    cvtColor(roiMat, meanImage, CV_RGB2GRAY); // 转换为灰度图
+                }
+                meanStdDev(meanImage, mat_mean, mat_stddev);
 
-                roiimage = QImage((const uchar*)roiMat.data, roiMat.cols,
-                                  roiMat.rows, roiMat.cols*3, QImage::Format_RGB888);
+                if( showCtrl )
+                {
+                    // 注意这里的第四个参数, 指定每行的长度, 不然图像会倾斜
+                    roiimage = QImage((const uchar*)meanImage.data, meanImage.cols,
+                                  meanImage.rows, meanImage.cols, QImage::Format_Grayscale8);
+
+                }
+                else
+                {
+                    // 注意这里的第四个参数, 指定每行的长度, 不然图像会倾斜
+                    roiimage = QImage((const uchar*)roiMat.data, roiMat.cols,
+                                      roiMat.rows, roiMat.cols*3, QImage::Format_RGB888);
+                }
+
                 labelImageList.at(i)->setPixmap(QPixmap::fromImage(roiimage));    //  将图片显示到label上
-                labelImageList.at(i)->resize(200,100);    //  将label控件resize到fame的尺寸
+
+
                 meanList[i] = mat_mean.at<double>(0,0);
                 QString label_name = QString("(%1,%2)(%3,%4)=%5")
                         .arg(rect.x).arg(rect.y)
                         .arg(rect.width).arg(rect.height)
                         .arg(QString::number(meanList.at(i), 'f', 1));
-                labelNameList.at(i)->setText(label_name);
 
+                labelNameList.at(i)->setText(label_name);
             }
 
             // 将抓取到的帧，转换为QImage格式。QImage::Format_RGB888不同的摄像头用不同的格式。
@@ -460,3 +496,59 @@ void BlackCheckForm::on_button_BlankCtrl_clicked(bool val)
     }
 }
 
+
+void BlackCheckForm::checkColorCtrl(QString color)
+{
+    if( color == "Blue" )
+    {
+        checkColor = CHECKCOLOR_BLUE;
+        ui->statusBar->setText("Check Color Blue");
+    }
+    else if( color == "Green" )
+    {
+        checkColor = CHECKCOLOR_GREEN;
+        ui->statusBar->setText("Check Color Green");
+    }
+    else if( color == "Red" )
+    {
+        checkColor = CHECKCOLOR_RED;
+        ui->statusBar->setText("Check Color Red");
+    }
+    else
+    {
+        checkColor = CHECKCOLOR_GRAY;
+        ui->statusBar->setText("Check Color Gray");
+    }
+}
+
+
+void BlackCheckForm::checkShowCtrl(QString color)
+{
+    if( color == "显示原图" )
+    {
+        showCtrl = SHOWCTRL_RGB;
+        ui->statusBar->setText("Show Ctrl : 显示原图");
+    }
+    else if( color == "显示效果图" )
+    {
+        showCtrl = SHOWCTRL_CHANNEL;
+        ui->statusBar->setText("Show Ctrl : 显示效果图");
+    }
+    else
+    {
+        showCtrl = SHOWCTRL_RGB;
+        ui->statusBar->setText("Show Ctrl : 显示原图");
+    }
+}
+
+
+void BlackCheckForm::on_combo_CheckColor_Change(QString color)
+{
+    checkColorCtrl(color);
+}
+
+
+void BlackCheckForm::on_combo_ShowCtrl_Change(QString str)
+{
+    checkShowCtrl(str);
+}

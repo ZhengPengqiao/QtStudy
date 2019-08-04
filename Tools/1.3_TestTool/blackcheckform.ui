@@ -50,13 +50,6 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="button_CLose">
-         <property name="text">
-          <string>关闭</string>
-         </property>
-        </widget>
-       </item>
-       <item>
         <widget class="QPushButton" name="button_Start">
          <property name="text">
           <string>开始</string>
@@ -67,6 +60,13 @@
         <widget class="QPushButton" name="button_Stop">
          <property name="text">
           <string>暂停</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="button_CLose">
+         <property name="text">
+          <string>关闭</string>
          </property>
         </widget>
        </item>
@@ -94,6 +94,49 @@
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QComboBox" name="comboBox_CheckColor">
+         <item>
+          <property name="text">
+           <string>Gray</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Blue</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Green</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Red</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="comboBox_showCtrl">
+         <item>
+          <property name="text">
+           <string>显示原图</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>显示效果图</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string/>
+          </property>
+         </item>
+        </widget>
+       </item>
        <item>
         <widget class="QPushButton" name="pushButton_tthbp">
          <property name="text">
@@ -332,7 +375,7 @@
    <slot>on_button_CloseVideo_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>300</x>
+     <x>474</x>
      <y>36</y>
     </hint>
     <hint type="destinationlabel">
@@ -348,7 +391,7 @@
    <slot>on_button_StartVideo_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>386</x>
+     <x>302</x>
      <y>36</y>
     </hint>
     <hint type="destinationlabel">
@@ -364,7 +407,7 @@
    <slot>on_button_StopVideo_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>472</x>
+     <x>388</x>
      <y>36</y>
     </hint>
     <hint type="destinationlabel">
@@ -428,7 +471,7 @@
    <slot>on_button_TTHBP_clicked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>90</x>
+     <x>246</x>
      <y>70</y>
     </hint>
     <hint type="destinationlabel">
@@ -444,12 +487,44 @@
    <slot>on_button_BlankCtrl_clicked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>124</x>
-     <y>51</y>
+     <x>332</x>
+     <y>70</y>
     </hint>
     <hint type="destinationlabel">
      <x>3</x>
      <y>117</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBox_CheckColor</sender>
+   <signal>currentIndexChanged(QString)</signal>
+   <receiver>BlackCheckForm</receiver>
+   <slot>on_combo_CheckColor_Change(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>75</x>
+     <y>68</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>650</x>
+     <y>1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBox_showCtrl</sender>
+   <signal>currentIndexChanged(QString)</signal>
+   <receiver>BlackCheckForm</receiver>
+   <slot>on_combo_ShowCtrl_Change(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>127</x>
+     <y>53</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1</x>
+     <y>83</y>
     </hint>
    </hints>
   </connection>
@@ -465,5 +540,7 @@
   <slot>on_button_Setting_clicked(bool)</slot>
   <slot>on_button_TTHBP_clicked(bool)</slot>
   <slot>on_button_BlankCtrl_clicked(bool)</slot>
+  <slot>on_combo_CheckColor_Change(QString)</slot>
+  <slot>on_combo_ShowCtrl_Change(QString)</slot>
  </slots>
 </ui>
