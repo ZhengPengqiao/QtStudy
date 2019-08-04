@@ -11,7 +11,7 @@
 ColorCheckForm::ColorCheckForm(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ColorCheckForm),
-    timeunit(0),
+    timeunit(-1),
     checkBlankCount(0),
     checkCount(0),
     tmpBlankCount(0)
@@ -96,7 +96,7 @@ void ColorCheckForm::dealCtrl()
         }
 
         timeunit++;
-        if( timeunit == 1 )
+        if( timeunit == 0 )
         {
             dealStatus = DEALSTATUS_POWEROFF;
         }
@@ -109,12 +109,12 @@ void ColorCheckForm::dealCtrl()
         {
             dealStatus = DEALSTATUS_POWERON;
         }
-        else if( timeunit < (powerOffDuration+delayCheckDuration) )
+        else if( timeunit <= (powerOffDuration+delayCheckDuration) )
         {
             dealStatus = DEALSTATUS_DELAY_CHECK;
             timeCount = timeunit - powerOffDuration;
         }
-        else if( timeunit < (powerOffDuration+delayCheckDuration+checkDuration) )
+        else if( timeunit <= (powerOffDuration+delayCheckDuration+checkDuration) )
         {
             dealStatus = DEALSTATUS_CHECKING;
             timeCount = timeunit - powerOffDuration-delayCheckDuration;
@@ -122,7 +122,7 @@ void ColorCheckForm::dealCtrl()
         else
         {
             dealStatus = DEALSTATUS_CHECK_OK;
-            timeunit = 0;
+            timeunit = -1;
         }
 
 
@@ -195,7 +195,13 @@ void ColorCheckForm::dealCtrl()
             if( tmpBlankTimes == checkDuration )
             {
                 checkBlankCount++;  // 记录上电黑屏的次数
+                ui->statusBar->setText("本次上电, 检测到黑屏");
             }
+            else
+            {
+                ui->statusBar->setText("本次上电, 未检测到黑屏");
+            }
+
         }
 
         ui->label_checkCount->setText(QString("测试次数:%1 黑屏次数:%2").arg(checkCount).arg(checkBlankCount));
@@ -457,7 +463,7 @@ void ColorCheckForm::on_button_Setting_clicked(bool val)
         delayCheckDuration = ui->lineEdit_delayCheckDuration->text().toInt();
         powerOffDuration = ui->lineEdit_powerOffDuration->text().toInt();
 
-        timeunit = 0;
+        timeunit = -1;
         checkCount = 0;
         checkBlankCount = 0;
 
