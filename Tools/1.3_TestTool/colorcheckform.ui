@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>664</width>
+    <width>824</width>
     <height>300</height>
    </rect>
   </property>
@@ -165,6 +165,44 @@
         </widget>
        </item>
        <item>
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>处理 FPS:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_fps">
+         <property name="text">
+          <string>5</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>单个文件时长(秒):</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_recd_file_time">
+         <property name="text">
+          <string>3600</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_recd">
+         <property name="text">
+          <string>开始录像</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
         <spacer name="horizontalSpacer_3">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
@@ -284,7 +322,7 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>422</width>
+            <width>529</width>
             <height>141</height>
            </rect>
           </property>
@@ -325,7 +363,7 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>210</width>
+            <width>263</width>
             <height>141</height>
            </rect>
           </property>
@@ -471,7 +509,7 @@
    <slot>on_button_TTHBP_clicked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>246</x>
+     <x>342</x>
      <y>70</y>
     </hint>
     <hint type="destinationlabel">
@@ -487,7 +525,7 @@
    <slot>on_button_BlankCtrl_clicked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>332</x>
+     <x>428</x>
      <y>70</y>
     </hint>
     <hint type="destinationlabel">
@@ -528,6 +566,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton_recd</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>ColorCheckForm</receiver>
+   <slot>on_button_recd_clicked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>215</x>
+     <y>57</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>3</x>
+     <y>66</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>on_button_OpenVideo_clicked()</slot>
@@ -542,5 +596,6 @@
   <slot>on_button_BlankCtrl_clicked(bool)</slot>
   <slot>on_combo_CheckColor_Change(QString)</slot>
   <slot>on_combo_ShowCtrl_Change(QString)</slot>
+  <slot>on_button_recd_clicked(bool)</slot>
  </slots>
 </ui>

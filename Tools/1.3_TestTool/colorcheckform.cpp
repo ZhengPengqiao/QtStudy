@@ -6,6 +6,7 @@
 #include <QDebug>
 #include <QPainter>
 #include <QPen>
+#include <QDateTime>
 #include "tthbpform.h"
 
 ColorCheckForm::ColorCheckForm(QWidget *parent) :
@@ -57,6 +58,11 @@ ColorCheckForm::ColorCheckForm(QWidget *parent) :
     ui->label_checkCount->setText(QString("测试次数:%1 黑屏次数:%2").arg(checkCount).arg(checkBlankCount));
     checkColorCtrl(ui->comboBox_CheckColor->currentText());
     checkShowCtrl(ui->comboBox_showCtrl->currentText());
+    capture_frameh = 0;
+    capture_framew = 0;
+    capture_fps = 0;
+    deal_fps = ui->lineEdit_fps->text().toInt();
+    recd_file_time = ui->lineEdit_recd_file_time->text().toInt();
 }
 
 
@@ -236,7 +242,7 @@ void ColorCheckForm::ReadFrame()
                           rectList.at(i).height());
 
 
-                rectangle(dst_frame, rect, Scalar(colorList.at(i)->red(), colorList.at(i)->green(), colorList.at(i)->blue()), 1, LINE_8, 0);
+                rectangle(dst_frame, rect, Scalar(colorList.at(i)->red(), colorList.at(i)->green(), colorList.at(i)->blue()), 1, LINE_8, 0);                
 
                 dst_frame(rect).copyTo(roiMat);
                 if( checkColor == CHECKCOLOR_RED )
@@ -289,13 +295,32 @@ void ColorCheckForm::ReadFrame()
                 labelNameList.at(i)->setText(label_name);
             }
 
+            QDateTime time = QDateTime::currentDateTime();
+            QString current_date = time.toString("yyyy.MM.dd hh:mm:ss.zzz");
+            putText(dst_frame, current_date.toStdString().c_str(), Point(0, 20),
+                    FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255,0,0,1));
+
+
             // 将抓取到的帧，转换为QImage格式。QImage::Format_RGB888不同的摄像头用不同的格式。
             QImage image((const uchar*)dst_frame.data, dst_frame.cols, dst_frame.rows, QImage::Format_RGB888);
-            ui->label->setPixmap(QPixmap::fromImage(image));    //  将图片显示到label上
+            QPixmap frame_image = QPixmap::fromImage(image);
+            ui->label->setPixmap(frame_image);    //  将图片显示到label上
             ui->label->resize( ui->label->pixmap()->size());    //  将label控件resize到fame的尺寸
             ui->label->setGeometry(0,0,ui->label->sizeHint().width(),ui->label->sizeHint().height());
 
             ui->scrollAreaWidgetContents->resize(ui->label->sizeHint());
+
+
+            if( ui->pushButton_recd->isChecked() )
+            {
+                now_time = time.toTime_t();
+                if( (now_time - start_time) >= recd_file_time )
+                {
+                    reOpenRecd();
+                }
+
+                recdVideo.WriteVideoData(frame_image, -1);
+            }
         }
     }
 }
@@ -318,6 +343,11 @@ void ColorCheckForm::on_button_OpenVideo_clicked()
         qDebug() << "on_button_OpenVideo_clicked VideoNum:" << video_number;
     }
 
+    capture_framew = capture.get(CV_CAP_PROP_FRAME_WIDTH);
+    capture_frameh = capture.get(CV_CAP_PROP_FRAME_HEIGHT);
+    capture_fps = capture.get(CV_CAP_PROP_FPS);
+    ui->statusBar->setText(QString("Capture W=%1 H=%2 Fps=%3").arg(capture_framew).arg(capture_frameh).arg(capture_fps));
+
 }
 
 
@@ -338,7 +368,7 @@ void ColorCheckForm::on_button_StartVideo_clicked()
     ui->statusBar->setText("StartVideo");
     qDebug() << "on_button_StartVideo_clicked";
 
-    dealtimer->start(1000);
+    dealtimer->start(1000/deal_fps);
 }
 
 void ColorCheckForm::on_button_StopVideo_clicked()
@@ -557,4 +587,43 @@ void ColorCheckForm::on_combo_CheckColor_Change(QString color)
 void ColorCheckForm::on_combo_ShowCtrl_Change(QString str)
 {
     checkShowCtrl(str);
+}
+
+void ColorCheckForm::on_button_recd_clicked(bool val)
+{
+    deal_fps = ui->lineEdit_fps->text().toInt();
+    recd_file_time = ui->lineEdit_recd_file_time->text().toInt();
+
+    if( val )
+    {
+        QDateTime time = QDateTime::currentDateTime();
+        start_time = time.toTime_t();
+        QString current_date = time.toString("yyyy.MM.dd hh:mm:ss.zzz");
+        // 点击了开始按钮,  将按钮上的文字显示关闭录像
+        recdVideo.Start((current_date+".avi").toStdString().c_str(),
+                        capture_framew, capture_frameh, deal_fps);
+        ui->pushButton_recd->setText("正在录像文件(点击关闭):"+current_date);
+    }
+    else
+    {
+        // 点击了开始按钮,  将按钮上的文字显示关闭录像
+        ui->pushButton_recd->setText("打开录像");
+        recdVideo.Stop();
+    }
+}
+
+void ColorCheckForm::reOpenRecd()
+{
+    if( recdVideo.isRecding() )
+    {
+        recdVideo.Stop();
+    }
+
+    QDateTime time = QDateTime::currentDateTime();
+    start_time = time.toTime_t();
+    QString current_date = time.toString("yyyy.MM.dd hh:mm:ss.zzz");
+    // 点击了开始按钮,  将按钮上的文字显示关闭录像
+    recdVideo.Start((current_date+".avi").toStdString().c_str(),
+                    capture_framew, capture_frameh, deal_fps);
+    ui->pushButton_recd->setText("正在录像文件(点击关闭):"+current_date);
 }

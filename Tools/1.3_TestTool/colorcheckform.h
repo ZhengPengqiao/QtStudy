@@ -7,6 +7,7 @@
 #include <QMouseEvent>
 #include <QColor>
 
+#include "recdlib/recdVideo.h"
 #include "opencv2/core/core.hpp"
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
@@ -30,6 +31,7 @@ public:
     void getVideoMode(QString str);
     void checkColorCtrl(QString color);
     void checkShowCtrl(QString color);
+    void reOpenRecd();
 
 public slots:
     void on_button_CloseVideo_clicked();
@@ -37,6 +39,7 @@ public slots:
     void on_button_StartVideo_clicked();
     void on_button_OpenVideo_clicked();
     void on_button_Setting_clicked(bool val);
+    void on_button_recd_clicked(bool val);
     void on_combo_Video_Change(QString str);
     void on_button_AddRect_clicked();
     void ReadFrame();
@@ -111,6 +114,16 @@ private:
         SHOWCTRL_RGB,
         SHOWCTRL_CHANNEL,
     }showCtrl;
+
+    RecdVideo recdVideo;
+    int capture_frameh;
+    int capture_framew;
+    int capture_fps;
+    int deal_fps; //处理的帧数
+
+    unsigned int start_time;
+    unsigned int now_time;
+    int recd_file_time;
 };
 
 
