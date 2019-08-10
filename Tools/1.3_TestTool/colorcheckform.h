@@ -53,6 +53,7 @@ public slots:
     void on_button_BlankCtrl_clicked(bool val);
     void on_combo_CheckColor_Change(QString color);
     void on_combo_ShowCtrl_Change(QString str);
+    void on_button_osdTime_clicked(bool val);
 
 signals:
     void colorCheck_openTTHBP();
@@ -100,6 +101,8 @@ private:
     int checkBlankCount;  // 记录上电黑屏的次数
     int checkCount;         // 记录上电检测次数
     bool blankStopCtrl; // 标记遇到黑屏时,是否停止断电
+    bool osdTime;       // 记录是否叠加时间
+
     int tmpBlankCount; // 上电后多次检测, 本次检测的黑块数
     int tmpBlankTimes; // 上电后多次检测, 检测到黑屏的个数
 
@@ -119,11 +122,11 @@ private:
     int capture_frameh;
     int capture_framew;
     int capture_fps;
-    int deal_fps; //处理的帧数
 
     unsigned int start_time;
     unsigned int now_time;
     int recd_file_time;
+    qint64 old_writeTime;
 };
 
 

@@ -18,23 +18,37 @@ RecdVideo::~RecdVideo()
     }
 }
 
-void RecdVideo::Start(QString path, int width, int height, int fps)
+int RecdVideo::open(QString path, int width, int height, int fps, char *compressor)
 {
     m_avi = AVI_open_output_file(const_cast<char*>(path.toStdString().c_str()));
 
+    if( m_avi == NULL )
+    {
+        return -RECDVIDEO_RETURN_OPENFAILD;
+    }
     //adjust the screenshot size.
-    AVI_set_video(m_avi, width, height, fps, "mjpg");
+    AVI_set_video(m_avi, width, height, fps, compressor);
     recd_status = true;
 }
 
-void RecdVideo::Stop()
+int RecdVideo::close()
 {
+    if( m_avi == NULL )
+    {
+        return -RECDVIDEO_RETURN_AVINULL;
+    }
+
     AVI_close(m_avi);
     recd_status = false;
 }
 
-void RecdVideo::WriteVideoData(const QPixmap &map, int quality)
+int RecdVideo::WriteVideoData(const QPixmap &map, int quality)
 {
+    if( m_avi == NULL )
+    {
+        return -RECDVIDEO_RETURN_AVINULL;
+    }
+
     QByteArray ba;
     QBuffer    bf(&ba);
     if (!map.save(&bf, "jpg", quality))
@@ -42,19 +56,33 @@ void RecdVideo::WriteVideoData(const QPixmap &map, int quality)
         exit(0);
     }
 
-    if (m_avi)
-    {
-        //write in file.
-        AVI_write_frame(m_avi, ba.data(), ba.size(), 1);
-    }
-    else
-    {
-        qDebug() << "m_avi = NULL : Err";
-    }
+    //write in file.
+    AVI_write_frame(m_avi, ba.data(), ba.size(), 1);
 }
 
 
 bool RecdVideo::isRecding()
 {
     return recd_status;
+}
+
+
+int RecdVideo::videoFrames()
+{
+    if( m_avi == NULL )
+    {
+        return -RECDVIDEO_RETURN_AVINULL;
+    }
+
+    return AVI_video_frames(m_avi);
+}
+
+int RecdVideo::setVideo(int width, int height, int fps, char *compressor)
+{
+    if( m_avi == NULL )
+    {
+        return -RECDVIDEO_RETURN_AVINULL;
+    }
+
+    AVI_set_video(m_avi, width, height, fps, compressor);
 }

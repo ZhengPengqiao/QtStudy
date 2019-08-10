@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>824</width>
-    <height>300</height>
+    <height>434</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -67,6 +67,16 @@
         <widget class="QPushButton" name="button_CLose">
          <property name="text">
           <string>关闭</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_OSDTime">
+         <property name="text">
+          <string>图像上不叠加时间</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -161,20 +171,6 @@
         <widget class="QLabel" name="label_checkCount">
          <property name="text">
           <string>测试次数:0 黑屏次数:0</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_6">
-         <property name="text">
-          <string>处理 FPS:</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="lineEdit_fps">
-         <property name="text">
-          <string>5</string>
          </property>
         </widget>
        </item>
@@ -323,7 +319,7 @@
             <x>0</x>
             <y>0</y>
             <width>529</width>
-            <height>141</height>
+            <height>275</height>
            </rect>
           </property>
           <layout class="QGridLayout" name="gridLayout_3" columnstretch="0,0">
@@ -364,7 +360,7 @@
             <x>0</x>
             <y>0</y>
             <width>263</width>
-            <height>141</height>
+            <height>275</height>
            </rect>
           </property>
           <layout class="QGridLayout" name="gridLayout_2">
@@ -477,7 +473,7 @@
    <slot>on_button_AddRect_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>558</x>
+     <x>646</x>
      <y>36</y>
     </hint>
     <hint type="destinationlabel">
@@ -493,7 +489,7 @@
    <slot>on_button_Setting_clicked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>646</x>
+     <x>788</x>
      <y>104</y>
     </hint>
     <hint type="destinationlabel">
@@ -509,7 +505,7 @@
    <slot>on_button_TTHBP_clicked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>342</x>
+     <x>256</x>
      <y>70</y>
     </hint>
     <hint type="destinationlabel">
@@ -525,7 +521,7 @@
    <slot>on_button_BlankCtrl_clicked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>428</x>
+     <x>342</x>
      <y>70</y>
     </hint>
     <hint type="destinationlabel">
@@ -573,12 +569,28 @@
    <slot>on_button_recd_clicked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>215</x>
-     <y>57</y>
+     <x>806</x>
+     <y>70</y>
     </hint>
     <hint type="destinationlabel">
      <x>3</x>
      <y>66</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_OSDTime</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>ColorCheckForm</receiver>
+   <slot>on_button_osdTime_clicked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>532</x>
+     <y>22</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>418</x>
+     <y>-3</y>
     </hint>
    </hints>
   </connection>
@@ -597,5 +609,6 @@
   <slot>on_combo_CheckColor_Change(QString)</slot>
   <slot>on_combo_ShowCtrl_Change(QString)</slot>
   <slot>on_button_recd_clicked(bool)</slot>
+  <slot>on_button_osdTime_clicked(bool)</slot>
  </slots>
 </ui>
