@@ -40,6 +40,7 @@ ColorCheckForm::ColorCheckForm(QWidget *parent) :
     blackhold = ui->lineEdit_blackhold->text().toInt();
     checkDuration = ui->lineEdit_checkDuration->text().toInt();
     delayCheckDuration = ui->lineEdit_delayCheckDuration->text().toInt();
+    delayCameraPowerDuration = ui->lineEdit_delayCameraPowerDuration->text().toInt();
     powerOffDuration = ui->lineEdit_powerOffDuration->text().toInt();
 
     dealStatus = DEALSTATUS_NONE;
@@ -116,6 +117,16 @@ void ColorCheckForm::dealCtrl()
         {
             dealStatus = DEALSTATUS_POWERON;
         }
+        else if( timeunit < (powerOffDuration+delayCameraPowerDuration) )
+        {
+            dealStatus = DEALSTATUS_DELAY_CAMERAPOWER;
+            timeCount = timeunit - powerOffDuration;
+        }
+        else if( timeunit == (powerOffDuration+delayCameraPowerDuration) )
+        {
+            dealStatus = DEALSTATUS_CAMERAPOWER;
+            timeCount = timeunit - powerOffDuration;
+        }
         else if( timeunit <= (powerOffDuration+delayCheckDuration) )
         {
             dealStatus = DEALSTATUS_DELAY_CHECK;
@@ -135,13 +146,13 @@ void ColorCheckForm::dealCtrl()
 
         if( (dealStatus == DEALSTATUS_NONE || dealStatus == DEALSTATUS_POWEROFF) )
         {
-            ui->statusBar->setText(QString("请求断电"));
+            ui->statusBar->setText(QString("请求主机/摄像头断电 gpio2_0~gpio2_7 高电平"));
             QByteArray byteData;
             byteData.append(0x03);
             byteData.append(0x02);
             byteData.append(0x02);
             byteData.append(0x28);
-            byteData.append(0xff);
+            byteData.append(0xff);  // gpio2_0~gpio2_7 高电平
             byteData.append(0x03^0x02^0x02^0x28^0xff);
             byteData.append(0x3a);
             byteData.append(0x3c);
@@ -154,15 +165,34 @@ void ColorCheckForm::dealCtrl()
         }
         else if( dealStatus == DEALSTATUS_POWERON )
         {
-            ui->statusBar->setText(QString("请求上电"));
+            ui->statusBar->setText(QString("请求主机上电 gpio2_4~gpio2_7 低电平"));
 
             QByteArray byteData;
             byteData.append(0x03);
             byteData.append(0x02);
             byteData.append(0x02);
             byteData.append(0x28);
-            byteData.append((char)0x00);
-            byteData.append(0x03^0x02^0x02^0x28^0x00);
+            byteData.append((char)0x0F);    // gpio2_4~gpio2_7 导通
+            byteData.append(0x03^0x02^0x02^0x28^0x0F);
+            byteData.append(0x3a);
+            byteData.append(0x3c);
+            emit colorCheck_sendData(byteData);
+        }
+        else if( dealStatus == DEALSTATUS_DELAY_CAMERAPOWER )
+        {
+            ui->statusBar->setText(QString("延时摄像头上电:%1").arg(timeCount));
+        }
+        else if( dealStatus == DEALSTATUS_CAMERAPOWER )
+        {
+            ui->statusBar->setText(QString("请求摄像头上电 gpio2_0~gpio2_3 低电平"));
+
+            QByteArray byteData;
+            byteData.append(0x03);
+            byteData.append(0x02);
+            byteData.append(0x02);
+            byteData.append(0x28);
+            byteData.append((char)0xF0);     // gpio2_0~gpio2_3 导通
+            byteData.append(0x03^0x02^0x02^0x28^0xF0);
             byteData.append(0x3a);
             byteData.append(0x3c);
             emit colorCheck_sendData(byteData);
@@ -490,12 +520,14 @@ void ColorCheckForm::on_button_Setting_clicked(bool val)
         ui->lineEdit_blackhold->setDisabled(true);
         ui->lineEdit_checkDuration->setDisabled(true);
         ui->lineEdit_delayCheckDuration->setDisabled(true);
+        ui->lineEdit_delayCameraPowerDuration->setDisabled(true);
         ui->lineEdit_powerOffDuration->setDisabled(true);
 
 
         blackhold = ui->lineEdit_blackhold->text().toInt();
         checkDuration = ui->lineEdit_checkDuration->text().toInt();
         delayCheckDuration = ui->lineEdit_delayCheckDuration->text().toInt();
+        delayCameraPowerDuration = ui->lineEdit_delayCameraPowerDuration->text().toInt();
         powerOffDuration = ui->lineEdit_powerOffDuration->text().toInt();
 
         timeunit = -1;
@@ -504,7 +536,7 @@ void ColorCheckForm::on_button_Setting_clicked(bool val)
 
         ui->label_checkCount->setText(QString("测试次数:%1 黑屏次数:%2").arg(checkCount).arg(checkBlankCount));
 
-        qDebug() << blackhold << checkDuration << delayCheckDuration << powerOffDuration;
+        qDebug() << blackhold << checkDuration << delayCheckDuration << delayCameraPowerDuration << powerOffDuration;
 
         dealtimer->start(1000);
     }
@@ -515,6 +547,7 @@ void ColorCheckForm::on_button_Setting_clicked(bool val)
         ui->lineEdit_blackhold->setDisabled(false);
         ui->lineEdit_checkDuration->setDisabled(false);
         ui->lineEdit_delayCheckDuration->setDisabled(false);
+        ui->lineEdit_delayCameraPowerDuration->setDisabled(false);
         ui->lineEdit_powerOffDuration->setDisabled(false);
 
         dealtimer->stop();

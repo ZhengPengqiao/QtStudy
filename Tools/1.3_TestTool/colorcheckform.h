@@ -86,10 +86,13 @@ private:
     int blackhold;
     int checkDuration;
     int delayCheckDuration;
+    int delayCameraPowerDuration;
     int powerOffDuration;
     int timeunit;
     enum{
         DEALSTATUS_POWERON,
+        DEALSTATUS_DELAY_CAMERAPOWER,
+        DEALSTATUS_CAMERAPOWER,
         DEALSTATUS_DELAY_CHECK,
         DEALSTATUS_CHECKING,
         DEALSTATUS_CHECK_OK,
