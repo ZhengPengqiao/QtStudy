@@ -27,7 +27,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>4</number>
       </property>
       <property name="tabsClosable">
        <bool>false</bool>
@@ -53,6 +53,14 @@
       <widget class="ColorCheckForm" name="colorCheckPage">
        <attribute name="title">
         <string>颜色检测测试</string>
+       </attribute>
+      </widget>
+      <widget class="FiguredForm" name="figuredPage">
+       <property name="accessibleName">
+        <string/>
+       </property>
+       <attribute name="title">
+        <string>花屏测试</string>
        </attribute>
       </widget>
      </widget>
@@ -83,6 +91,12 @@
    <class>ColorCheckForm</class>
    <extends>QWidget</extends>
    <header>colorcheckform.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>FiguredForm</class>
+   <extends>QWidget</extends>
+   <header>figuredform.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

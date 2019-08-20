@@ -77,7 +77,8 @@ SOURCES += main.cpp \
     tthbpform.cpp \
     colorcheckform.cpp \
     recdlib/avilib.cpp \
-    recdlib/recdVideo.cpp
+    recdlib/recdVideo.cpp \
+    figuredform.cpp
 
 HEADERS  += \
     mainwindow.h \
@@ -87,14 +88,16 @@ HEADERS  += \
     tthbpform.h \
     colorcheckform.h \
     recdlib/avilib.h \
-    recdlib/recdVideo.h
+    recdlib/recdVideo.h \
+    figuredform.h
 
 FORMS    += \
     mainwindow.ui \
     serialform.ui \
     openglform.ui \
     tthbpform.ui \
-    colorcheckform.ui
+    colorcheckform.ui \
+    figuredform.ui
 
 DISTFILES +=
 

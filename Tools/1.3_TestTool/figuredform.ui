@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>ColorCheckForm</class>
- <widget class="QWidget" name="ColorCheckForm">
+ <class>FiguredForm</class>
+ <widget class="QWidget" name="FiguredForm">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -104,6 +104,13 @@ QPushButton#pushButton_updateVideo{border-image: url(:/assert/ICON/026.png);}</s
         </widget>
        </item>
        <item>
+        <widget class="QPushButton" name="pushButton_updateRect">
+         <property name="text">
+          <string>更新区域模板</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QPushButton" name="pushButton_addRect">
          <property name="text">
           <string>添加监控区域</string>
@@ -163,6 +170,11 @@ QPushButton#pushButton_updateVideo{border-image: url(:/assert/ICON/026.png);}</s
            <string>显示效果图</string>
           </property>
          </item>
+         <item>
+          <property name="text">
+           <string>显示差值图</string>
+          </property>
+         </item>
         </widget>
        </item>
        <item>
@@ -176,9 +188,9 @@ QPushButton#pushButton_updateVideo{border-image: url(:/assert/ICON/026.png);}</s
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_blankCtrl">
+        <widget class="QPushButton" name="pushButton_figuredCtrl">
          <property name="text">
-          <string>黑屏停止检测</string>
+          <string>花屏停止检测</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -188,7 +200,7 @@ QPushButton#pushButton_updateVideo{border-image: url(:/assert/ICON/026.png);}</s
        <item>
         <widget class="QLabel" name="label_checkCount">
          <property name="text">
-          <string>测试次数:0 黑屏次数:0</string>
+          <string>测试次数:0 花屏次数:0</string>
          </property>
         </widget>
        </item>
@@ -236,14 +248,14 @@ QPushButton#pushButton_updateVideo{border-image: url(:/assert/ICON/026.png);}</s
        <item>
         <widget class="QLabel" name="label_2">
          <property name="text">
-          <string>黑屏阀值(&lt;=):</string>
+          <string>花屏阀值(&gt;=):</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit_blackhold">
+        <widget class="QLineEdit" name="lineEdit_figuredHold">
          <property name="text">
-          <string>200</string>
+          <string>15</string>
          </property>
         </widget>
        </item>
@@ -442,12 +454,12 @@ QPushButton#pushButton_updateVideo{border-image: url(:/assert/ICON/026.png);}</s
   <connection>
    <sender>button_Open</sender>
    <signal>clicked()</signal>
-   <receiver>ColorCheckForm</receiver>
+   <receiver>FiguredForm</receiver>
    <slot>on_button_OpenVideo_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>158</x>
-     <y>25</y>
+     <x>242</x>
+     <y>36</y>
     </hint>
     <hint type="destinationlabel">
      <x>490</x>
@@ -458,7 +470,7 @@ QPushButton#pushButton_updateVideo{border-image: url(:/assert/ICON/026.png);}</s
   <connection>
    <sender>button_CLose</sender>
    <signal>clicked()</signal>
-   <receiver>ColorCheckForm</receiver>
+   <receiver>FiguredForm</receiver>
    <slot>on_button_CloseVideo_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -474,7 +486,7 @@ QPushButton#pushButton_updateVideo{border-image: url(:/assert/ICON/026.png);}</s
   <connection>
    <sender>button_Start</sender>
    <signal>clicked()</signal>
-   <receiver>ColorCheckForm</receiver>
+   <receiver>FiguredForm</receiver>
    <slot>on_button_StartVideo_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -490,7 +502,7 @@ QPushButton#pushButton_updateVideo{border-image: url(:/assert/ICON/026.png);}</s
   <connection>
    <sender>button_Stop</sender>
    <signal>clicked()</signal>
-   <receiver>ColorCheckForm</receiver>
+   <receiver>FiguredForm</receiver>
    <slot>on_button_StopVideo_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -506,7 +518,7 @@ QPushButton#pushButton_updateVideo{border-image: url(:/assert/ICON/026.png);}</s
   <connection>
    <sender>combo_Video</sender>
    <signal>currentIndexChanged(QString)</signal>
-   <receiver>ColorCheckForm</receiver>
+   <receiver>FiguredForm</receiver>
    <slot>on_combo_Video_Change(QString)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -522,11 +534,11 @@ QPushButton#pushButton_updateVideo{border-image: url(:/assert/ICON/026.png);}</s
   <connection>
    <sender>pushButton_addRect</sender>
    <signal>clicked()</signal>
-   <receiver>ColorCheckForm</receiver>
+   <receiver>FiguredForm</receiver>
    <slot>on_button_AddRect_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>646</x>
+     <x>782</x>
      <y>36</y>
     </hint>
     <hint type="destinationlabel">
@@ -538,7 +550,7 @@ QPushButton#pushButton_updateVideo{border-image: url(:/assert/ICON/026.png);}</s
   <connection>
    <sender>pushButton_Setting</sender>
    <signal>clicked(bool)</signal>
-   <receiver>ColorCheckForm</receiver>
+   <receiver>FiguredForm</receiver>
    <slot>on_button_Setting_clicked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -554,7 +566,7 @@ QPushButton#pushButton_updateVideo{border-image: url(:/assert/ICON/026.png);}</s
   <connection>
    <sender>pushButton_tthbp</sender>
    <signal>clicked(bool)</signal>
-   <receiver>ColorCheckForm</receiver>
+   <receiver>FiguredForm</receiver>
    <slot>on_button_TTHBP_clicked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -568,10 +580,10 @@ QPushButton#pushButton_updateVideo{border-image: url(:/assert/ICON/026.png);}</s
    </hints>
   </connection>
   <connection>
-   <sender>pushButton_blankCtrl</sender>
+   <sender>pushButton_figuredCtrl</sender>
    <signal>clicked(bool)</signal>
-   <receiver>ColorCheckForm</receiver>
-   <slot>on_button_BlankCtrl_clicked(bool)</slot>
+   <receiver>FiguredForm</receiver>
+   <slot>on_button_FiguredCtrl_clicked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
      <x>342</x>
@@ -586,7 +598,7 @@ QPushButton#pushButton_updateVideo{border-image: url(:/assert/ICON/026.png);}</s
   <connection>
    <sender>comboBox_CheckColor</sender>
    <signal>currentIndexChanged(QString)</signal>
-   <receiver>ColorCheckForm</receiver>
+   <receiver>FiguredForm</receiver>
    <slot>on_combo_CheckColor_Change(QString)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -602,7 +614,7 @@ QPushButton#pushButton_updateVideo{border-image: url(:/assert/ICON/026.png);}</s
   <connection>
    <sender>comboBox_showCtrl</sender>
    <signal>currentIndexChanged(QString)</signal>
-   <receiver>ColorCheckForm</receiver>
+   <receiver>FiguredForm</receiver>
    <slot>on_combo_ShowCtrl_Change(QString)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -618,11 +630,11 @@ QPushButton#pushButton_updateVideo{border-image: url(:/assert/ICON/026.png);}</s
   <connection>
    <sender>pushButton_recd</sender>
    <signal>clicked(bool)</signal>
-   <receiver>ColorCheckForm</receiver>
+   <receiver>FiguredForm</receiver>
    <slot>on_button_recd_clicked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>806</x>
+     <x>779</x>
      <y>70</y>
     </hint>
     <hint type="destinationlabel">
@@ -634,7 +646,7 @@ QPushButton#pushButton_updateVideo{border-image: url(:/assert/ICON/026.png);}</s
   <connection>
    <sender>pushButton_OSDTime</sender>
    <signal>clicked(bool)</signal>
-   <receiver>ColorCheckForm</receiver>
+   <receiver>FiguredForm</receiver>
    <slot>on_button_osdTime_clicked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -644,6 +656,22 @@ QPushButton#pushButton_updateVideo{border-image: url(:/assert/ICON/026.png);}</s
     <hint type="destinationlabel">
      <x>418</x>
      <y>-3</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_updateRect</sender>
+   <signal>clicked()</signal>
+   <receiver>FiguredForm</receiver>
+   <slot>on_button_updateRect_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>696</x>
+     <y>36</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>816</x>
+     <y>28</y>
     </hint>
    </hints>
   </connection>
@@ -658,10 +686,11 @@ QPushButton#pushButton_updateVideo{border-image: url(:/assert/ICON/026.png);}</s
   <slot>on_Label_LinkActivited(QString)</slot>
   <slot>on_button_Setting_clicked(bool)</slot>
   <slot>on_button_TTHBP_clicked(bool)</slot>
-  <slot>on_button_BlankCtrl_clicked(bool)</slot>
+  <slot>on_button_FiguredCtrl_clicked(bool)</slot>
   <slot>on_combo_CheckColor_Change(QString)</slot>
   <slot>on_combo_ShowCtrl_Change(QString)</slot>
   <slot>on_button_recd_clicked(bool)</slot>
   <slot>on_button_osdTime_clicked(bool)</slot>
+  <slot>on_button_updateRect_clicked()</slot>
  </slots>
 </ui>
