@@ -191,8 +191,8 @@ void ColorCheckForm::dealCtrl()
             byteData.append(0x02);
             byteData.append(0x02);
             byteData.append(0x28);
-            byteData.append((char)0xF0);     // gpio2_0~gpio2_3 导通
-            byteData.append(0x03^0x02^0x02^0x28^0xF0);
+            byteData.append((char)0x00);     // gpio2_0~gpio2_7 导通
+            byteData.append(0x03^0x02^0x02^0x28^0x00);
             byteData.append(0x3a);
             byteData.append(0x3c);
             emit colorCheck_sendData(byteData);
@@ -233,6 +233,9 @@ void ColorCheckForm::dealCtrl()
             {
                 checkBlankCount++;  // 记录上电黑屏的次数
                 ui->statusBar->setText("本次上电, 检测到黑屏");
+                ui->listWidget_ErrTimes->
+                        addItem(new QListWidgetItem(QString("黑屏 %1:").arg(checkBlankCount)
+                            + QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz")));
             }
             else
             {
@@ -329,7 +332,8 @@ void ColorCheckForm::ReadFrame()
 
             if( osdTime )
             {
-                QString current_date = time.toString("yyyy.MM.dd hh:mm:ss.zzz");
+                QString current_date = time.toString("yyyy.MM.dd hh:mm:ss.zzz")+
+                        QString("  checkCount:%1 checkBlankCount:%2").arg(checkCount).arg(checkBlankCount);
                 cv::putText(dst_frame, current_date.toStdString().c_str(), cv::Point(0, 20),
                         cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255,0,0,1));
             }
@@ -550,7 +554,7 @@ void ColorCheckForm::on_button_Setting_clicked(bool val)
         checkBlankCount = 0;
 
         ui->label_checkCount->setText(QString("测试次数:%1 黑屏次数:%2").arg(checkCount).arg(checkBlankCount));
-
+        ui->listWidget_ErrTimes->clear();
         qDebug() << blackhold << checkDuration << delayCheckDuration << delayCameraPowerDuration << powerOffDuration;
 
         dealtimer->start(1000);
@@ -708,3 +712,21 @@ void ColorCheckForm::on_button_osdTime_clicked(bool val)
         ui->statusBar->setText("图像上将 会 叠加时间");
     }
 }
+
+
+int ColorCheckForm::cameraDevices(vector<string>& list)
+{
+    return 1;
+}
+
+
+/*************************************************************************
+视频质量诊断----雪花噪声检测
+一、雪花噪声即椒盐噪声，以前黑白电视常见的噪声现象。
+二、原理
+准备0°，45°，90°，135°4个方向的卷积模板。
+用图像先和四个模板做卷积，用四个卷积绝对值最小值Min来检测噪声点。
+求灰度图gray与其中值滤波图median。
+判断噪声点：fabs(median-gray)>10 && min>0.1。
+噪声点占整幅图像的比较即为雪花噪声率。
+************************************************************************/

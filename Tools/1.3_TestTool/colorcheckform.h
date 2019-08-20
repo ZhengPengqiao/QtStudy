@@ -34,6 +34,7 @@ public:
     void checkColorCtrl(QString color);
     void checkShowCtrl(QString color);
     void reOpenRecd();
+    int cameraDevices(vector<string>& list);
 
 public slots:
     void on_button_CloseVideo_clicked();
