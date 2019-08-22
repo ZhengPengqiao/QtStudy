@@ -68,7 +68,6 @@ win32: LIBS += -llibopencv_imgproc340
 win32: LIBS += -llibopencv_flann340
 win32: LIBS += -llibopencv_core340
 
-
 SOURCES += main.cpp \
     mainwindow.cpp \
     customtabstyle.cpp \
