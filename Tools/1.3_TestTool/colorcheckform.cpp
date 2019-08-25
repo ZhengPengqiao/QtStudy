@@ -247,50 +247,49 @@ void ColorCheckForm::dealCtrl()
 
 void ColorCheckForm::ReadFrame()
 {
-    Mat g_GaryFrame;
-    Mat g_GrayDetectedEdges;
-    Mat g_cannyDetectedEdges;
-    vector<Vec2f> lines;
+    cv::Mat g_GaryFrame;
+    cv::Mat g_GrayDetectedEdges;
+    cv::Mat g_cannyDetectedEdges;
+    vector<cv::Vec2f> lines;
 
     if(capture.isOpened())
     {
         capture >> frame;
         if(!frame.empty())
         {
-            Mat meanImage, mat_mean, mat_stddev;
+            cv::Mat meanImage, mat_mean, mat_stddev;
             //  OpenCV中Mat读入的图像是BGR格式，要转换为RGB格式
-            cvtColor(frame, dst_frame, CV_BGR2RGB);
-
-            rectangle(dst_frame, Rect(rect.x(),rect.y(),rect.width(),rect.height()),
-                      Scalar(255, 0, 0), 1, LINE_8, 0);
+            cv::cvtColor(frame, dst_frame, CV_BGR2RGB);
+            rectangle(dst_frame, cv::Rect(rect.x(),rect.y(),rect.width(),rect.height()),
+                      cv::Scalar(255, 0, 0), 1, cv::LINE_8, 0);
 
 
             for( int i = 0; i < labelImageList.count(); i++ )
             {
-                Rect rect(rectList.at(i).x(),
+                cv::Rect rect(rectList.at(i).x(),
                           rectList.at(i).y(),
                           rectList.at(i).width(),
                           rectList.at(i).height());
 
 
-                rectangle(dst_frame, rect, Scalar(colorList.at(i)->red(), colorList.at(i)->green(), colorList.at(i)->blue()), 1, LINE_8, 0);                
+                cv::rectangle(dst_frame, rect, cv::Scalar(colorList.at(i)->red(), colorList.at(i)->green(), colorList.at(i)->blue()), 1, cv::LINE_8, 0);
 
                 dst_frame(rect).copyTo(roiMat);
                 if( checkColor == CHECKCOLOR_RED )
                 {
-                    vector<Mat> channels;
+                    vector<cv::Mat> channels;
                     split(roiMat, channels);//将原图的red颜色通道分离
                     meanImage = channels.at(0);
                 }
                 else if( checkColor == CHECKCOLOR_GREEN )
                 {
-                    vector<Mat> channels;
+                    vector<cv::Mat> channels;
                     split(roiMat, channels);//将原图的green颜色通道分离
                     meanImage = channels.at(1);
                 }
                 else if( checkColor == CHECKCOLOR_BLUE )
                 {
-                    vector<Mat> channels;
+                    vector<cv::Mat> channels;
                     split(roiMat, channels);//将原图的blue颜色通道分离
                     meanImage = channels.at(2);
                 }
@@ -327,11 +326,12 @@ void ColorCheckForm::ReadFrame()
             }
 
             QDateTime time = QDateTime::currentDateTime();
+
             if( osdTime )
             {
                 QString current_date = time.toString("yyyy.MM.dd hh:mm:ss.zzz");
-                putText(dst_frame, current_date.toStdString().c_str(), Point(0, 20),
-                        FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255,0,0,1));
+                cv::putText(dst_frame, current_date.toStdString().c_str(), cv::Point(0, 20),
+                        cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255,0,0,1));
             }
 
 
@@ -375,11 +375,26 @@ void ColorCheckForm::on_button_OpenVideo_clicked()
         qDebug() << "on_button_OpenVideo_clicked VideoNum:" << video_number;
     }
 
-    capture_framew = capture.get(CV_CAP_PROP_FRAME_WIDTH);
-    capture_frameh = capture.get(CV_CAP_PROP_FRAME_HEIGHT);
-    capture_fps = capture.get(CV_CAP_PROP_FPS);
-    ui->statusBar->setText(QString("Capture W=%1 H=%2 Fps=%3").arg(capture_framew).arg(capture_frameh).arg(capture_fps));
-
+    if( capture.isOpened() )
+    {
+        capture_framew = capture.get(CV_CAP_PROP_FRAME_WIDTH);
+        capture_frameh = capture.get(CV_CAP_PROP_FRAME_HEIGHT);
+        capture_fps = capture.get(CV_CAP_PROP_FPS);
+        ui->statusBar->setText(QString("Capture W=%1 H=%2 Fps=%3").arg(capture_framew).arg(capture_frameh).arg(capture_fps));
+    }
+    else
+    {
+        if( video_mode == 1 )
+        {
+            ui->statusBar->setText(file_name + ": 视频文件打开失败");
+            qDebug() << "open file_name:" << file_name << "Err";
+        }
+        else
+        {
+            ui->statusBar->setText(QString("video") + video_number + QString(": 视频文件打开失败") );
+            qDebug() << "open VideoNum:" << video_number << "Err";
+        }
+    }
 }
 
 

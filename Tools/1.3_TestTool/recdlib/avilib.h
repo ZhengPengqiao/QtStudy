@@ -32,19 +32,19 @@
 
 //SLM
 #ifdef __CYGWIN__
-#include <sys/types.h>
+    #include <sys/types.h>
 #elif defined WIN32
-#if defined __GNUWIN32__
-#include <stdint.h>
+//    #if defined __GNUWIN32__
+        #include <stdint.h>
+//    #else
+//        #define uint32_t unsigned __int32
+//        #define uint8_t unsigned __int8
+//        #define uint16_t unsigned __int16
+//        #define uint64_t unsigned __int64
+//    #endif
 #else
-#define uint32_t unsigned __int32
-#define uint8_t unsigned __int8
-#define uint16_t unsigned __int16
-#define uint64_t unsigned __int64
-#endif
-#else
-#include <unistd.h>
-#include <inttypes.h>
+    #include <unistd.h>
+    #include <inttypes.h>
 #endif
 
 
