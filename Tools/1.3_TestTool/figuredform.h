@@ -13,7 +13,9 @@
 #include "opencv2/imgproc/imgproc.hpp"
 
 
-using namespace cv;
+/* winnt.h头文件是window系统自带的，然后用到了ACCESS_MASK作为类型别名，而OpenCV里面也用到了ACCESS_MASK，
+如果代码中使用了全局using namespace cv;的话，就会造成两个ACCESS_MASK冲突，傻傻分不清楚。
+*/
 using namespace std;
 
 namespace Ui {
@@ -32,7 +34,7 @@ public:
     void checkColorCtrl(QString color);
     void checkShowCtrl(QString color);
     void reOpenRecd();
-    int getPiexSum(Mat &image);
+    int getPiexSum(cv::Mat &image);
     int cameraDevices(vector<string>& list);
 
 public slots:
@@ -68,9 +70,9 @@ private:
     Ui::FiguredForm *ui;
     QTimer *dealtimer;
     QTimer *timer;
-    VideoCapture capture;
-    Mat frame;
-    Mat dst_frame;
+    cv::VideoCapture capture;
+    cv::Mat frame;
+    cv::Mat dst_frame;
     QString file_name;
     int video_mode;
     int video_number;
@@ -78,13 +80,13 @@ private:
 
     QRect rect;
     QList<QRect> rectList;
-    QList<Mat*> matList;
+    QList<cv::Mat*> matList;
     QList<bool> imageChangeList;
     QList<QLabel*> labelImageList;
     QList<QLabel*> labelNameList;
     QList<QColor*> colorList;
     QList<double> meanList;
-    Mat roiMat;
+    cv::Mat roiMat;
     QImage roiimage;
 
 
