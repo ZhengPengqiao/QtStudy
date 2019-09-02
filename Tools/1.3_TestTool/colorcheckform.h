@@ -133,6 +133,10 @@ private:
     unsigned int now_time;
     int recd_file_time;
     qint64 old_writeTime;
+    int frameCount;
+    double fps;
+    double ts = 0;
+    double te = 0;
 };
 
 

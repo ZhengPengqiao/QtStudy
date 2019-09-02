@@ -64,6 +64,10 @@ FiguredForm::FiguredForm(QWidget *parent) :
     recd_file_time = ui->lineEdit_recd_file_time->text().toInt();
     osdTime = !ui->pushButton_OSDTime->isChecked();
     old_writeTime = 0;
+    ts = 0;
+    te = 0;
+    frameCount = 0;
+    capture_fps = 0.0;
 }
 
 
@@ -260,6 +264,7 @@ void FiguredForm::ReadFrame()
 
     if(capture.isOpened())
     {
+        frameCount++;
         capture >> frame;
         if(!frame.empty())
         {
@@ -361,8 +366,18 @@ void FiguredForm::ReadFrame()
                         QString("  checkCount:%1 checkFiguredCount:%2").arg(checkCount).arg(checkFiguredCount);
                 cv::putText(dst_frame, current_date.toStdString().c_str(), cv::Point(0, 20),
                         cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255,0,0,1));
-            }
 
+                if( frameCount%5 == 0 )
+                {
+                    te = (double)cv::getTickCount()/cv::getTickFrequency();
+                    capture_fps = 5.0 / (te - ts);
+                    ts = (double)cv::getTickCount()/cv::getTickFrequency();
+                }
+                QString fpsString = QString("FPS: %1").arg(capture_fps);
+                // 将帧率信息写在输出帧上
+                cv::putText(dst_frame, fpsString.toStdString().c_str(), cv::Point(5, 40), cv::FONT_HERSHEY_SIMPLEX,
+                        0.5, cv::Scalar(0, 0, 0));
+            }
 
             // 将抓取到的帧，转换为QImage格式。QImage::Format_RGB888不同的摄像头用不同的格式。
             QImage image((const uchar*)dst_frame.data, dst_frame.cols, dst_frame.rows, QImage::Format_RGB888);
@@ -451,7 +466,7 @@ void FiguredForm::on_button_StartVideo_clicked()
         return;
     }
 
-    timer->start(1000/capture_fps);
+    timer->start(30);
 
     ui->statusBar->setText("StartVideo");
     qDebug() << "on_button_StartVideo_clicked";

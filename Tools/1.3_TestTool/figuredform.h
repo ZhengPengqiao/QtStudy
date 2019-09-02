@@ -89,7 +89,6 @@ private:
     cv::Mat roiMat;
     QImage roiimage;
 
-
     int blackhold;
     int checkDuration;
     int delayCheckDuration;
@@ -132,13 +131,16 @@ private:
     RecdVideo recdVideo;
     int capture_frameh;
     int capture_framew;
-    int capture_fps;
 
     unsigned int start_time;
     unsigned int now_time;
     int recd_file_time;
     qint64 old_writeTime;
     int figuredSum;
+    int frameCount;
+    double capture_fps;
+    double ts = 0;
+    double te = 0;
 };
 
 
