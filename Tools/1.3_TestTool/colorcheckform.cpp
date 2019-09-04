@@ -671,16 +671,23 @@ void ColorCheckForm::on_combo_ShowCtrl_Change(QString str)
 
 void ColorCheckForm::on_button_recd_clicked(bool val)
 {
+    int ret = 0;
     recd_file_time = ui->lineEdit_recd_file_time->text().toInt();
-
+    qDebug() << "ColorCheckForm::on_button_recd_clicked:" << val;
     if( val )
     {
         QDateTime time = QDateTime::currentDateTime();
         start_time = time.toTime_t();
-        QString current_date = time.toString("yyyy.MM.dd hh:mm:ss.zzz");
+        QString current_date = time.toString("yyyyMMdd_hhmmss_zzz");
+
         // 点击了开始按钮,  将按钮上的文字显示关闭录像
-        recdVideo.open((current_date+".avi").toStdString().c_str(),
+        qDebug() << "正在录像文件: " << current_date+".avi";
+        ret = recdVideo.open((current_date+".avi").toStdString().c_str(),
                         capture_framew, capture_frameh, capture_fps, "mjpg");
+        if( ret != RecdVideo::RECDVIDEO_RETURN_SUCCESS )
+        {
+            ui->statusBar->setText("录像文件打开失败");
+        }
         ui->pushButton_recd->setText("正在录像文件(点击关闭):"+current_date);
     }
     else
@@ -691,7 +698,11 @@ void ColorCheckForm::on_button_recd_clicked(bool val)
                            recdVideo.videoFrames()/(now_time-start_time),"mjpg");
         // 点击了开始按钮,  将按钮上的文字显示关闭录像
         ui->pushButton_recd->setText("打开录像");
-        recdVideo.close();
+        ret = recdVideo.close();
+        if( ret != RecdVideo::RECDVIDEO_RETURN_SUCCESS )
+        {
+            ui->statusBar->setText("录像文件关闭失败");
+        }
     }
 }
 
