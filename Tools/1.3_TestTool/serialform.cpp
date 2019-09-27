@@ -79,14 +79,13 @@ void SerialForm::listWidget_SendHistory_onClick(QModelIndex index)
 
 void SerialForm::button_OpenSerial_onClick()
 {
+    if(m_serialPort != nullptr )//如果串口已经打开了 先给他关闭了
+    {
+        button_CloseSerial_onClick();
+    }
 
     m_serialPort = new QSerialPort();//实例化串口类一个对象
 
-    if(m_serialPort->isOpen())//如果串口已经打开了 先给他关闭了
-    {
-        m_serialPort->clear();
-        m_serialPort->close();
-    }
 
     ui->label_SerialStatusBack->setStyleSheet("border-image: url(:/assert/ICON/101.png);");
 
@@ -96,6 +95,7 @@ void SerialForm::button_OpenSerial_onClick()
     if(!m_serialPort->open(QIODevice::ReadWrite))//用ReadWrite 的模式尝试打开串口
     {
         qDebug()<<ui->comboBox_SerialPort->currentText()<<" 打开失败!";
+        ui->label_SerialStatusBack->setStyleSheet("border-image: url(:/assert/ICON/103.png);");
         return;
     }
     //打开成功
@@ -121,6 +121,7 @@ void SerialForm::button_CloseSerial_onClick()
         m_serialPort->close();
     }
     delete m_serialPort;
+    m_serialPort = NULL;
 
     ui->label_SerialStatusBack->setStyleSheet("border-image: url(:/assert/ICON/102.png);");
 }

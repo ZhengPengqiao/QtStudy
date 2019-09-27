@@ -38,5 +38,6 @@
         <file>assert/ICON/076.png</file>
         <file>assert/ICON/101.png</file>
         <file>assert/ICON/102.png</file>
+        <file>assert/ICON/103.png</file>
     </qresource>
 </RCC>
