@@ -47,4 +47,4 @@ CMakeLists.txt.user*
 .qmake.stash
 
 Doc/opencv-3.4.0_install
-Doc/opencv-3.4.0_install_win_mingw32
+Doc/opencv-3.4.1_install_win_mingw32

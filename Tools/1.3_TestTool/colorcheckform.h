@@ -137,6 +137,7 @@ private:
     double fps;
     double ts = 0;
     double te = 0;
+    int needSaveErrImage;
 };
 
 

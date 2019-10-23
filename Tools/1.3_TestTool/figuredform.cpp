@@ -68,6 +68,7 @@ FiguredForm::FiguredForm(QWidget *parent) :
     te = 0;
     frameCount = 0;
     capture_fps = 0.0;
+    needSaveErrImage = 0;
 }
 
 
@@ -155,8 +156,8 @@ void FiguredForm::dealCtrl()
             byteData.append(0x02);
             byteData.append(0x02);
             byteData.append(0x28);
-            byteData.append(0xf0);  // gpio2_0~gpio2_7 高电平
-            byteData.append(0x03^0x02^0x02^0x28^0xf0);
+            byteData.append(0xff);  // gpio2_0~gpio2_7 高电平
+            byteData.append(0x03^0x02^0x02^0x28^0xff);
             byteData.append(0x3a);
             byteData.append(0x3c);
             emit colorCheck_sendData(byteData);
@@ -175,8 +176,8 @@ void FiguredForm::dealCtrl()
             byteData.append(0x02);
             byteData.append(0x02);
             byteData.append(0x28);
-            byteData.append((char)0x00);    // gpio2_4~gpio2_7 导通
-            byteData.append(0x03^0x02^0x02^0x28^0x00);
+            byteData.append((char)0x0f);    // gpio2_4~gpio2_7 导通
+            byteData.append(0x03^0x02^0x02^0x28^0x0f);
             byteData.append(0x3a);
             byteData.append(0x3c);
             emit colorCheck_sendData(byteData);
@@ -194,8 +195,8 @@ void FiguredForm::dealCtrl()
             byteData.append(0x02);
             byteData.append(0x02);
             byteData.append(0x28);
-            byteData.append((char)0x0F);     // gpio2_0~gpio2_7 导通
-            byteData.append(0x03^0x02^0x02^0x28^0x0F);
+            byteData.append((char)0x00);     // gpio2_0~gpio2_7 导通
+            byteData.append(0x03^0x02^0x02^0x28^0x00);
             byteData.append(0x3a);
             byteData.append(0x3c);
             emit colorCheck_sendData(byteData);
@@ -239,6 +240,9 @@ void FiguredForm::dealCtrl()
                 ui->listWidget_ErrTimes->
                         addItem(new QListWidgetItem(QString("花屏 %1:").arg(checkFiguredCount)
                             + QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz")));
+                needSaveErrImage = 1;
+                ui->statusBar->setText("等待保存错误图片");
+                qDebug() << "等待保存错误图片" ;
             }
             else
             {
@@ -396,6 +400,16 @@ void FiguredForm::ReadFrame()
                     reOpenRecd();
                 }
                 recdVideo.WriteVideoData(frame_image, -1);
+            }
+
+
+            // 保存错误图片
+            if( needSaveErrImage == 1 )
+            {
+                qDebug() << "saving err image";
+                image.save(QString("花屏 %1").arg(checkFiguredCount), "JPG", 100);
+                needSaveErrImage = 0;
+                qDebug() << "save err image ok";
             }
         }
     }

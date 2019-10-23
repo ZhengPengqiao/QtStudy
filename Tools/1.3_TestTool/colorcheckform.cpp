@@ -69,6 +69,8 @@ ColorCheckForm::ColorCheckForm(QWidget *parent) :
     te = 0;
     frameCount = 0;
     fps = 0.0;
+
+    needSaveErrImage = 0;
 }
 
 
@@ -240,6 +242,9 @@ void ColorCheckForm::dealCtrl()
                 ui->listWidget_ErrTimes->
                         addItem(new QListWidgetItem(QString("黑屏 %1:").arg(checkBlankCount)
                             + QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz")));
+                needSaveErrImage = 1;
+                ui->statusBar->setText("等待保存错误图片");
+                qDebug() << "等待保存错误图片" ;
             }
             else
             {
@@ -374,6 +379,17 @@ void ColorCheckForm::ReadFrame()
                 }
                 recdVideo.WriteVideoData(frame_image, -1);
             }
+
+
+            // 保存错误图片
+            if( needSaveErrImage == 1 )
+            {
+                qDebug() << "saving err image";
+                image.save(QString("黑屏 %1").arg(checkBlankCount), "JPG", 100);
+                needSaveErrImage = 0;
+                qDebug() << "save err image ok";
+            }
+
         }
     }
 }
