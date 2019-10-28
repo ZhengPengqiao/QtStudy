@@ -335,8 +335,11 @@ void ColorCheckForm::ReadFrame()
                         .arg(rect.x).arg(rect.y)
                         .arg(rect.width).arg(rect.height)
                         .arg(QString::number(meanList.at(i), 'f', 1));
-
                 labelNameList.at(i)->setText(label_name);
+
+
+                cv::putText(dst_frame, "Val:"+QString::number(meanList.at(i), 'f', 1).toStdString(), cv::Point(rect.x, rect.y), cv::FONT_HERSHEY_SIMPLEX,
+                        0.5, cv::Scalar(colorList.at(i)->red(), colorList.at(i)->green(), colorList.at(i)->blue()));
             }
 
             QDateTime time = QDateTime::currentDateTime();
