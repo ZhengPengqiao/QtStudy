@@ -58,6 +58,7 @@ FiguredForm::FiguredForm(QWidget *parent) :
     ui->label_checkCount->setText(QString("测试次数:%1 花屏次数:%2").arg(checkCount).arg(checkFiguredCount));
     checkColorCtrl(ui->comboBox_CheckColor->currentText());
     checkShowCtrl(ui->comboBox_showCtrl->currentText());
+    checkOperatCtrl(ui->comboBox_operat->currentText());
     capture_frameh = 0;
     capture_framew = 0;
     capture_fps = 0;
@@ -84,13 +85,27 @@ QList<bool> FiguredForm::checkBlackDeal()
     QList<bool> qlist_ret;
     for(i = 0; i < labelImageList.count(); i++)
     {
-        if( meanList[i] >= blackhold )
+        if( checkOperat == CHECKOPERAT_HIG )
         {
-            qlist_ret.append(true);
+            if( meanList[i] >= blackhold )
+            {
+                qlist_ret.append(true);
+            }
+            else
+            {
+                qlist_ret.append(false);
+            }
         }
         else
         {
-            qlist_ret.append(false);
+            if( meanList[i] <= blackhold )
+            {
+                qlist_ret.append(true);
+            }
+            else
+            {
+                qlist_ret.append(false);
+            }
         }
     }
     return qlist_ret;
@@ -504,6 +519,13 @@ void FiguredForm::on_combo_Video_Change(QString str)
     qDebug() << "on_combo_Video_Change" << str;
 }
 
+
+void FiguredForm::on_combo_CheckOperat_Change(QString operat)
+{
+    checkOperatCtrl(operat);
+}
+
+
 void FiguredForm::getVideoMode(QString str)
 {
     if( str == "Camera Video0" )
@@ -703,6 +725,21 @@ void FiguredForm::checkShowCtrl(QString color)
     {
         showCtrl = SHOWCTRL_RGB;
         ui->statusBar->setText("Show Ctrl : 显示原图");
+    }
+}
+
+
+void FiguredForm::checkOperatCtrl(QString oper)
+{
+    if( oper == ">=" )
+    {
+        checkOperat = CHECKOPERAT_HIG;
+        ui->statusBar->setText("Check >=");
+    }
+    else
+    {
+        checkOperat = CHECKOPERAT_LOW;
+        ui->statusBar->setText("Check <=");
     }
 }
 
