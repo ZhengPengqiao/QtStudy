@@ -59,6 +59,7 @@ ColorCheckForm::ColorCheckForm(QWidget *parent) :
     ui->label_checkCount->setText(QString("测试次数:%1 黑屏次数:%2").arg(checkCount).arg(checkBlankCount));
     checkColorCtrl(ui->comboBox_CheckColor->currentText());
     checkShowCtrl(ui->comboBox_showCtrl->currentText());
+    checkOperatCtrl(ui->comboBox_operat->currentText());
     capture_frameh = 0;
     capture_framew = 0;
     capture_fps = 0;
@@ -86,13 +87,27 @@ QList<bool> ColorCheckForm::checkBlackDeal()
     QList<bool> qlist_ret;
     for(i = 0; i < labelImageList.count(); i++)
     {
-        if( meanList[i] < blackhold )
+        if( checkOperat == CHECKOPERAT_HIG )
         {
-            qlist_ret.append(true);
+            if( meanList[i] >= blackhold )
+            {
+                qlist_ret.append(true);
+            }
+            else
+            {
+                qlist_ret.append(false);
+            }
         }
         else
         {
-            qlist_ret.append(false);
+            if( meanList[i] <= blackhold )
+            {
+                qlist_ret.append(true);
+            }
+            else
+            {
+                qlist_ret.append(false);
+            }
         }
     }
     return qlist_ret;
@@ -631,7 +646,6 @@ void ColorCheckForm::on_button_BlankCtrl_clicked(bool val)
     }
 }
 
-
 void ColorCheckForm::checkColorCtrl(QString color)
 {
     if( color == "Blue" )
@@ -656,6 +670,19 @@ void ColorCheckForm::checkColorCtrl(QString color)
     }
 }
 
+void ColorCheckForm::checkOperatCtrl(QString oper)
+{
+    if( oper == ">=" )
+    {
+        checkOperat = CHECKOPERAT_HIG;
+        ui->statusBar->setText("Check >=");
+    }
+    else
+    {
+        checkOperat = CHECKOPERAT_LOW;
+        ui->statusBar->setText("Check <=");
+    }
+}
 
 void ColorCheckForm::checkShowCtrl(QString color)
 {
@@ -686,6 +713,13 @@ void ColorCheckForm::on_combo_CheckColor_Change(QString color)
 void ColorCheckForm::on_combo_ShowCtrl_Change(QString str)
 {
     checkShowCtrl(str);
+}
+
+
+
+void ColorCheckForm::on_combo_CheckOperat_Change(QString operat)
+{
+    checkOperatCtrl(operat);
 }
 
 void ColorCheckForm::on_button_recd_clicked(bool val)

@@ -32,6 +32,7 @@ public:
 
     void getVideoMode(QString str);
     void checkColorCtrl(QString color);
+    void checkOperatCtrl(QString oper);
     void checkShowCtrl(QString color);
     void reOpenRecd();
     int cameraDevices(vector<string>& list);
@@ -55,6 +56,7 @@ public slots:
     void on_button_TTHBP_clicked(bool val);
     void on_button_BlankCtrl_clicked(bool val);
     void on_combo_CheckColor_Change(QString color);
+    void on_combo_CheckOperat_Change(QString operat);
     void on_combo_ShowCtrl_Change(QString str);
     void on_button_osdTime_clicked(bool val);
 
@@ -118,6 +120,11 @@ private:
         CHECKCOLOR_GREEN,
         CHECKCOLOR_GRAY,
     }checkColor;
+
+    enum{
+        CHECKOPERAT_LOW,
+        CHECKOPERAT_HIG,
+    }checkOperat;
 
     enum{
         SHOWCTRL_RGB,

@@ -236,8 +236,28 @@ QPushButton#pushButton_updateVideo{border-image: url(:/assert/ICON/026.png);}</s
        <item>
         <widget class="QLabel" name="label_2">
          <property name="text">
-          <string>黑屏阀值(&lt;=):</string>
+          <string>黑屏阀值</string>
          </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="comboBox_operat">
+         <property name="maximumSize">
+          <size>
+           <width>50</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <item>
+          <property name="text">
+           <string>&lt;=</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>&gt;=</string>
+          </property>
+         </item>
         </widget>
        </item>
        <item>
@@ -446,8 +466,8 @@ QPushButton#pushButton_updateVideo{border-image: url(:/assert/ICON/026.png);}</s
    <slot>on_button_OpenVideo_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>158</x>
-     <y>25</y>
+     <x>252</x>
+     <y>36</y>
     </hint>
     <hint type="destinationlabel">
      <x>490</x>
@@ -622,7 +642,7 @@ QPushButton#pushButton_updateVideo{border-image: url(:/assert/ICON/026.png);}</s
    <slot>on_button_recd_clicked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>806</x>
+     <x>779</x>
      <y>70</y>
     </hint>
     <hint type="destinationlabel">
@@ -647,6 +667,22 @@ QPushButton#pushButton_updateVideo{border-image: url(:/assert/ICON/026.png);}</s
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>comboBox_operat</sender>
+   <signal>currentTextChanged(QString)</signal>
+   <receiver>ColorCheckForm</receiver>
+   <slot>on_combo_CheckOperat_Change(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>100</x>
+     <y>94</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>5</x>
+     <y>176</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>on_button_OpenVideo_clicked()</slot>
@@ -663,5 +699,6 @@ QPushButton#pushButton_updateVideo{border-image: url(:/assert/ICON/026.png);}</s
   <slot>on_combo_ShowCtrl_Change(QString)</slot>
   <slot>on_button_recd_clicked(bool)</slot>
   <slot>on_button_osdTime_clicked(bool)</slot>
+  <slot>on_combo_CheckOperat_Change(QString)</slot>
  </slots>
 </ui>
