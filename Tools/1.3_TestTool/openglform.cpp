@@ -8,6 +8,7 @@ OpenGLForm::OpenGLForm(QWidget *parent) :
     vCount(0)
 {
     ui->setupUi(this);
+    program=nullptr;
 
     angle = ui->horizontalSlider->value()/10.0f;
     ui->label->setText(QString("速度:%1").arg(angle));
@@ -20,7 +21,10 @@ OpenGLForm::~OpenGLForm()
     delete ui;
     positionBuf.destroy();
     colorBuf.destroy();
-    delete program;
+    if(program != nullptr)
+    {
+        delete program;
+    }
 }
 
 void OpenGLForm::timerEvent(QTimerEvent *)

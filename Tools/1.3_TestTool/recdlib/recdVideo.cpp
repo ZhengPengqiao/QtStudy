@@ -7,11 +7,12 @@
 RecdVideo::RecdVideo()
 {
     recd_status = false;
+    m_avi = nullptr;
 }
 
 RecdVideo::~RecdVideo()
 {
-    if (m_avi)
+    if (m_avi != nullptr)
     {
         AVI_close(m_avi);
         recd_status = false;
