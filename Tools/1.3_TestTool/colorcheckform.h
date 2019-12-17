@@ -34,6 +34,7 @@ public:
     void checkColorCtrl(QString color);
     void checkOperatCtrl(QString oper);
     void checkShowCtrl(QString color);
+    void checkPowerLevelCtrl(QString str);
     void reOpenRecd();
     int cameraDevices(vector<string>& list);
 
@@ -58,6 +59,7 @@ public slots:
     void on_combo_CheckColor_Change(QString color);
     void on_combo_CheckOperat_Change(QString operat);
     void on_combo_ShowCtrl_Change(QString str);
+    void on_combo_PowerLevel_Change(QString str);
     void on_button_osdTime_clicked(bool val);
 
 signals:
@@ -130,6 +132,13 @@ private:
         SHOWCTRL_RGB,
         SHOWCTRL_CHANNEL,
     }showCtrl;
+
+    enum{
+        POWERCTRL_DA_H_CAM_H,
+        POWERCTRL_DA_H_CAM_L,
+        POWERCTRL_DA_L_CAM_H,
+        POWERCTRL_DA_L_CAM_L,
+    }powerCtrl;
 
     RecdVideo recdVideo;
     int capture_frameh;

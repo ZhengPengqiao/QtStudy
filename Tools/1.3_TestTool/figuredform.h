@@ -34,6 +34,7 @@ public:
     void checkColorCtrl(QString color);
     void checkOperatCtrl(QString oper);
     void checkShowCtrl(QString color);
+    void checkPowerLevelCtrl(QString str);
     void reOpenRecd();
     int getPiexSum(cv::Mat &image);
     int cameraDevices(vector<string>& list);
@@ -59,6 +60,7 @@ public slots:
     void on_combo_CheckColor_Change(QString color);
     void on_combo_ShowCtrl_Change(QString str);
     void on_combo_CheckOperat_Change(QString operat);
+    void on_combo_PowerLevel_Change(QString str);
     void on_button_osdTime_clicked(bool val);
     void on_button_updateRect_clicked();
 
@@ -129,6 +131,13 @@ private:
         SHOWCTRL_CHANNEL,
         SHOWCTRL_ABSDIFF,
     }showCtrl;
+
+    enum{
+        POWERCTRL_DA_H_CAM_H,
+        POWERCTRL_DA_H_CAM_L,
+        POWERCTRL_DA_L_CAM_H,
+        POWERCTRL_DA_L_CAM_L,
+    }powerCtrl;
 
     enum{
         CHECKOPERAT_LOW,

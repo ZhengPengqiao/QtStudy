@@ -59,6 +59,7 @@ FiguredForm::FiguredForm(QWidget *parent) :
     checkColorCtrl(ui->comboBox_CheckColor->currentText());
     checkShowCtrl(ui->comboBox_showCtrl->currentText());
     checkOperatCtrl(ui->comboBox_operat->currentText());
+    checkPowerLevelCtrl(ui->comboBox_power_level->currentText());
     capture_frameh = 0;
     capture_framew = 0;
     capture_fps = 0;
@@ -113,6 +114,7 @@ QList<bool> FiguredForm::checkBlackDeal()
 
 void FiguredForm::dealCtrl()
 {
+    unsigned char pinStatus=0;
     if( ui->pushButton_Setting->isChecked() )
     {
         // 判断遇到花屏是否停止检测
@@ -165,14 +167,21 @@ void FiguredForm::dealCtrl()
 
         if( (dealStatus == DEALSTATUS_NONE || dealStatus == DEALSTATUS_POWEROFF) )
         {
+            switch(powerCtrl)
+            {
+                case POWERCTRL_DA_H_CAM_H: pinStatus=0x00; break;
+                case POWERCTRL_DA_H_CAM_L: pinStatus=0x0F; break;
+                case POWERCTRL_DA_L_CAM_H: pinStatus=0xF0; break;
+                default: pinStatus=0xFF; break;
+            }
             ui->statusBar->setText(QString("请求主机/摄像头断电 gpio2_0~gpio2_7 高电平"));
             QByteArray byteData;
             byteData.append(0x03);
             byteData.append(0x02);
             byteData.append(0x02);
             byteData.append(0x28);
-            byteData.append(0xff);  // gpio2_0~gpio2_7 高电平
-            byteData.append(0x03^0x02^0x02^0x28^0xff);
+            byteData.append(pinStatus);  // gpio2_0~gpio2_7 高电平
+            byteData.append(0x03^0x02^0x02^0x28^pinStatus);
             byteData.append(0x3a);
             byteData.append(0x3c);
             emit colorCheck_sendData(byteData);
@@ -184,6 +193,13 @@ void FiguredForm::dealCtrl()
         }
         else if( dealStatus == DEALSTATUS_POWERON )
         {
+            switch(powerCtrl)
+            {
+                case POWERCTRL_DA_H_CAM_H: pinStatus=0xF0; break;
+                case POWERCTRL_DA_H_CAM_L: pinStatus=0xFF; break;
+                case POWERCTRL_DA_L_CAM_H: pinStatus=0x00; break;
+                default: pinStatus=0x0F; break;
+            }
             ui->statusBar->setText(QString("请求主机上电 gpio2_4~gpio2_7 低电平"));
 
             QByteArray byteData;
@@ -191,8 +207,8 @@ void FiguredForm::dealCtrl()
             byteData.append(0x02);
             byteData.append(0x02);
             byteData.append(0x28);
-            byteData.append((char)0x0f);    // gpio2_4~gpio2_7 导通
-            byteData.append(0x03^0x02^0x02^0x28^0x0f);
+            byteData.append((char)pinStatus);    // gpio2_4~gpio2_7 导通
+            byteData.append(0x03^0x02^0x02^0x28^pinStatus);
             byteData.append(0x3a);
             byteData.append(0x3c);
             emit colorCheck_sendData(byteData);
@@ -203,6 +219,13 @@ void FiguredForm::dealCtrl()
         }
         else if( dealStatus == DEALSTATUS_CAMERAPOWER )
         {
+            switch(powerCtrl)
+            {
+                case POWERCTRL_DA_H_CAM_H: pinStatus=0xFF; break;
+                case POWERCTRL_DA_H_CAM_L: pinStatus=0xF0; break;
+                case POWERCTRL_DA_L_CAM_H: pinStatus=0x0F; break;
+                default: pinStatus=0x00; break;
+            }
             ui->statusBar->setText(QString("请求摄像头上电 gpio2_0~gpio2_3 低电平"));
 
             QByteArray byteData;
@@ -210,8 +233,8 @@ void FiguredForm::dealCtrl()
             byteData.append(0x02);
             byteData.append(0x02);
             byteData.append(0x28);
-            byteData.append((char)0x00);     // gpio2_0~gpio2_7 导通
-            byteData.append(0x03^0x02^0x02^0x28^0x00);
+            byteData.append((char)pinStatus);     // gpio2_0~gpio2_7 导通
+            byteData.append(0x03^0x02^0x02^0x28^pinStatus);
             byteData.append(0x3a);
             byteData.append(0x3c);
             emit colorCheck_sendData(byteData);
@@ -525,6 +548,11 @@ void FiguredForm::on_combo_CheckOperat_Change(QString operat)
     checkOperatCtrl(operat);
 }
 
+void FiguredForm::on_combo_PowerLevel_Change(QString str)
+{
+    checkPowerLevelCtrl(str);
+}
+
 
 void FiguredForm::getVideoMode(QString str)
 {
@@ -740,6 +768,31 @@ void FiguredForm::checkOperatCtrl(QString oper)
     {
         checkOperat = CHECKOPERAT_LOW;
         ui->statusBar->setText("Check <=");
+    }
+}
+
+
+void FiguredForm::checkPowerLevelCtrl(QString str)
+{
+    if( str == "主机:高有效 摄像头:高有效" )
+    {
+        powerCtrl = POWERCTRL_DA_H_CAM_H;
+        ui->statusBar->setText("Check Power Level--> 主机:高有效 摄像头:高有效");
+    }
+    else if( str == "主机:高有效 摄像头:低有效" )
+    {
+        powerCtrl = POWERCTRL_DA_H_CAM_L;
+        ui->statusBar->setText("Check Power Level--> 主机:高有效 摄像头:低有效");
+    }
+    else if( str == "主机:低有效 摄像头:高有效" )
+    {
+        powerCtrl = POWERCTRL_DA_L_CAM_H;
+        ui->statusBar->setText("Check Power Level--> 主机:低有效 摄像头:高有效");
+    }
+    else
+    {
+        powerCtrl = POWERCTRL_DA_L_CAM_L;
+        ui->statusBar->setText("Check Power Level--> 主机:低有效 摄像头:低有效");
     }
 }
 

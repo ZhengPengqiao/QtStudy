@@ -349,6 +349,60 @@ QPushButton#pushButton_updateVideo{border-image: url(:/assert/ICON/026.png);}</s
       </layout>
      </item>
      <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <item>
+        <widget class="QLabel" name="label_8">
+         <property name="text">
+          <string>上电有效点平控制:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="comboBox_power_level">
+         <property name="minimumSize">
+          <size>
+           <width>180</width>
+           <height>0</height>
+          </size>
+         </property>
+         <item>
+          <property name="text">
+           <string>主机:低有效 摄像头:低有效</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>主机:高有效 摄像头:高有效</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>主机:高有效 摄像头:低有效</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>主机:低有效 摄像头:高有效</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item>
       <widget class="Line" name="line">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -371,7 +425,7 @@ QPushButton#pushButton_updateVideo{border-image: url(:/assert/ICON/026.png);}</s
             <x>0</x>
             <y>0</y>
             <width>529</width>
-            <height>275</height>
+            <height>244</height>
            </rect>
           </property>
           <layout class="QGridLayout" name="gridLayout_3" columnstretch="0,0">
@@ -431,7 +485,7 @@ QPushButton#pushButton_updateVideo{border-image: url(:/assert/ICON/026.png);}</s
               <x>0</x>
               <y>0</y>
               <width>261</width>
-              <height>149</height>
+              <height>118</height>
              </rect>
             </property>
             <layout class="QGridLayout" name="gridLayout_2">
@@ -683,6 +737,22 @@ QPushButton#pushButton_updateVideo{border-image: url(:/assert/ICON/026.png);}</s
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>comboBox_power_level</sender>
+   <signal>currentTextChanged(QString)</signal>
+   <receiver>ColorCheckForm</receiver>
+   <slot>on_combo_PowerLevel_Change(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>181</x>
+     <y>130</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>3</x>
+     <y>257</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>on_button_OpenVideo_clicked()</slot>
@@ -700,5 +770,6 @@ QPushButton#pushButton_updateVideo{border-image: url(:/assert/ICON/026.png);}</s
   <slot>on_button_recd_clicked(bool)</slot>
   <slot>on_button_osdTime_clicked(bool)</slot>
   <slot>on_combo_CheckOperat_Change(QString)</slot>
+  <slot>on_combo_PowerLevel_Change(QString)</slot>
  </slots>
 </ui>
