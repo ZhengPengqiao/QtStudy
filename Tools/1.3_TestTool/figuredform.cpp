@@ -822,7 +822,7 @@ void FiguredForm::on_button_recd_clicked(bool val)
         // 点击了开始按钮,  将按钮上的文字显示关闭录像
         qDebug() << "正在录像文件: " << current_date+".avi";
         ret = recdVideo.open((current_date+".avi").toStdString().c_str(),
-                        capture_framew, capture_frameh, capture_fps, "mjpg");
+                        capture_framew, capture_frameh, capture_fps, (char*)"mjpg");
         if( ret != RecdVideo::RECDVIDEO_RETURN_SUCCESS )
         {
             ui->statusBar->setText("录像文件打开失败");
@@ -834,7 +834,7 @@ void FiguredForm::on_button_recd_clicked(bool val)
         QDateTime time = QDateTime::currentDateTime();
         now_time = time.toTime_t();
         recdVideo.setVideo(capture_framew, capture_frameh,
-                           recdVideo.videoFrames()/(now_time-start_time),"mjpg");
+                           recdVideo.videoFrames()/(now_time-start_time), (char*)"mjpg");
         // 点击了开始按钮,  将按钮上的文字显示关闭录像
         ui->pushButton_recd->setText("打开录像");
         ret = recdVideo.close();
@@ -852,7 +852,7 @@ void FiguredForm::reOpenRecd()
         ui->statusBar->setText(QString("本次录制文件帧数fps:%1").arg(recdVideo.videoFrames()/recd_file_time));
         qDebug() << "frams" << recdVideo.videoFrames() << "fps:" << recdVideo.videoFrames()/recd_file_time;
         recdVideo.setVideo(capture_framew, capture_frameh,
-                           recdVideo.videoFrames()/recd_file_time, "mjpg");
+                           recdVideo.videoFrames()/recd_file_time, (char*)"mjpg");
         recdVideo.close();
     }
 
@@ -861,7 +861,7 @@ void FiguredForm::reOpenRecd()
     QString current_date = time.toString("yyyy.MM.dd hh:mm:ss.zzz");
     // 点击了开始按钮,  将按钮上的文字显示关闭录像
     recdVideo.open((current_date+".avi").toStdString().c_str(),
-                    capture_framew, capture_frameh, capture_fps, "mjpg");
+                    capture_framew, capture_frameh, capture_fps, (char*)"mjpg");
     ui->pushButton_recd->setText("正在录像文件(点击关闭):"+current_date);
 }
 
@@ -892,6 +892,7 @@ void FiguredForm::on_button_updateRect_clicked()
 
 int FiguredForm::cameraDevices(vector<string>& list)
 {
+    (void)list;
     return 1;
 }
 

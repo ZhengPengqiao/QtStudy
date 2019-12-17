@@ -147,7 +147,7 @@ private:
 
     unsigned int start_time;
     unsigned int now_time;
-    int recd_file_time;
+    unsigned int recd_file_time;
     qint64 old_writeTime;
     int frameCount;
     double fps;
