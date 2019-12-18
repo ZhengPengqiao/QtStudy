@@ -448,7 +448,7 @@ void FiguredForm::ReadFrame()
             if( needSaveErrImage == 1 )
             {
                 qDebug() << "saving err image";
-                image.save(QString("花屏 %1").arg(checkFiguredCount), "JPG", 100);
+                image.save(QString("花屏 %1.jpg").arg(checkFiguredCount), "JPG", 100);
                 needSaveErrImage = 0;
                 qDebug() << "save err image ok";
             }

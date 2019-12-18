@@ -427,7 +427,7 @@ void ColorCheckForm::ReadFrame()
             if( needSaveErrImage == 1 )
             {
                 qDebug() << "saving err image";
-                image.save(QString("黑屏 %1").arg(checkBlankCount), "JPG", 100);
+                image.save(QString("黑屏 %1.jpg").arg(checkBlankCount), "JPG", 100);
                 needSaveErrImage = 0;
                 qDebug() << "save err image ok";
             }
