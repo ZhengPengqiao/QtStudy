@@ -426,10 +426,10 @@ void ColorCheckForm::ReadFrame()
             // 保存错误图片
             if( needSaveErrImage == 1 )
             {
-                qDebug() << "saving err image";
+                qDebug() << "saving err image:" << QString("黑屏 %1.jpg").arg(checkBlankCount);
                 image.save(QString("黑屏 %1.jpg").arg(checkBlankCount), "JPG", 100);
                 needSaveErrImage = 0;
-                qDebug() << "save err image ok";
+                qDebug() << "save err image ok:" << QString("黑屏 %1.jpg").arg(checkBlankCount);
             }
 
         }
@@ -827,7 +827,7 @@ void ColorCheckForm::reOpenRecd()
 
     QDateTime time = QDateTime::currentDateTime();
     start_time = time.toTime_t();
-    QString current_date = time.toString("yyyy.MM.dd hh:mm:ss.zzz");
+    QString current_date = time.toString("yyyyMMdd_hhmmss_zzz");
     // 点击了开始按钮,  将按钮上的文字显示关闭录像
     recdVideo.open((current_date+".avi").toStdString().c_str(),
                     capture_framew, capture_frameh, capture_fps, (char*)"mjpg");

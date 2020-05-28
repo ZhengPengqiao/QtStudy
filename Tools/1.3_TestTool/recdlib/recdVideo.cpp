@@ -25,9 +25,14 @@ int RecdVideo::open(QString path, int width, int height, int fps, char *compress
     m_avi = AVI_open_output_file(const_cast<char*>(path.toStdString().c_str()));
     if( m_avi == NULL )
     {
-        qDebug() << "AVI_open_output_file Err:" << AVI_strerror();
+        qDebug() << "AVI_open_output_file Err:" << AVI_strerror() << path;
         return RECDVIDEO_RETURN_OPENFAILD;
     }
+    else
+    {
+        qDebug() << "AVI_open_output_file: " << path << " OK: ";
+    }
+
     //adjust the screenshot size.
     AVI_set_video(m_avi, width, height, fps, compressor);
     recd_status = true;

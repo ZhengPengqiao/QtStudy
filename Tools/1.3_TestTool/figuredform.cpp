@@ -858,7 +858,7 @@ void FiguredForm::reOpenRecd()
 
     QDateTime time = QDateTime::currentDateTime();
     start_time = time.toTime_t();
-    QString current_date = time.toString("yyyy.MM.dd hh:mm:ss.zzz");
+    QString current_date = time.toString("yyyyMMdd_hhmmss_zzz");
     // 点击了开始按钮,  将按钮上的文字显示关闭录像
     recdVideo.open((current_date+".avi").toStdString().c_str(),
                     capture_framew, capture_frameh, capture_fps, (char*)"mjpg");

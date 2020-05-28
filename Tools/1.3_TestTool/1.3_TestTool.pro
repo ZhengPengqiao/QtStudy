@@ -47,8 +47,8 @@ unix: LIBS += -lopencv_core
 
 
 win32: LIBS += -L$$PWD/../../Doc/opencv-3.4.0_install_win_mingw32/x86/mingw/bin/
-win32: INCLUDEPATH += $$PWD/../../Doc/opencv-3.4.0_install_win_mingw32/include
-win32: DEPENDPATH += $$PWD/../../Doc/opencv-3.4.0_install_win_mingw32/include
+win32: INCLUDEPATH += $$PWD/../../Doc/opencv-3.4.0_install_win_mingw32/x86/mingw/include
+win32: DEPENDPATH += $$PWD/../../Doc/opencv-3.4.0_install_win_mingw32/x86/mingw/include
 
 win32: LIBS += -llibopencv_dnn340
 win32: LIBS += -llibopencv_ml340
