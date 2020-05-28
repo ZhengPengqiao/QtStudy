@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>890</width>
+    <height>624</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -27,7 +27,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>0</number>
       </property>
       <property name="tabsClosable">
        <bool>false</bool>
@@ -35,6 +35,11 @@
       <property name="tabBarAutoHide">
        <bool>false</bool>
       </property>
+      <widget class="LogForm" name="Log">
+       <attribute name="title">
+        <string>日志显示</string>
+       </attribute>
+      </widget>
       <widget class="OpenGLForm" name="openglPage">
        <attribute name="title">
         <string>opengl样例</string>
@@ -97,6 +102,12 @@
    <class>FiguredForm</class>
    <extends>QWidget</extends>
    <header>figuredform.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>LogForm</class>
+   <extends>QWidget</extends>
+   <header>logform.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
