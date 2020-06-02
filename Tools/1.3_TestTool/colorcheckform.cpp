@@ -8,6 +8,7 @@
 #include <QPen>
 #include <QDateTime>
 #include "tthbpform.h"
+#include "logform.h"
 
 ColorCheckForm::ColorCheckForm(QWidget *parent) :
     QWidget(parent),
@@ -294,6 +295,8 @@ void ColorCheckForm::dealCtrl()
 
         ui->label_checkCount->setText(QString("测试次数:%1 黑屏次数:%2").arg(checkCount).arg(checkBlankCount));
     }
+
+    LogForm::logI("ColorCheckForm", ui->statusBar->text());
 }
 
 void ColorCheckForm::ReadFrame()
@@ -476,6 +479,8 @@ void ColorCheckForm::on_button_OpenVideo_clicked()
             qDebug() << "open VideoNum:" << video_number << "Err";
         }
     }
+
+    LogForm::logI("ColorCheckForm", ui->statusBar->text());
 }
 
 
@@ -487,6 +492,7 @@ void ColorCheckForm::on_button_CloseVideo_clicked()
 
     ui->statusBar->setText("CloseVideo");
     qDebug() << "on_button_CloseVideo_clicked";
+    LogForm::logI("ColorCheckForm", ui->statusBar->text());
 }
 
 void ColorCheckForm::on_button_StartVideo_clicked()
@@ -501,6 +507,7 @@ void ColorCheckForm::on_button_StartVideo_clicked()
 
     ui->statusBar->setText("StartVideo");
     qDebug() << "on_button_StartVideo_clicked";
+    LogForm::logI("ColorCheckForm", ui->statusBar->text());
 }
 
 void ColorCheckForm::on_button_StopVideo_clicked()
@@ -509,6 +516,7 @@ void ColorCheckForm::on_button_StopVideo_clicked()
 
     ui->statusBar->setText("StopVideo");
     qDebug() << "on_button_StopVideo_clicked";
+    LogForm::logI("ColorCheckForm", ui->statusBar->text());
 }
 
 void ColorCheckForm::on_combo_Video_Change(QString str)
@@ -516,6 +524,7 @@ void ColorCheckForm::on_combo_Video_Change(QString str)
     ui->statusBar->setText(str);
     getVideoMode(str);
     qDebug() << "on_combo_Video_Change" << str;
+    LogForm::logI("ColorCheckForm", ui->statusBar->text());
 }
 
 void ColorCheckForm::getVideoMode(QString str)
@@ -544,6 +553,7 @@ void ColorCheckForm::getVideoMode(QString str)
         file_name = QFileDialog::getOpenFileName(this, tr("Open Video"), ".", tr("Video File(*.avi *.mp4 *.h264)"));
         ui->statusBar->setText("File Video file_name :" + file_name);
     }
+    LogForm::logI("ColorCheckForm", ui->statusBar->text());
 }
 
 
@@ -604,6 +614,7 @@ void ColorCheckForm::on_button_TTHBP_clicked(bool val)
         ui->pushButton_tthbp->setText("TTHBP 打开");
         ui->statusBar->setText("TTHBP 关闭");
     }
+    LogForm::logI("ColorCheckForm", ui->statusBar->text());
 }
 
 
@@ -692,6 +703,7 @@ void ColorCheckForm::checkColorCtrl(QString color)
         checkColor = CHECKCOLOR_GRAY;
         ui->statusBar->setText("Check Color Gray");
     }
+    LogForm::logI("ColorCheckForm", ui->statusBar->text());
 }
 
 void ColorCheckForm::checkOperatCtrl(QString oper)
@@ -706,6 +718,7 @@ void ColorCheckForm::checkOperatCtrl(QString oper)
         checkOperat = CHECKOPERAT_LOW;
         ui->statusBar->setText("Check <=");
     }
+    LogForm::logI("ColorCheckForm", ui->statusBar->text());
 }
 
 void ColorCheckForm::checkShowCtrl(QString color)
@@ -725,6 +738,7 @@ void ColorCheckForm::checkShowCtrl(QString color)
         showCtrl = SHOWCTRL_RGB;
         ui->statusBar->setText("Show Ctrl : 显示原图");
     }
+    LogForm::logI("ColorCheckForm", ui->statusBar->text());
 }
 
 
@@ -750,6 +764,7 @@ void ColorCheckForm::checkPowerLevelCtrl(QString str)
         powerCtrl = POWERCTRL_DA_L_CAM_L;
         ui->statusBar->setText("Check Power Level--> 主机:低有效 摄像头:低有效");
     }
+    LogForm::logI("ColorCheckForm", ui->statusBar->text());
 }
 
 
@@ -812,6 +827,7 @@ void ColorCheckForm::on_button_recd_clicked(bool val)
             ui->statusBar->setText("录像文件关闭失败");
         }
     }
+    LogForm::logI("ColorCheckForm", ui->statusBar->text());
 }
 
 void ColorCheckForm::reOpenRecd()
@@ -832,6 +848,7 @@ void ColorCheckForm::reOpenRecd()
     recdVideo.open((current_date+".avi").toStdString().c_str(),
                     capture_framew, capture_frameh, capture_fps, (char*)"mjpg");
     ui->pushButton_recd->setText("正在录像文件(点击关闭):"+current_date);
+    LogForm::logI("ColorCheckForm", ui->statusBar->text());
 }
 
 
@@ -849,6 +866,7 @@ void ColorCheckForm::on_button_osdTime_clicked(bool val)
         ui->pushButton_OSDTime->setText("图像上不叠加时间");
         ui->statusBar->setText("图像上将 会 叠加时间");
     }
+    LogForm::logI("ColorCheckForm", ui->statusBar->text());
 }
 
 

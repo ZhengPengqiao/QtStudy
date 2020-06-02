@@ -15,12 +15,10 @@ public:
     explicit LogForm(QWidget *parent = 0);
     ~LogForm();
 
-    static LogForm *instances();
-
-    static void logI(QString log);
-    static void logD(QString log);
-    static void logE(QString log);
-    static void logW(QString log);
+    static void logI(QString tag, QString log);
+    static void logD(QString tag, QString log);
+    static void logE(QString tag, QString log);
+    static void logW(QString tag, QString log);
 
 public slots:
     void pushButton_logClear_onClicked();

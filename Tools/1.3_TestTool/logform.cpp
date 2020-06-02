@@ -12,11 +12,17 @@ LogForm::LogForm(QWidget *parent) :
     ui(new Ui::LogForm)
 {
     ui->setupUi(this);
+    inst = this;
 }
+
 
 LogForm::~LogForm()
 {
     delete ui;
+    if( inst != this && inst != nullptr )
+    {
+        delete inst;
+    }
 }
 
 
@@ -25,6 +31,7 @@ void LogForm::pushButton_logClear_onClicked()
     ui->textEdit_log->clear();
     QMessageBox::information(this, "Clear LogForm", "Clear LogForm Ok!");
 }
+
 
 void LogForm::pushButton_logSave_onClicked()
 {
@@ -45,52 +52,41 @@ void LogForm::pushButton_logSave_onClicked()
 }
 
 
-LogForm *LogForm::instances()
+void LogForm::logI(QString tag, QString log)
 {
     if( inst == nullptr )
     {
-        qDebug() << "inst is null, and new LogForm()";
-        inst = new LogForm();
+        qDebug()<< "inst: Log Form is not init";
     }
-    return inst;
+    inst->ui->textEdit_log->append(tag + " [I]:"+log);
 }
 
 
-void LogForm::logI(QString log)
+void LogForm::logD(QString tag, QString log)
 {
     if( inst == nullptr )
     {
-        instances();
+        qDebug()<< "inst: Log Form is not init";
     }
-    inst->ui->textEdit_log->append("[I]:"+log);
+    inst->ui->textEdit_log->append(tag + " [D]:"+log);
 }
 
 
-void LogForm::logD(QString log)
+void LogForm::logE(QString tag, QString log)
 {
     if( inst == nullptr )
     {
-        instances();
+        qDebug()<< "inst: Log Form is not init";
     }
-    inst->ui->textEdit_log->append("[D]:"+log);
+    inst->ui->textEdit_log->append(tag + " [E]:"+log);
 }
 
 
-void LogForm::logE(QString log)
+void LogForm::logW(QString tag, QString log)
 {
     if( inst == nullptr )
     {
-        instances();
+        qDebug()<< "inst: Log Form is not init";
     }
-    inst->ui->textEdit_log->append("[E]:"+log);
-}
-
-
-void LogForm::logW(QString log)
-{
-    if( inst == nullptr )
-    {
-        instances();
-    }
-    inst->ui->textEdit_log->append("[W]:"+log);
+    inst->ui->textEdit_log->append(tag + " [W]:"+log);
 }

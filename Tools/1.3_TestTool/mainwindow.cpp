@@ -38,7 +38,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->figuredPage, &FiguredForm::colorCheck_closeTTHBP,
             ui->TTHBPPage, &TTHBPForm::button_CloseSerial_onClick);
 
-
 }
 
 MainWindow::~MainWindow()
