@@ -1,6 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>assert/windows.png</file>
-        <file>assert/dot.png</file>
-    </qresource>
-</RCC>
