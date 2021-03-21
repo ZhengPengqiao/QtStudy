@@ -25,7 +25,7 @@ MainWindow::~MainWindow()
  */
 void MainWindow::pushButton_IdentifyPicture_OnClick()
 {
-    spr2801s.main_showImage();
+    spr2801s.main_showImage(ui->lineEdit_Picture->text());
 }
 
 /**
@@ -34,7 +34,7 @@ void MainWindow::pushButton_IdentifyPicture_OnClick()
  */
 void MainWindow::pushButton_IdentifyFolderPicture_OnClick()
 {
-    spr2801s.main_playVideo();
+    spr2801s.main_slideShow(ui->lineEdit_Folder->text());
 }
 
 /**
@@ -43,7 +43,7 @@ void MainWindow::pushButton_IdentifyFolderPicture_OnClick()
  */
 void MainWindow::pushButton_IdentifyFileVideo_OnClick()
 {
-    spr2801s.main_playVideo();
+    spr2801s.main_playVideo(ui->lineEdit_Video->text());
 }
 
 /**
@@ -52,7 +52,7 @@ void MainWindow::pushButton_IdentifyFileVideo_OnClick()
  */
 void MainWindow::pushButton_IdentifyCameraVideo_OnClick()
 {
-    spr2801s.main_cameraShow();
+    spr2801s.main_cameraShow(ui->lineEdit_Camera->text());
 }
 
 /**

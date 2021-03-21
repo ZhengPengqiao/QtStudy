@@ -27,14 +27,14 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    spr2801s.cpp \
-    helpdialog.cpp
+        spr2801s.cpp \
+        helpdialog.cpp
 
 HEADERS += \
         mainwindow.h \
         json.hpp \
-    spr2801s.h \
-    helpdialog.h
+        spr2801s.h \
+        helpdialog.h
 
 FORMS += \
         mainwindow.ui \

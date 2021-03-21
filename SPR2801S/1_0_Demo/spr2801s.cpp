@@ -256,30 +256,30 @@ int SPR2801S::initModel(const char *modelName)
     return 0;
 }
 
-int SPR2801S::main_showImage()
+int SPR2801S::main_showImage(QString imagePath)
 {
-    showImage("/home/zpq/WorkSpace_L/Code-Repo/QtStudy/SPR2801S/doc/Data/Image_bmp_c20/car.jpg", image_size);
+    showImage(imagePath.toStdString().c_str(), image_size);
     return 0;
 }
 
 
-int SPR2801S::main_cameraShow()
+int SPR2801S::main_cameraShow(QString cameraPath)
 {
-    cameraShow("/dev/video0", image_size);
+    cameraShow(cameraPath.toStdString().c_str(), image_size);
     return 0;
 }
 
 
-int SPR2801S::main_playVideo()
+int SPR2801S::main_playVideo(QString videoPath)
 {
-    playVideo("/home/zpq/WorkSpace_L/Code-Repo/QtStudy/SPR2801S/doc/Data/Image_mp4/video_20class.mp4", image_size);
+    playVideo(videoPath.toStdString().c_str(), image_size);
     return 0;
 }
 
 
-int SPR2801S::main_slideShow()
+int SPR2801S::main_slideShow(QString folderPath)
 {
-    slideShow("/home/zpq/WorkSpace_L/Code-Repo/QtStudy/SPR2801S/doc/Data/Image_bmp_c20/", image_size);
+    slideShow(folderPath.toStdString().c_str(), image_size);
     return 0;
 }
 

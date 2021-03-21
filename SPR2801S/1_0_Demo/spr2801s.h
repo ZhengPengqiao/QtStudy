@@ -31,10 +31,10 @@ public:
     SPR2801S();
     ~SPR2801S();
     int initModel(const char *modelName);
-    int main_showImage();
-    int main_cameraShow();
-    int main_playVideo();
-    int main_slideShow();
+    int main_showImage(QString imagePath);
+    int main_cameraShow(QString cameraPath);
+    int main_playVideo(QString videoPath);
+    int main_slideShow(QString folderPath);
     void showImage(const char *filename, const int imgsize=244);
     void cameraShow(const char *cameraIndex, const int imgsize=244);
     void playVideo(const char *filename, const int imgsize=244);
