@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>824</width>
+    <width>893</width>
     <height>434</height>
    </rect>
   </property>
@@ -424,8 +424,8 @@ QPushButton#pushButton_updateVideo{border-image: url(:/assert/ICON/026.png);}</s
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>529</width>
-            <height>244</height>
+            <width>575</width>
+            <height>222</height>
            </rect>
           </property>
           <layout class="QGridLayout" name="gridLayout_3" columnstretch="0,0">
@@ -484,8 +484,8 @@ QPushButton#pushButton_updateVideo{border-image: url(:/assert/ICON/026.png);}</s
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>261</width>
-              <height>118</height>
+              <width>284</width>
+              <height>86</height>
              </rect>
             </property>
             <layout class="QGridLayout" name="gridLayout_2">

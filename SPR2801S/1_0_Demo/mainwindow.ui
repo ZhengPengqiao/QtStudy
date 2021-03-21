@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>866</width>
+    <height>474</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="4" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="1,10,2,3">
+      <item>
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>摄像头:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_Camera">
+        <property name="text">
+         <string>/dev/video1</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_selectCamera">
+        <property name="text">
+         <string>选择识别源</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_IdentifyCamera">
+        <property name="text">
+         <string>识别摄像头视频</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,7,1">
+      <item>
+       <widget class="QLabel" name="label_Model">
+        <property name="text">
+         <string>Model:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_Model">
+        <property name="text">
+         <string>../doc/Modules/gti_gnet3_fc20_2801.model</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_SelectModel">
+        <property name="text">
+         <string>选择模型</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="2" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="1,10,2,3">
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>文件夹:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_Folder">
+        <property name="text">
+         <string>../doc/Data/Image_bmp_c20/</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_selectFolder">
+        <property name="text">
+         <string>选择识别源</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_IdentifyFolderPicture">
+        <property name="text">
+         <string>识别文件夹图片</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="3" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,10,2,3">
+      <item>
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>视频文件:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_Video">
+        <property name="text">
+         <string>../doc/Data/Image_mp4/video_20class.mp4</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_selectVideo">
+        <property name="text">
+         <string>选择识别源</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_IdentifyFolderVideo">
+        <property name="text">
+         <string>识别文件视频</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="1,10,2,3">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>图片:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_Picture">
+        <property name="text">
+         <string>../doc/Data/Image_bmp_c20/car.jpg</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_selectPicture">
+        <property name="text">
+         <string>选择识别源</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_IdentifyPicture">
+        <property name="text">
+         <string>识别图片</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>866</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_File">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menu_Help">
+    <property name="title">
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="action_About"/>
+   </widget>
+   <addaction name="menu_File"/>
+   <addaction name="menu_Help"/>
+  </widget>
+  <action name="action_About">
+   <property name="text">
+    <string>&amp;About</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButton_IdentifyCamera</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>pushButton_IdentifyCameraVideo_OnClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>855</x>
+     <y>418</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>801</x>
+     <y>361</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_IdentifyFolderVideo</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>pushButton_IdentifyFileVideo_OnClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>842</x>
+     <y>335</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>803</x>
+     <y>268</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_IdentifyFolderPicture</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>pushButton_IdentifyFolderPicture_OnClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>855</x>
+     <y>251</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>800</x>
+     <y>191</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_IdentifyPicture</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>pushButton_IdentifyPicture_OnClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>855</x>
+     <y>168</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>804</x>
+     <y>97</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_About</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>pushButton_help_OnClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>432</x>
+     <y>236</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_SelectModel</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>pushButton_SelectModel_OnClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>801</x>
+     <y>70</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>779</x>
+     <y>32</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_selectPicture</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>pushButton_SelectPicture_OnClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>653</x>
+     <y>152</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>592</x>
+     <y>123</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_selectFolder</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>pushButton_SelectFolder_OnClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>661</x>
+     <y>246</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>526</x>
+     <y>198</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_selectVideo</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>pushButton_SelectVideo_OnClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>634</x>
+     <y>333</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>532</x>
+     <y>280</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_selectCamera</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>pushButton_SelectCamera_OnClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>643</x>
+     <y>398</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>529</x>
+     <y>365</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>pushButton_IdentifyPicture_OnClick()</slot>
+  <slot>pushButton_help_OnClick()</slot>
+  <slot>pushButton_IdentifyFolderPicture_OnClick()</slot>
+  <slot>pushButton_IdentifyFileVideo_OnClick()</slot>
+  <slot>pushButton_IdentifyCameraVideo_OnClick()</slot>
+  <slot>pushButton_SelectModel_OnClick()</slot>
+  <slot>pushButton_SelectPicture_OnClick()</slot>
+  <slot>pushButton_SelectFolder_OnClick()</slot>
+  <slot>pushButton_SelectVideo_OnClick()</slot>
+  <slot>pushButton_SelectCamera_OnClick()</slot>
+ </slots>
+</ui>

@@ -78,7 +78,8 @@ SOURCES += main.cpp \
     recdlib/avilib.cpp \
     recdlib/recdVideo.cpp \
     figuredform.cpp \
-    logform.cpp
+    logform.cpp \
+    videocheckform.cpp
 
 HEADERS  += \
     mainwindow.h \
@@ -90,7 +91,8 @@ HEADERS  += \
     recdlib/avilib.h \
     recdlib/recdVideo.h \
     figuredform.h \
-    logform.h
+    logform.h \
+    videocheckform.h
 
 FORMS    += \
     mainwindow.ui \
@@ -99,7 +101,8 @@ FORMS    += \
     tthbpform.ui \
     colorcheckform.ui \
     figuredform.ui \
-    logform.ui
+    logform.ui \
+    videocheckform.ui
 
 DISTFILES +=
 
