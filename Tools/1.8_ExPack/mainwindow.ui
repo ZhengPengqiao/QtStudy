@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>619</width>
+    <height>184</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <layout class="QVBoxLayout" name="verticalLayout" stretch="1,5,5">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,7">
+        <item>
+         <widget class="QPushButton" name="pushButton_selectfile">
+          <property name="text">
+           <string>Select file</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_filename">
+          <property name="text">
+           <string>File:</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QPushButton" name="pushButton_checkpack">
+          <property name="text">
+           <string>Check Pack</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_expack">
+          <property name="text">
+           <string>Ex Pack</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QProgressBar" name="progressBar">
+        <property name="value">
+         <number>0</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButton_checkpack</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>button_checkpack_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>225</x>
+     <y>141</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>230</x>
+     <y>95</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_expack</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>button_expack_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>276</x>
+     <y>192</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>283</x>
+     <y>132</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_selectfile</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>button_selectfile_onClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>161</x>
+     <y>78</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>185</x>
+     <y>50</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>button_checkpack_onClick()</slot>
+  <slot>button_expack_onClick()</slot>
+  <slot>button_selectfile_onClick()</slot>
+ </slots>
+</ui>
