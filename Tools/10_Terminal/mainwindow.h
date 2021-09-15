@@ -21,6 +21,7 @@ private slots:
   void start_shell();
   /* 向终端解析器 写入指令 */
   void run_cmd();
+  void run_cmd(QString cmd_str);
 
   /* 标准输出 */
   void on_readyReadStandardOutput();

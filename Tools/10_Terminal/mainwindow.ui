@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>763</width>
+    <height>424</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -86,6 +86,22 @@
     <hint type="destinationlabel">
      <x>341</x>
      <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit</sender>
+   <signal>returnPressed()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>run_cmd()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>215</x>
+     <y>257</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>9</x>
+     <y>257</y>
     </hint>
    </hints>
   </connection>
