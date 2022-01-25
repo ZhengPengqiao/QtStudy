@@ -170,7 +170,7 @@
           <item>
            <widget class="QLineEdit" name="lineEdit">
             <property name="text">
-             <string>/home/zpq/WorkSpace/workspaces/QtStudy/assert/文字图片不符_30s.asc</string>
+             <string>/home/zpq/WorkSpace/workspaces/QtStudy/Assert/文字图片不符_30s.asc</string>
             </property>
            </widget>
           </item>
