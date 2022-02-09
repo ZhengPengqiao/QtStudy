@@ -35,6 +35,9 @@ FORMS += \
         mainwindow.ui
 
 # Default rules for deployment.
-qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = /opt/$${TARGET}/bin
-!isEmpty(target.path): INSTALLS += target
+target.path = $$PWD/Plugin/lib/
+INSTALLS += target
+
+LIBS += -L$$PWD/Plugin/ -lGroupedControls
+INCLUDEPATH += $$PWD/Plugin
+DEPENDPATH += $$PWD/Plugin

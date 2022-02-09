@@ -1,18 +1,16 @@
-#ifndef GROUPEDCONTROLSPLUGIN_H
-#define GROUPEDCONTROLSPLUGIN_H
+#ifndef IMAGEITEMPLUGIN_H
+#define IMAGEITEMPLUGIN_H
 
 #include <QDesignerCustomWidgetInterface>
 
-class GroupedControlsPlugin : public QObject, public QDesignerCustomWidgetInterface
+class ImageItemPlugin : public QObject, public QDesignerCustomWidgetInterface
 {
     Q_OBJECT
     Q_INTERFACES(QDesignerCustomWidgetInterface)
-#if QT_VERSION >= 0x050000
-    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QDesignerCustomWidgetInterface")
-#endif // QT_VERSION >= 0x050000
+
 
 public:
-    GroupedControlsPlugin(QObject *parent = 0);
+    ImageItemPlugin(QObject *parent = 0);
 
     bool isContainer() const;
     bool isInitialized() const;

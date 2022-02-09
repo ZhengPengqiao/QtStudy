@@ -15,33 +15,44 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
+    <item row="1" column="0">
      <widget class="QTabWidget" name="tabWidget">
+      <property name="tabPosition">
+       <enum>QTabWidget::West</enum>
+      </property>
       <property name="currentIndex">
        <number>0</number>
       </property>
-      <widget class="QWidget" name="tab">
+      <widget class="QWidget" name="tab_1">
        <attribute name="title">
-        <string>GroupedControls</string>
+        <string>输入框组合控件</string>
        </attribute>
-       <layout class="QGridLayout" name="gridLayout_3">
-        <item row="1" column="0">
-         <layout class="QGridLayout" name="gridLayout_2">
-          <item row="0" column="0">
-           <widget class="GroupedControls" name="groupedControls_1"/>
-          </item>
-          <item row="1" column="0">
-           <widget class="GroupedControls" name="groupedControls_2"/>
-          </item>
-          <item row="0" column="1">
-           <widget class="GroupedControls" name="groupedControls_3"/>
-          </item>
-          <item row="1" column="1">
-           <widget class="GroupedControls" name="groupedControls_4"/>
-          </item>
-         </layout>
-        </item>
-       </layout>
+       <widget class="ImageItem" name="imageItem">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>40</y>
+          <width>231</width>
+          <height>81</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="TextItem" name="textItem">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>60</y>
+          <width>257</width>
+          <height>44</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>Page</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_2"/>
       </widget>
      </widget>
     </item>
@@ -53,7 +64,7 @@
      <x>0</x>
      <y>0</y>
      <width>843</width>
-     <height>22</height>
+     <height>23</height>
     </rect>
    </property>
   </widget>
@@ -70,9 +81,14 @@
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
-   <class>GroupedControls</class>
+   <class>ImageItem</class>
    <extends>QWidget</extends>
-   <header>groupedcontrols.h</header>
+   <header>ImageItem.h</header>
+  </customwidget>
+  <customwidget>
+   <class>TextItem</class>
+   <extends>QWidget</extends>
+   <header>TextItem.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
